@@ -1,0 +1,396 @@
+<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CarExpense Tracker v0.8.2</title><style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#18283f;background:#f2f5fa}*{box-sizing:border-box}body{margin:0}header{background:#142d4c;color:white;padding:18px max(18px,calc((100vw - 1320px)/2))}header h1{margin:0;font-size:23px}header small{color:#c9d8ea}main{max-width:1320px;margin:auto;padding:20px}nav{display:flex;gap:8px;overflow:auto;padding:8px 0 16px}button,input,select,textarea{font:inherit}button{border:1px solid #bdcce0;background:#fff;border-radius:8px;padding:9px 13px;cursor:pointer;color:#18334e}button:hover{background:#e8f0fc}.active,.primary{background:#1e5387;color:white;border-color:#1e5387}.active:hover,.primary:hover{background:#174574}.danger{color:#ae2736}section,.card{background:white;border-radius:14px;padding:20px;box-shadow:0 1px 8px #d9e1ee}h2{margin:0 0 10px}h3{margin:16px 0 8px}.muted{color:#64758b}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:13px}.fields label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600}.fields input,.fields select,.fields textarea{border:1px solid #b7c5d8;border-radius:8px;padding:10px;min-width:0;width:100%;background:#fff;color:#172c45}.fields label.check{flex-direction:row;align-items:center;gap:8px}.fields label.check input{width:18px;height:18px}.editor{border:1px solid #d5e1ef;background:#f7faff;border-radius:12px;padding:16px;margin:14px 0}.scroll{overflow:auto;max-height:min(68vh,690px);overscroll-behavior:contain;border:1px solid #e4eaf2;border-radius:10px}.scroll thead th{position:sticky;top:0;z-index:3;box-shadow:0 1px 0 #d4deeb}.scroll table{min-width:max-content}.scroll td,.scroll th{padding:10px 12px}.scroll td.notes{max-width:220px;white-space:normal}.state-icon{display:inline-flex;align-items:center;justify-content:center;width:25px;height:25px;font-weight:800;font-size:15px}.state-ok{border-radius:50%;background:#d7f3e3;color:#11693b}.state-warn{border-radius:5px;background:#fff0cd;color:#9d6000}.state-due{color:#c32935;font-size:25px}.state-unknown{color:#718096}.scroll-hint{font-size:12px;color:#61728a;margin:5px 0 9px}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:11px 10px;border-bottom:1px solid #e4eaf2;text-align:left;white-space:nowrap}th{background:#f3f7fc;position:sticky;top:0}td.notes{white-space:normal;min-width:160px}td button{padding:5px 8px;font-size:12px}.pill{display:inline-block;padding:4px 9px;border-radius:20px;background:#e8f0fb;color:#225281;font-size:12px}.warning{background:#fff3df;color:#8d5200;padding:10px;border-radius:8px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0}.stat{background:#f2f7fc;padding:15px;border-radius:10px}.stat b{font-size:22px;display:block;margin-top:6px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar select,.toolbar input{border:1px solid #bdcce0;border-radius:8px;padding:9px}.chart{width:100%;max-width:100%;height:300px;border:1px solid #e2e9f3;border-radius:10px;background:white}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}.lineitem{display:flex;gap:8px;align-items:center;margin:6px 0}.lineitem input{width:100px}.tag{font-size:11px;color:#5b718a}#status{margin:10px 0;color:#43607b}#notice{margin:8px 0}.hidden{display:none!important}@media(max-width:720px){main{padding:10px}section{padding:13px}header{padding:16px}header h1{font-size:20px}nav button{white-space:nowrap}td,th{padding:8px 6px}}
+
+/* v0.7.0 – szélesebb asztali nézet, rögzített alkalmazásfejléc és navigáció */
+:root{--app-header-h:76px}
+header{position:sticky;top:0;z-index:30;min-height:var(--app-header-h);padding-left:max(18px,calc((100vw - 1800px)/2));padding-right:max(18px,calc((100vw - 1800px)/2));box-shadow:0 2px 8px #142d4c20}
+main{max-width:1800px;width:100%}
+nav{position:sticky;top:var(--app-header-h);z-index:29;background:#f2f5fa;overflow-x:auto;overflow-y:hidden;padding:10px 0 12px;scrollbar-width:thin}
+nav button{white-space:nowrap}
+.scroll{scrollbar-gutter:stable;max-height:min(72vh,760px)}
+.scroll thead th{top:0;z-index:5}
+@media(min-width:1150px){
+  .scroll.services-table{overflow-x:hidden}
+  .scroll.services-table table{min-width:0;width:100%;table-layout:fixed;font-size:12px}
+  .scroll.services-table th,.scroll.services-table td{padding:9px 5px;overflow-wrap:anywhere;white-space:normal;vertical-align:middle}
+  .scroll.services-table th:nth-child(1){width:7%}
+  .scroll.services-table th:nth-child(2){width:7%}
+  .scroll.services-table th:nth-child(3){width:8%}
+  .scroll.services-table th:nth-child(4){width:11%}
+  .scroll.services-table th:nth-child(5){width:10%}
+  .scroll.services-table th:nth-child(6){width:8%}
+  .scroll.services-table th:nth-child(7){width:8%}
+  .scroll.services-table th:nth-child(8){width:8%}
+  .scroll.services-table th:nth-child(9){width:7%}
+  .scroll.services-table th:nth-child(10){width:5%}
+  .scroll.services-table th:nth-child(11){width:5%}
+  .scroll.services-table th:nth-child(12){width:7%}
+  .scroll.services-table th:nth-child(13){width:9%}
+  .scroll.services-table td:last-child button{padding:4px 5px;margin:2px 0}
+  .scroll.services-table td.notes{min-width:0;max-width:none}
+}
+@media(max-width:720px){:root{--app-header-h:75px}header{min-height:75px}nav{top:75px}}
+
+.settings-menu{position:relative;display:inline-block}.settings-dropdown{position:absolute;right:0;top:calc(100% + 5px);z-index:100;background:white;border:1px solid #cbd5e1;box-shadow:0 8px 24px #102a4b33;border-radius:10px;padding:6px;min-width:210px;max-height:65vh;overflow:auto}.settings-dropdown button{display:block;width:100%;text-align:left;margin:2px 0;white-space:nowrap}.settings-dropdown.hidden{display:none}
+nav#nav{padding-bottom:8px}nav.subnav{top:calc(var(--app-header-h) + 57px);z-index:28;padding:8px 0 12px;background:#f2f5fa;border-top:1px solid #dbe4ef;flex-wrap:wrap;overflow:visible}nav.subnav button{white-space:nowrap}nav.subnav.hidden{display:none!important}@media(max-width:720px){nav.subnav{top:calc(var(--app-header-h) + 57px);flex-wrap:nowrap;overflow-x:auto}}
+.vehicle-fieldset{border:1px solid #dbe4ef;border-radius:12px;margin:14px 0;padding:14px}.vehicle-fieldset legend{font-weight:700;padding:0 8px}.vehicle-fieldset .fields{margin:0}.vehicle-fieldset textarea{width:100%;min-height:75px}.vehicle-card details{border:1px solid #dbe4ef;border-radius:10px;padding:12px;margin:10px 0}.vehicle-card summary{font-weight:700;cursor:pointer}.vehicle-info-row{display:flex;justify-content:space-between;gap:18px;padding:9px 0;border-bottom:1px solid #edf0f4}.vehicle-info-row span:last-child{text-align:right;overflow-wrap:anywhere}.copy-vehicle{padding:2px 7px;margin-left:4px}@media(max-width:600px){.vehicle-info-row{flex-direction:column;gap:2px}.vehicle-info-row span:last-child{text-align:left}}.field-caption{display:inline-flex;align-items:baseline;gap:2px;white-space:normal}.required-star{color:#c0262d;font-weight:800;margin-left:3px;display:inline!important;white-space:nowrap;vertical-align:baseline}.deadline-alert{padding:9px 12px;border-radius:9px;margin:6px 0;background:#f1f5f9}.deadline-overdue{background:#fee2e2}.deadline-soon{background:#fef3c7}.deadline-ok{background:#dcfce7}
+/* v0.8.1 – mobilos használhatóság, biztonságos érintési méretek */
+html{-webkit-text-size-adjust:100%;scroll-padding-top:160px}
+body{overflow-x:hidden}
+button,select,input,textarea{touch-action:manipulation}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #75aaff;outline-offset:2px}
+#mobile-storage{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0 12px}
+#mobile-storage button{font-size:12px;padding:6px 10px}
+#storage-result{font-size:12px;color:#425a72}
+#connectivity{font-weight:600}
+@media(max-width:760px){
+ :root{--app-header-h:68px}
+ header{padding:10px 12px;min-height:68px}
+ header h1{font-size:19px}
+ header small{display:block;font-size:11px;line-height:1.35}
+ main{padding:8px 9px 30px}
+ nav#nav{top:68px;gap:5px;padding:7px 0;background:#f2f5fa;scroll-snap-type:x proximity}
+ nav#nav button{flex:0 0 auto;scroll-snap-align:start}
+ nav.subnav{top:118px;gap:5px;padding:6px 0;flex-wrap:nowrap;overflow-x:auto}
+ nav button{min-height:42px;padding:8px 12px;font-size:13px}
+ section,.card{padding:12px;border-radius:10px}
+ h2{font-size:20px}
+ .fields{grid-template-columns:minmax(0,1fr);gap:12px}
+ .fields label{font-size:14px}
+ .fields input,.fields select,.fields textarea,.toolbar input,.toolbar select{font-size:16px;min-height:44px}
+ .fields textarea{min-height:90px}
+ .actions{gap:7px}
+ .actions button,.toolbar button,.editor button{min-height:42px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .stat{padding:10px;min-width:0;overflow-wrap:anywhere}
+ .stat b{font-size:18px}
+ .toolbar{align-items:stretch}
+ .toolbar select{max-width:100%}
+ .scroll{max-width:100%;max-height:none;overflow-x:auto;overflow-y:visible;scrollbar-gutter:auto;-webkit-overflow-scrolling:touch}
+ .scroll table{min-width:max-content}
+ .scroll th{position:static}
+ .scroll td,.scroll th{padding:10px 9px}
+ .scroll td button{min-height:36px}
+ .chart{height:230px}
+ .editor{padding:10px;margin:10px 0}
+ .vehicle-fieldset{padding:10px;margin:10px 0}
+ .vehicle-info-row{flex-direction:column;gap:3px}
+ .vehicle-info-row span:last-child{text-align:left}
+}
+@media(max-width:390px){.stats{grid-template-columns:1fr}.stat b{font-size:20px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.help-topic{border:1px solid #d8e2ee;border-radius:11px;margin:10px 0;background:#fff;overflow:hidden}
+.help-topic summary{cursor:pointer;font-weight:700;padding:15px 17px;background:#f2f7fc;color:#18334e}
+.help-topic summary:focus-visible{outline:3px solid #3977b5;outline-offset:-3px}
+.help-content{padding:6px 17px 15px;line-height:1.6}
+.help-content p{margin:10px 0}
+.help-topic[hidden]{display:none}
+</style><meta name="theme-color" content="#142d4c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="CarExpense"><link rel="manifest" href="./manifest.webmanifest"><link rel="apple-touch-icon" href="./icons/icon-192.png"></head><body><header><h1>🚘 CarExpense Tracker <span style="font-size:13px">v0.8.1</span></h1><small>Mobilbarát offline HTML · helyi IndexedDB · eszközök közti szinkron még nincs</small></header><main><div id="status">Betöltés…</div><div id="notice"></div><div id="mobile-storage"><span id="connectivity" aria-live="polite"></span><button type="button" id="protect-storage" title="Tartós tárhely engedélyezésének kérése">Tárhely védelme</button><span id="storage-result" aria-live="polite"></span></div><nav id="nav"></nav><nav id="subnav" class="subnav hidden" aria-label="Beállítások almenü"></nav><section><h2 id="title"></h2><div id="subtitle" class="muted"></div><div id="toolbar" class="actions"></div><div id="editor" class="editor hidden"></div><div id="body"></div></section></main><input id="upload" type="file" accept=".json,application/json" hidden><script id="seed" type="application/json">{"schemaVersion": 2, "vehicles": [], "fuel": [], "services": [], "master": [], "tyres": [], "cycles": [], "expenses": [], "fuelTypes": [], "exportedAt": "2026-11-09T09:39:19.602Z", "maintenanceOverrides": []}</script><script>
+'use strict';const SEED=JSON.parse(document.getElementById('seed').textContent);const tabs={dashboard:'Áttekintés',fuel:'Tankolások',services:'Szerviz',maintenance:'Szervizfigyelő',expenses:'Egyéb költségek',master:'MasterData',tyres:'Gumik',cycles:'Gumiciklusok',vehicles:'Járművek',fuelTypes:'Üzemanyagtípusok',overrides:'Járműintervallumok',deadlines:'Határidők',settings:'Adatkezelés',help:'❓ Súgó'};const settingsTabs=['settings','master','tyres','vehicles','fuelTypes','overrides','deadlines'];let settingsOpen=false;let data,db,tab='dashboard',vehicle='vehicle-kia',editing=null,filter='',year='all';const $=x=>document.getElementById(x);const esc=v=>String(v??'').replace(/[&<>"']/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]));const num=v=>Number(v)||0;const money=(v,d=2)=>new Intl.NumberFormat('hu-HU',{minimumFractionDigits:d,maximumFractionDigits:d}).format(num(v));const km=v=>money(v,0)+' km';const ft=v=>money(v,2)+' Ft';const date=v=>v?new Date(v+'T12:00:00').toLocaleDateString('hu-HU'):'';const uid=()=>crypto.randomUUID();const veh=()=>data.vehicles.find(x=>x.id===vehicle);const vehicleRows=k=>data[k].filter(r=>r.vehicleId===vehicle);const isReal=s=>!s.baseline;const fields={
+vehicles:[['name','Megjelenítési név','text',1],['plate','Rendszám','text'],['vin','Alvázszám (VIN)','text'],['make','Gyártmány','text'],['model','Modell','text'],['variant','Típus / kivitel','text'],['bodyStyle','Karosszéria','text'],['modelYear','Modellév','number'],['productionYear','Gyártási év','number'],['firstRegistration','Első forgalomba helyezés','date'],['registrationNumber','Forgalmi engedély száma','text'],['inspectionExpiry','Műszaki érvényessége','date'],['fuelSystem','Motor (tankolási rendszer)','system',1],['powertrain','Hajtáslánc / üzemanyag részletezése','text'],['displacement','Hengerűrtartalom (cm³)','number'],['powerKw','Teljesítmény (kW)','number'],['engineCode','Motorkód','text'],['gearbox','Sebességváltó típusa','text'],['driveType','Hajtás (FWD/RWD/AWD)','text'],['emissionClass','Környezetvédelmi besorolás','text'],['color','Szín','text'],['paint','Fényezés típusa','text'],['curbWeight','Saját tömeg (kg)','number'],['grossWeight','Megengedett össztömeg (kg)','number'],['doors','Ajtók száma','number'],['seats','Ülések száma','number'],['trim','Felszereltségi szint','text'],['factoryEquipment','Gyári extrák','textarea'],['modifications','Utólagos felszerelések','textarea'],['factoryTyres','Gyári / engedélyezett gumiméretek','text'],['wheelSpecs','Felniadatok','text'],['tpms','TPMS típusa','text'],['purchaseDate','Vásárlás dátuma','date'],['purchaseOdo','Vásárláskori km','number'],['purchasePrice','Vételár (Ft)','number'],['saleDate','Eladás dátuma','date'],['salePrice','Eladási ár (Ft)','number'],['insurer','Biztosító','text'],['policyNumber','Kötvényszám','text'],['insuranceRenewal','KGFB következő fordulónapja','date'],['cascoRenewal','CASCO következő fordulónapja','date'],['documentNotes','Dokumentumok / hivatkozások','textarea'],['defaultFuel','Alapértelmezett üzemanyag','fueltype'],['active','Aktív','bool'],['notes','Megjegyzés','textarea']],
+fuel:[['date','Dátum','date',1],['odometer','Kilométeróra','number',1],['liters','Tankolt mennyiség (L)','number',1],['unitPrice','Egységár (Ft/L)','number',1],['totalCost','Összeg (Ft)','number'],['fuelType','Üzemanyag','fueltype',1],['full','Telitank','bool'],['aggregate','Összevont tankolás','bool'],['notes','Megjegyzés','text']],
+services:[['date','Dátum','date',1],['odometer','Kilométeróra','number',1],['category','Kategória','category'],['title','Megnevezés','title'],['cost','Teljes szervizköltség (Ft)','number'],['costMode','Költségbontás','costmode'],['notes','Megjegyzés','text'],['baseline','Gyári alapérték (nem valós költség)','bool'],['paidByMe','Saját költség (én fizettem)','bool']],
+expenses:[['date','Dátum','date',1],['category','Kategória','expensecat',1],['title','Megnevezés','text'],['cost','Összeg (Ft)','number',1],['odometer','Kilométeróra','number'],['notes','Megjegyzés','text'],['paidByMe','Saját költség (én fizettem)','bool']],
+master:[['category','Kategória','text',1],['title','Megnevezés','text',1],['repeatKm','Ismétlés (km)','number'],['repeatMonths','Ismétlés (hónap)','number'],['warnKm','Figyelmeztetés (km)','number'],['warnDays','Figyelmeztetés (nap)','number'],['active','Aktív','bool']],
+tyres:[['name','Garnitúra neve','text',1],['season','Évszak','season'],['brand','Márka','text'],['model','Típus','text'],['size','Méret','text'],['dot','DOT','text'],['purchaseDate','Vásárlás dátuma','date'],['startOdo','Kezdő km','number'],['endOdo','Záró km','number'],['distance','Összes km (eredeti)','number'],['status','Állapot','tyrestatus'],['notes','Megjegyzés','text']],
+cycles:[['setName','Garnitúra','tyrename',1],['mountedDate','Felszerelés','date'],['mountedOdo','Felszerelés km','number'],['removedDate','Leszerelés','date'],['removedOdo','Leszerelés km','number'],['cycleKm','Ciklus km (eredeti)','number'],['currentMounted','Jelenleg felszerelt','bool']],
+deadlines:[['title','Határidő megnevezése','text',1],['dueDate','Esedékesség dátuma','date',1],['warnDays','Figyelmeztetés (nap)','number'],['active','Aktív','bool'],['notes','Megjegyzés','text']],
+fuelTypes:[['name','Üzemanyag megnevezése','text',1],['system','Motor','system',1],['active','Aktív','bool']]};
+function openDb(){return new Promise((ok,no)=>{const r=indexedDB.open('carexpense-v02',1);r.onupgradeneeded=()=>r.result.createObjectStore('state');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
+function request(r){return new Promise((ok,no)=>{r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
+async function read(){const t=db.transaction('state','readonly');return await request(t.objectStore('state').get('all'))}
+async function persist(){return new Promise((ok,no)=>{const t=db.transaction('state','readwrite');t.objectStore('state').put(data,'all');t.oncomplete=()=>{$('status').textContent='✓ Helyben mentve · '+new Date().toLocaleTimeString('hu-HU')+' · Nincs felhőszinkron';ok()};t.onerror=()=>no(t.error);t.onabort=()=>no(t.error)})}
+function applyOwnershipDefaults(){
+ // Csak az Excelből származó, 2024–2025-ös Kia-szervizkönyvi bejegyzéseket
+ // jelöljük a felhasználó kifejezett visszajelzése alapján nem saját költségnek.
+ // Más rekordokhoz, különösen kézzel rögzítettekhez nem nyúlunk.
+ let changes=0;
+ for(const r of data.services||[]){
+  if(r.vehicleId==='vehicle-kia' && r.sourceRow!=null && /^202[45]-/.test(r.date||'') && r.paidByMe===undefined){
+   r.paidByMe=false;changes++;
+  }
+ }
+ return changes;
+}
+function clone(x){return JSON.parse(JSON.stringify(x))}
+function download(obj,name){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}));a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+function backup(){try{download({...data,exportedAt:new Date().toISOString()},'CarExpense_v02_backup_'+new Date().toISOString().slice(0,10)+'.json');safeMsg('✓ A JSON-fájl letöltését elindítottam. Ellenőrizd a böngésző Letöltések mappáját.');return true}catch(e){safeMsg('Nem sikerült elindítani a mentést: '+e.message);return false}}
+function safeMsg(s){$('notice').innerHTML=s?'<div class="warning">'+esc(s)+'</div>':''}
+function visible(k){return ['vehicles','master','fuelTypes'].includes(k)?data[k]:vehicleRows(k)}
+function setTab(k){tab=k;settingsOpen=settingsTabs.includes(k);editing=null;filter='';render()}
+function render(){if(!data)return;data.deadlines ||= [];
+const primaryTabs=Object.entries(tabs).filter(([k])=>!settingsTabs.includes(k));
+$('nav').innerHTML=primaryTabs.map(([k,v])=>`<button data-tab="${k}" class="${tab===k?'active':''}">${esc(v)}</button>`).join('')+`<button id="settings-toggle" class="${settingsTabs.includes(tab)?'active':''}" aria-expanded="${settingsOpen}" aria-controls="subnav">⚙ Beállítások</button>`;
+$('subnav').classList.toggle('hidden',!settingsOpen);
+$('subnav').innerHTML=settingsTabs.map(k=>`<button data-tab="${k}" class="${tab===k?'active':''}">${esc(tabs[k])}</button>`).join('');
+$('settings-toggle').onclick=()=>{settingsOpen=!settingsOpen;if(settingsOpen&&!settingsTabs.includes(tab)){setTab('settings')}else if(!settingsOpen&&settingsTabs.includes(tab)){setTab('dashboard')}else{render()}};
+document.querySelectorAll('[data-tab]').forEach(x=>x.onclick=()=>setTab(x.dataset.tab));
+$('title').textContent=tabs[tab];$('subtitle').textContent=tab==='settings'?'A helyi adatok nem szinkronizálódnak más eszközre. Rendszeres JSON mentés szükséges.':tab==='services'?'Szerviztörténet: az aktuális esedékességek a Szervizfigyelő lapon láthatók. A gyári alapértékek nem tényleges költségek.':'';$('editor').classList.add('hidden');$('toolbar').innerHTML='';safeMsg('');if(tab==='help'){renderHelp();return}if(tab==='settings'){renderSettings();return}if(tab==='dashboard'){renderDashboard();renderDeadlineSummary();return}if(tab==='maintenance'){renderMaintenance();return}if(tab==='overrides'){renderOverrides();return}renderList()}
+function vselector(){return `<select id="vsel">${data.vehicles.map(v=>`<option value="${esc(v.id)}" ${vehicle===v.id?'selected':''}>${esc(v.name)}${v.active?'':' (archivált)'}</option>`).join('')}</select>`}
+function toolButton(text,cb){const b=document.createElement('button');b.textContent=text;b.onclick=cb;$('toolbar').appendChild(b);return b}
+
+function tyreLifeRule(t){
+ const title=String(t.season||'').toLowerCase().includes('winter')?'Téli gumi':
+ String(t.season||'').toLowerCase().includes('summer')?'Nyári gumi':'';
+ const m=data.master.find(x=>x.active&&x.category==='Abroncsok'&&x.title===title);
+ if(!m)return {km:null,source:'Nincs szabály'};
+ const r=rulesFor(m),limit=Number(r.repeatKm);
+ return {km:Number.isFinite(limit)&&limit>0?limit:null,source:r.overridden?'Járműspecifikus':'MasterData'};
+}
+function tyreMetrics(t){
+ const cycles=vehicleRows('cycles').filter(c=>c.setName===t.name);
+ let completed=0,open=0,issues=[],active=false;
+ const current=vehicleOdo();
+ for(const c of cycles){
+  const start=Number(c.mountedOdo);
+  if(!Number.isFinite(start)||c.mountedOdo===''||c.mountedOdo==null){issues.push('Hiányzó felszerelési km');continue}
+  if(c.removedDate){
+   const end=Number(c.removedOdo);
+   if(c.removedOdo===''||c.removedOdo==null||!Number.isFinite(end)||end<start){issues.push('Hibás lezárt ciklus');continue}
+   completed+=end-start;
+  }else{
+   active=true;
+   if(current<start){issues.push('Az aktuális óraállás kisebb a felszereléskorinál');continue}
+   open+=current-start;
+  }
+ }
+ if(cycles.length===0)issues.push('Nincs gumiciklus');
+ const total=completed+open,rule=tyreLifeRule(t);
+ const left=rule.km===null?null:rule.km-total;
+ return {cycles:cycles.length,completed,open,total,active,rule,left,issues};
+}
+function tyreOverview(){
+ const ts=vehicleRows('tyres');
+ const html=`<h3>Garnitúrák futásteljesítménye</h3><p class="muted">A lezárt ciklusokból és a jelenleg felszerelt garnitúra aktuális óraállásából számolva. Az élettartam a MasterData vagy a járműspecifikus km-határ alapján <strong>tájékoztató becslés</strong>, nem abroncsállapot-mérés. A kopást és életkort külön ellenőrizd.</p>
+ <div class="scroll" tabindex="0"><table><thead><tr><th>Garnitúra</th><th>Állapot</th><th>Lezárt ciklusok</th><th>Nyitott ciklus</th><th>Összes futás</th><th>Tervezett km</th><th>Hátralévő km</th><th>Felhasználás</th><th>Ellenőrzés</th></tr></thead><tbody>
+ ${ts.map(t=>{const m=tyreMetrics(t);const pct=m.rule.km===null?null:Math.round(m.total/m.rule.km*100);
+ return `<tr><td><strong>${esc(t.name)}</strong><div class="muted">${esc([t.brand,t.model,t.size].filter(Boolean).join(' '))}</div></td>
+ <td>${m.active?'🟢 Felszerelve':isRetired(t)?'Nyugdíjazva':'Tárolva / nincs felszerelve'}</td>
+ <td>${km(m.completed)}</td><td>${m.active?km(m.open):'—'}</td><td><strong>${km(m.total)}</strong></td>
+ <td>${m.rule.km===null?'—':km(m.rule.km)}</td>
+ <td>${m.left===null?'—':km(m.left)}</td>
+ <td>${pct===null?'—':esc(pct)+'%'}</td>
+ <td>${m.issues.length?`<span title="${esc(m.issues.join('; '))}">⚠ ${esc(m.issues.join('; '))}</span>`:'✓'}</td></tr>`}).join('')}</tbody></table></div>`;
+ const box=document.createElement('div');box.className='tyre-overview';box.innerHTML=html;
+ $('body').prepend(box);
+}
+function renderList(){if(!['master','vehicles','fuelTypes'].includes(tab)){ $('toolbar').innerHTML=vselector();$('vsel').onchange=e=>{vehicle=e.target.value;render()}}toolButton(tab==='cycles'?'Gumicsere':'+ Új rekord',()=>tab==='cycles'?showTyreSwap():edit(null)).classList.add('primary');const inp=document.createElement('input');inp.placeholder='Keresés…';inp.value=filter;inp.oninput=e=>{filter=e.target.value;table()};$('toolbar').appendChild(inp);if(tab==='fuel')toolButton('Ismeretlen üzemanyagok besorolása',bulkFuel);toolButton('JSON mentés',backup);table()}
+const show={deadlines:['title','dueDate','warnDays','active','notes'],vehicles:['name','plate','fuelSystem','defaultFuel','active'],fuel:['date','odometer','liters','unitPrice','totalCost','fuelType','full','aggregate','notes'],services:['date','odometer','category','title','cost','paidByMe','baseline','notes'],expenses:['date','category','title','cost','paidByMe','notes'],master:['category','title','repeatKm','repeatMonths','warnKm','warnDays','active'],tyres:['name','season','brand','model','size','dot','purchaseDate','distance','status'],cycles:['setName','mountedDate','mountedOdo','removedDate','removedOdo','cycleKm'],fuelTypes:['name','system','active']};
+function todayISO(){const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+function addMonthsISO(iso,months){if(!iso||!months)return '';const [y,m,d]=iso.split('-').map(Number);const first=new Date(y,m-1+months,1,12);const last=new Date(first.getFullYear(),first.getMonth()+1,0,12).getDate();return [first.getFullYear(),String(first.getMonth()+1).padStart(2,'0'),String(Math.min(d,last)).padStart(2,'0')].join('-')}
+function vehicleOdo(){return Math.max(0,...vehicleRows('fuel').map(x=>num(x.odometer)),...vehicleRows('services').filter(x=>!x.baseline&&x.date<=todayISO()).map(x=>num(x.odometer)),...vehicleRows('expenses').filter(x=>x.date<=todayISO()).map(x=>num(x.odometer)))}
+function typeFor(r){return data.master.find(x=>x.id===r.typeId)||data.master.find(x=>x.category===r.category&&x.title===r.title)}
+function rulesFor(type){const override=(data.maintenanceOverrides||[]).find(x=>x.vehicleId===vehicle&&x.typeId===type.id);return {repeatKm:override?.repeatKm??type.repeatKm,repeatMonths:override?.repeatMonths??type.repeatMonths,warnKm:override?.warnKm??type.warnKm,warnDays:override?.warnDays??type.warnDays,overridden:!!override}}
+function eventTypes(r){const ids=(r.items||[]).map(x=>x.typeId).filter(Boolean);if(r.typeId)ids.push(r.typeId);if(!ids.length){const t=typeFor(r);if(t)ids.push(t.id)}return [...new Set(ids)]}
+function latestService(typeId){return vehicleRows('services').filter(r=>!r.baseline&&r.date&&eventTypes(r).includes(typeId)).sort((a,b)=>b.date.localeCompare(a.date)||num(b.odometer)-num(a.odometer))[0]||null}
+function servicePlan(type){const rule=rulesFor(type),latest=latestService(type.id);const baseline=vehicleRows('services').filter(r=>r.baseline&&typeFor(r)?.id===type.id).sort((a,b)=>b.date.localeCompare(a.date))[0];
+const origin=latest||baseline;const repeatKm=num(rule.repeatKm),repeatMonths=num(rule.repeatMonths);
+let nextDueOdo=null,nextDueDate='';
+if(latest){if(repeatKm>0)nextDueOdo=num(latest.odometer)+repeatKm;if(repeatMonths>0)nextDueDate=addMonthsISO(latest.date,repeatMonths)}
+else if(baseline){const legacyKm=num(baseline.nextDueOdo??baseline.remindOdo),legacyDate=baseline.nextDueDate||baseline.remindDate;
+if(repeatKm>0)nextDueOdo=legacyKm>0?legacyKm:(num(baseline.odometer)+repeatKm);
+if(repeatMonths>0)nextDueDate=legacyDate||addMonthsISO(baseline.date,repeatMonths)}
+const kmLeft=nextDueOdo!==null?nextDueOdo-vehicleOdo():null;
+const daysLeft=nextDueDate?Math.round((Date.parse(nextDueDate+'T12:00:00')-Date.parse(todayISO()+'T12:00:00'))/86400000):null;
+const hasDue=kmLeft!==null||daysLeft!==null;
+const overdue=hasDue&&(kmLeft!==null&&kmLeft<=0||daysLeft!==null&&daysLeft<=0);
+const warning=hasDue&&(kmLeft!==null&&kmLeft<=num(rule.warnKm)||daysLeft!==null&&daysLeft<=num(rule.warnDays));
+return {type,latest,baseline,origin,rule,nextDueOdo,nextDueDate,kmLeft,daysLeft,dueStatus:!hasDue?'Nincs alapadat':overdue?'Lejárt':warning?'Hamarosan':'Rendben'};
+}
+function serviceDue(r){const t=typeFor(r);return t?servicePlan(t):{nextDueOdo:null,kmLeft:null,nextDueDate:'',daysLeft:null,dueStatus:'—'}}
+
+function tyreName(t){return t.name+' · '+[t.brand,t.model,t.size].filter(Boolean).join(' ')}
+function isRetired(t){return String(t.status||'').toLowerCase()==='retired'}
+function activeTyreCycle(){return vehicleRows('cycles').filter(c=>c.mountedDate&&!c.removedDate).sort((a,b)=>b.mountedDate.localeCompare(a.mountedDate)||num(b.mountedOdo)-num(a.mountedOdo))[0]||null}
+function showTyreSwap(){
+  const tyres=vehicleRows('tyres'),current=activeTyreCycle();
+  const installed=current?tyres.find(t=>t.name===current.setName):null;
+  const choices=tyres.filter(t=>!isRetired(t)&&(!installed||t.id!==installed.id));
+  const preselect=choices.length===1?choices[0].id:'';
+  const fallbackOdo=vehicleOdo();
+  $('editor').classList.remove('hidden');
+  $('editor').innerHTML=`<h3>Gumicsere</h3><p class="muted">Egy művelet: a jelenlegi ciklus lezárása és az új garnitúra ciklusának megnyitása, azonos dátummal és kilométerrel.</p>
+  <form id="swap-form"><div class="fields"><label>Dátum<input id="swap-date" type="date" value="${todayISO()}" required></label><label>Kilométeróra<input id="swap-odo" type="number" min="0" step="1" value="${fallbackOdo||''}" required></label>
+  <label>Leszerelendő garnitúra<select id="swap-from" disabled><option>${installed?esc(tyreName(installed)):'— Nincs aktív felszerelés —'}</option></select></label>
+  <label>Felszerelendő garnitúra<select id="swap-to" required>${options([['','— Válassz garnitúrát —'],...choices.map(t=>[t.id,tyreName(t)])],preselect)}</select></label></div>
+  <p class="muted">${current?'Az aktuális felszerelés kezdete: '+date(current.mountedDate)+' · '+km(current.mountedOdo):'Nincs nyitott gumiciklus: csak a felszerelés kerül rögzítésre.'}</p>
+  <button class="primary" type="submit">Gumicsere mentése</button> <button type="button" id="swap-cancel">Mégse</button></form>`;
+  $('swap-cancel').onclick=()=>{$('editor').classList.add('hidden')};
+  $('swap-form').onsubmit=async e=>{e.preventDefault();const day=$('swap-date').value,odo=Number($('swap-odo').value),to=tyres.find(t=>t.id===$('swap-to').value);
+    if(!day||!Number.isFinite(odo)||odo<0||!to||isRetired(to)||to.vehicleId!==vehicle)return alert('Ellenőrizd a dátumot, kilométert és a kiválasztott gumit.');
+    if(current&&(day<current.mountedDate||odo<num(current.mountedOdo)))return alert('A gumicsere nem lehet korábbi a felszerelésnél sem dátumban, sem kilométerben.');
+    if(day>todayISO()&&!confirm('A gumicsere dátuma a jövőben van. Biztosan mented?'))return;
+    if(current){current.removedDate=day;current.removedOdo=odo;current.cycleKm=odo-num(current.mountedOdo);current.currentMounted=0;}
+    data.cycles.push({id:uid(),vehicleId:vehicle,setName:to.name,mountedDate:day,mountedOdo:odo,removedDate:'',removedOdo:'',cycleKm:'',currentMounted:1});
+    await persist();render();safeMsg('✓ Gumicsere sikeresen mentve: '+(installed?installed.name+' leszerelve, ':'')+to.name+' felszerelve.');
+  };
+  if(!choices.length){$('swap-form').querySelector('button[type="submit"]').disabled=true;safeMsg('Nincs választható, nem nyugdíjazott gumigarnitúra. Előbb vegyél fel egyet a Beállítások → Gumik oldalon.')}
+}
+
+function deadlineItems(){
+ const v=veh();if(!v)return [];
+ const a=[{title:'Műszaki vizsga',dueDate:v.inspectionExpiry,warnDays:60,origin:'vehicle'},
+ {title:'KGFB fordulónap',dueDate:v.insuranceRenewal,warnDays:30,origin:'vehicle'},
+ {title:'CASCO fordulónap',dueDate:v.cascoRenewal,warnDays:30,origin:'vehicle'},
+ ...(data.deadlines||[]).filter(x=>x.vehicleId===vehicle&&x.active!==false).map(x=>({...x,origin:'custom'}))];
+ const now=todayISO();const today=new Date(now+'T12:00:00');
+ return a.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x.dueDate||'')).map(x=>{
+  const days=Math.round((new Date(x.dueDate+'T12:00:00')-today)/86400000);
+  const warn=x.warnDays===''?30:Number(x.warnDays??30);
+  const status=days<0?'Lejárt':days<=Math.max(0,warn)?'Hamarosan':'Rendben';
+  return {...x,days,status};
+ }).sort((a,b)=>a.days-b.days);
+}
+function renderDeadlineSummary(){
+ const items=deadlineItems();const host=document.createElement('section');host.className='deadline-summary';
+ host.innerHTML=`<h3>📅 Járműhatáridők</h3><p class="muted">A kiválasztott autó határidői. A dátumok nem frissülnek automatikusan évente: az új esedékességet a járműadatlapon vagy a Határidők menüben kell megadni. Az értesítések csak az alkalmazás megnyitásakor láthatók.</p>`+
+ (items.length?items.map(x=>`<div class="deadline-alert ${x.status==='Lejárt'?'deadline-overdue':x.status==='Hamarosan'?'deadline-soon':'deadline-ok'}"><strong>${x.status==='Lejárt'?'🔴':x.status==='Hamarosan'?'🟠':'🟢'} ${esc(x.title)}</strong> · ${date(x.dueDate)} · ${x.days<0?Math.abs(x.days)+' napja lejárt':x.days===0?'Ma esedékes':x.days+' nap múlva'} <span class="muted">(${esc(x.status)})</span></div>`).join(''):'<p class="muted">Ehhez a járműhöz még nincs rögzített határidő.</p>');
+ $('body').prepend(host);
+}
+function renderMaintenance(){const tools=$('toolbar');tools.innerHTML=vselector();$('vsel').onchange=e=>{vehicle=e.target.value;render()};const plans=data.master.filter(x=>x.active).map(servicePlan).sort((a,b)=>({Lejárt:0,Hamarosan:1,Rendben:2,'Nincs alapadat':3}[a.dueStatus]??4)-({Lejárt:0,Hamarosan:1,Rendben:2,'Nincs alapadat':3}[b.dueStatus]??4));$('body').innerHTML=`<p class="muted">Aktuális karbantartási figyelő · ${plans.length} tétel · aktuális óraállás: ${km(vehicleOdo())}. A korábbi szerviztörténet változatlanul megmarad. A gyári alapadat nem jelent elvégzett szervizt.</p><div class="scroll services-table"><table><thead><tr><th>Kategória</th><th>Karbantartás</th><th>Utolsó elvégzés</th><th>Utolsó km</th><th>Esedékes km</th><th>Hátralévő km</th><th>Esedékes dátum</th><th>Hátralévő nap</th><th>Állapot</th><th>Szabály</th></tr></thead><tbody>${plans.map(p=>`<tr><td>${esc(p.type.category)}</td><td>${esc(p.type.title)}</td><td>${p.latest?date(p.latest.date):'—'}</td><td>${p.latest?km(p.latest.odometer):'—'}</td><td>${p.nextDueOdo===null?'—':km(p.nextDueOdo)}</td><td>${p.kmLeft===null?'—':km(p.kmLeft)}</td><td>${p.nextDueDate?date(p.nextDueDate):'—'}</td><td>${p.daysLeft===null?'—':p.daysLeft+' nap'}</td><td>${format('services','dueStatus',p.dueStatus)}</td><td>${p.rule.overridden?'Járműspecifikus':'Közös'}</td></tr>`).join('')}</tbody></table></div>`}
+function renderOverrides(){const tools=$('toolbar');tools.innerHTML=vselector();$('vsel').onchange=e=>{vehicle=e.target.value;render()};const types=data.master.filter(x=>x.active);$('body').innerHTML=`<p class="muted">A közös MasterData értékei minden járműre érvényesek, kivéve az itt felülírt tételeket. Üres mező = közös érték öröklése. A módosítás a múltbeli szervizbejegyzéseket nem írja át.</p><div class="scroll"><table><thead><tr><th>Kategória / tétel</th><th>Ismétlés km</th><th>Ismétlés hónap</th><th>Figyelmeztetés km</th><th>Figyelmeztetés nap</th><th>Művelet</th></tr></thead><tbody>${types.map(t=>{const o=(data.maintenanceOverrides||[]).find(x=>x.vehicleId===vehicle&&x.typeId===t.id);return `<tr data-override="${esc(t.id)}"><td>${esc(t.category)} · ${esc(t.title)}<small class="muted" style="display:block">Közös: ${num(t.repeatKm)} km / ${num(t.repeatMonths)} hó · figy.: ${num(t.warnKm)} km / ${num(t.warnDays)} nap</small></td>${['repeatKm','repeatMonths','warnKm','warnDays'].map(k=>`<td><input type="number" min="0" step="1" data-rule="${k}" style="width:105px" placeholder="${num(t[k])}" value="${o?.[k]??''}"></td>`).join('')}<td><button data-rule-save="${esc(t.id)}">Mentés</button> <button data-rule-reset="${esc(t.id)}">Alapérték</button></td></tr>`}).join('')}</tbody></table></div>`;document.querySelectorAll('[data-rule-save]').forEach(b=>b.onclick=async()=>{const id=b.dataset.ruleSave,row=b.closest('tr'),record={vehicleId:vehicle,typeId:id};let any=false;row.querySelectorAll('[data-rule]').forEach(el=>{if(el.value!==''){record[el.dataset.rule]=Number(el.value);any=true}});data.maintenanceOverrides=(data.maintenanceOverrides||[]).filter(x=>!(x.vehicleId===vehicle&&x.typeId===id));if(any)data.maintenanceOverrides.push(record);await persist();render();safeMsg('✓ Járműspecifikus intervallum mentve.')});document.querySelectorAll('[data-rule-reset]').forEach(b=>b.onclick=async()=>{data.maintenanceOverrides=(data.maintenanceOverrides||[]).filter(x=>!(x.vehicleId===vehicle&&x.typeId===b.dataset.ruleReset));await persist();render();safeMsg('✓ Visszaállítva a közös MasterData értékére.')})}
+function label(k,f){if(k==='services'){const names={nextDueOdo:'Esedékes km',kmLeft:'Hátralévő km',nextDueDate:'Esedékes dátum',daysLeft:'Hátralévő nap',dueStatus:'Állapot'};if(names[f])return names[f]}return fields[k]?.find(x=>x[0]===f)?.[1]||f}
+function format(k,f,v){if(v===''||v===null||v===undefined)return '—';if(['date','nextDueDate','purchaseDate','mountedDate','removedDate'].includes(f))return date(v);if(['odometer','startOdo','endOdo','mountedOdo','removedOdo','distance','cycleKm','repeatKm','warnKm','nextDueOdo','kmLeft'].includes(f))return km(v);if(f==='paidByMe')return v===false?'Nem (korábbi tulaj)':'✓ Igen';if(['cost','totalCost'].includes(f))return ft(v);if(f==='dueStatus'){const states={'Rendben':['state-ok','✓','Rendben'],'Hamarosan':['state-warn','!','Figyelmeztetési határon belül'],'Lejárt':['state-due','⚠','Lejárt']};const st=states[v];return st?`<span class="state-icon ${st[0]}" title="${st[2]}" aria-label="${st[2]}" role="img">${st[1]}</span>`:'<span class="state-unknown">—</span>'}if(f==='daysLeft')return money(v,0)+' nap';if(f==='liters')return money(v,2)+' L';if(f==='unitPrice')return money(v,1)+' Ft/L';if(typeof v==='boolean')return v?'✓':'—';return esc(v)}
+function table(){let rows=visible(tab).filter(r=>!filter||JSON.stringify(r).toLocaleLowerCase('hu').includes(filter.toLocaleLowerCase('hu')));const cols=show[tab];$('body').innerHTML=`<p class="muted">${rows.length} rekord</p><p class="scroll-hint">A táblázat fejléce rögzített. Az aktuális karbantartási határidők a Szervizfigyelő menüpontban láthatók.</p><div class="scroll ${tab==='services'?'services-table':''}" tabindex="0" aria-label="Görgethető adattábla"><table><thead><tr>${cols.map(c=>`<th>${esc(label(tab,c))}</th>`).join('')}<th>Művelet</th></tr></thead><tbody>${rows.map(r=>`<tr>${cols.map(c=>`<td class="${c==='notes'?'notes':''}">${format(tab,c,tab==='services'&&['nextDueOdo','kmLeft','nextDueDate','daysLeft','dueStatus'].includes(c)?({nextDueOdo:null,kmLeft:null,nextDueDate:'',daysLeft:null,dueStatus:'—'})[c]:r[c])}</td>`).join('')}<td>${tab==='vehicles'?`<button data-card="${esc(r.id)}">Adatlap</button> `:''}<button data-edit="${esc(r.id)}">Szerkeszt</button> <button data-del="${esc(r.id)}" class="danger">${tab==='vehicles'?'Archivál':'Töröl'}</button></td></tr>`).join('')}</tbody></table></div>`;if(tab==='tyres')tyreOverview();document.querySelectorAll('[data-card]').forEach(b=>b.onclick=()=>vehicleCard(b.dataset.card));document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(b.dataset.edit));document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>remove(b.dataset.del))}
+function options(arr,value){return arr.map(x=>{const [v,t]=Array.isArray(x)?x:[x,x];return `<option value="${esc(v)}" ${String(value??'')===String(v)?'selected':''}>${esc(t)}</option>`}).join('')}
+function selectHtml(k,type,v,r){let list=[];if(type==='system')list=[['petrol','Benzin'],['diesel','Dízel']];if(type==='fueltype'){let sys=k==='vehicles'?(r.fuelSystem||'petrol'):(k==='fuelTypes'?r.system:veh()?.fuelSystem)||'petrol';list=[['','— Válassz —'],...data.fuelTypes.filter(x=>x.active&&x.system===sys).map(x=>[x.name,x.name])]}if(type==='category')list=[['','— Válassz —'],...new Set(data.master.filter(x=>x.active).map(x=>x.category))];if(type==='title')list=[['','— Válassz —'],...data.master.filter(x=>x.active&&x.category===r.category).map(x=>x.title)];if(type==='season')list=['Summer','Winter','All-season'];if(type==='tyrestatus')list=['Active','Retired','Stored'];if(type==='tyrename')list=vehicleRows('tyres').map(x=>x.name);if(type==='expensecat')list=['Biztosítás','Gépjárműadó','Autópálya','Parkolás','Mosás','Egyéb'];if(type==='costmode')list=[['total','Csak összeg'],['items','Tételes bontás']];return `<select data-key="${type==='title'?'title':type==='category'?'category':type==='fueltype'?'fuelType':type==='system'?'fuelSystem':type==='costmode'?'costMode':type==='tyrename'?'setName':type==='tyrestatus'?'status':type==='expensecat'?'category':type==='season'?'season':''}" ${type==='fueltype'&&k==='vehicles'?'data-vehiclefuel="1"':''}>${options(list,v)}</select>`}
+function inputField(k,f,r){const [key,label,type,req]=f;const caption='<span class="field-caption">'+esc(label)+(req?' <span class="required-star" aria-label="kötelező">*</span>':'')+'</span>';let value=r[key]??'';if(type==='textarea')return `<label>${caption}<textarea data-key="${key}" rows="3">${esc(value)}</textarea></label>`;if(type==='bool')return `<label class="check"><input data-key="${key}" type="checkbox" ${value?'checked':''}>${esc(label)}</label>`;if(['system','fueltype','category','title','season','tyrestatus','tyrename','expensecat','costmode'].includes(type)){let html=selectHtml(k,type,value,r);html=html.replace('data-key="'+(type==='fueltype'?'fuelType':type==='system'?'fuelSystem':type==='tyrestatus'?'status':type==='tyrename'?'setName':type==='expensecat'?'category':type==='costmode'?'costMode':key)+'"','data-key="'+key+'"');return `<label>${caption}${req?html.replace('<select ','<select required '):html}</label>`}return `<label>${caption}<input data-key="${key}" type="${type==='date'?'date':type==='number'?'number':'text'}" ${type==='number'?'step="any" min="0"':''} value="${esc(value)}" ${req?'required':''}></label>`}
+const vehicleGroups=[['Alapadatok',['name','plate','vin','make','model','variant','bodyStyle','modelYear','productionYear','firstRegistration','registrationNumber','inspectionExpiry']],['Motor és hajtáslánc',['fuelSystem','powertrain','displacement','powerKw','engineCode','gearbox','driveType','emissionClass','defaultFuel']],['Fizikai jellemzők',['color','paint','curbWeight','grossWeight','doors','seats']],['Felszereltség és kerekek',['trim','factoryEquipment','modifications','factoryTyres','wheelSpecs','tpms']],['Tulajdonlás, biztosítás, dokumentumok',['purchaseDate','purchaseOdo','purchasePrice','saleDate','salePrice','insurer','policyNumber','insuranceRenewal','cascoRenewal','documentNotes','active','notes']]];
+function vehicleForm(r){return `<p class="muted">A <span class="required-star">*</span> jelölt mezők kitöltése kötelező.</p>`+vehicleGroups.map(([title,keys])=>`<fieldset class="vehicle-fieldset"><legend>${esc(title)}</legend><div class="fields">${keys.map(key=>inputField('vehicles',fields.vehicles.find(f=>f[0]===key),r)).join('')}</div></fieldset>`).join('')}
+function vehicleCard(id){const v=data.vehicles.find(x=>x.id===id);if(!v)return;const label=k=>fields.vehicles.find(f=>f[0]===k)?.[1]||k;const value=k=>{let x=v[k];if(x===undefined||x===null||x==='')return '—';if(k==='fuelSystem')return x==='petrol'?'Benzin':x==='diesel'?'Dízel':x;if(['firstRegistration','inspectionExpiry','purchaseDate','saleDate','insuranceRenewal','cascoRenewal'].includes(k))return date(x);if(['purchasePrice','salePrice'].includes(k))return ft(x);return String(x)};const groups=vehicleGroups.map(([title,keys])=>`<details ${title==='Alapadatok'?'open':''}><summary>${esc(title)}</summary><div class="vehicle-info">${keys.filter(k=>!['name','active','notes'].includes(k)).map(k=>`<div class="vehicle-info-row"><span>${esc(label(k))}</span><span>${esc(value(k))}${['vin','plate','engineCode'].includes(k)&&v[k]?` <button type="button" class="copy-vehicle" data-copy="${esc(k)}" title="Másolás a vágólapra">⧉</button>`:''}</span></div>`).join('')}</div></details>`).join('');const host=$('editor');host.classList.remove('hidden');host.innerHTML=`<div class="vehicle-card"><div class="actions" style="justify-content:space-between"><h3>🚘 ${esc(v.name)}</h3><button type="button" id="closevehicle">Bezárás</button></div><p class="muted">${esc([v.make,v.model,v.variant].filter(Boolean).join(' · '))}</p>${groups}<div class="actions"><button type="button" id="editvehicle" class="primary">Szerkesztés</button></div></div>`;host.querySelector('#closevehicle').onclick=()=>host.classList.add('hidden');host.querySelector('#editvehicle').onclick=()=>edit(v.id);host.querySelectorAll('.copy-vehicle').forEach(b=>b.onclick=async()=>{const val=String(v[b.dataset.copy]||'');try{await navigator.clipboard.writeText(val);b.textContent='✓'}catch{const t=document.createElement('textarea');t.value=val;document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();if(ok)b.textContent='✓';else prompt('Másold ki az értéket:',val)}});host.scrollIntoView({behavior:'smooth',block:'start'})}
+function edit(id){editing=id;const r=id?clone(data[tab].find(x=>x.id===id)):{id:uid(),vehicleId:vehicle};if(tab==='fuel'&&!id){r.full=true;r.fuelType=veh()?.defaultFuel||'';r.date=new Date().toLocaleDateString('sv-SE')}if(tab==='services'&&!id){r.date=new Date().toLocaleDateString('sv-SE');r.costMode='total';r.items=[];r.paidByMe=true}if(tab==='expenses'&&!id){r.date=new Date().toLocaleDateString('sv-SE');r.paidByMe=true}if(tab==='vehicles'&&!id){r.active=true;r.fuelSystem='petrol';r.defaultFuel='95'}if(tab==='master'&&!id)r.active=true;if(tab==='fuelTypes'&&!id)r.active=true;if(tab==='deadlines'&&!id){r.active=true;r.warnDays=30}const ed=$('editor');ed.classList.remove('hidden');ed.innerHTML=`<h3>${id?'Rekord módosítása':'Új rekord'}</h3><form id="editform"><div class="fields" id="formfields">${tab==='vehicles'?vehicleForm(r):fields[tab].map(f=>inputField(tab,f,r)).join('')}</div>${tab==='services'?'<div id="serviceitems"></div>':''}<div class="actions"><button class="primary" type="submit">Mentés</button><button type="button" id="cancel">Mégse</button></div></form>`;ed.scrollIntoView({behavior:'smooth',block:'start'});$('cancel').onclick=()=>ed.classList.add('hidden');let state={...r};const readForm=()=>{ed.querySelectorAll('[data-key]').forEach(el=>{state[el.dataset.key]=el.type==='checkbox'?el.checked:el.type==='number'?(el.value===''?'':Number(el.value)):el.value})};const refresh=(key)=>{readForm();const node=ed.querySelector(`[data-key="${key}"]`);if(!node)return;node.outerHTML=inputField(tab,fields[tab].find(x=>x[0]===key),state).replace(/^<label[^>]*>/,'').replace(/<\/label>$/,'')};if(tab==='services'){renderServiceItems(state);ed.querySelector('[data-key="category"]').onchange=()=>{refresh('title')};ed.querySelector('[data-key="costMode"]').onchange=()=>{readForm();renderServiceItems(state)}}if(tab==='vehicles'){ed.querySelector('[data-key="fuelSystem"]').onchange=()=>refresh('defaultFuel')}if(tab==='fuel'){const liters=ed.querySelector('[data-key="liters"]'),price=ed.querySelector('[data-key="unitPrice"]'),total=ed.querySelector('[data-key="totalCost"]');const recalc=()=>{if(liters.value&&price.value)total.value=(Number(liters.value)*Number(price.value)).toFixed(2)};liters.addEventListener('input',recalc);price.addEventListener('input',recalc)}$('editform').onsubmit=async e=>{e.preventDefault();readForm();if(tab==='services'&&state.costMode==='items'){state.items=Array.from(ed.querySelectorAll('.service-item')).map(el=>({typeId:el.querySelector('select').value,title:el.querySelector('select').selectedOptions[0]?.text||'',cost:Number(el.querySelector('input').value)||0})).filter(x=>x.typeId);state.cost=state.items.reduce((a,x)=>a+x.cost,0)}if(tab==='services'&&state.costMode!=='items'){state.items=state.items?.length?state.items:[]}
+if(tab==='fuel'&&state.liters<=0) return alert('A tankolt mennyiség legyen pozitív.');if(tab==='fuel'&&state.unitPrice<=0)return alert('Az egységár legyen pozitív.');if(tab==='fuel'&&!state.fuelType)return alert('Válassz üzemanyagtípust.');if(tab==='fuel'&&state.totalCost==='')state.totalCost=Math.round(state.liters*state.unitPrice*100)/100;if(tab==='fuel'&&Math.abs(state.totalCost-state.liters*state.unitPrice)>1&&!confirm('A fizetett összeg eltér a liter × egységár értékétől. Menthetjük?'))return;
+if(tab==='deadlines'&&(!String(state.title||'').trim()||!state.dueDate))return alert('A határidő megnevezése és dátuma kötelező.');if(tab==='vehicles'&&!String(state.name||'').trim())return alert('A megjelenítési név kötelező.');if(tab==='vehicles'&&!state.fuelSystem)return alert('A motor (tankolási rendszer) kötelező.');if(tab==='vehicles'&&state.vin&&(!/^[A-HJ-NPR-Z0-9]{17}$/.test(state.vin.toUpperCase())))return alert('A VIN 17 karakteres lehet (I, O, Q nélkül).');if(tab==='vehicles'&&state.vin)state.vin=state.vin.toUpperCase();if(tab==='vehicles'&&!data.fuelTypes.some(x=>x.system===state.fuelSystem&&x.name===state.defaultFuel))return alert('A kiválasztott alapértelmezett üzemanyag nem kompatibilis a motorral.');if(tab==='fuelTypes'&&data.fuelTypes.some(x=>x.id!==state.id&&x.name===state.name&&x.system===state.system))return alert('Ez az üzemanyagtípus már létezik.');if(tab==='master'&&data.master.some(x=>x.id!==state.id&&x.category===state.category&&x.title===state.title))return alert('Ez a MasterData-tétel már létezik.');
+if(tab==='services'){state.typeId=data.master.find(x=>x.category===state.category&&x.title===state.title)?.id||'';if(!state.baseline&&state.items.length===0&&state.typeId)state.items=[{typeId:state.typeId,title:state.title,cost:state.cost}]}const arr=data[tab],index=arr.findIndex(x=>x.id===id);if(index>=0)arr[index]=state;else arr.push(state);await persist();render()}}
+function renderServiceItems(r){const host=$('serviceitems');if(!host)return;const on=r.costMode==='items';host.innerHTML=on?`<h3>Szerviztételek</h3><p class="muted">A költségeket tételenként add meg; a teljes összeg automatikusan számolódik.</p><div id="itemlist"></div><button type="button" id="additem">+ Tétel hozzáadása</button>`:'';if(!on)return;let items=r.items?.length?r.items:[{typeId:'',cost:0}];const list=$('itemlist');const append=(item)=>{const el=document.createElement('div');el.className='lineitem service-item';el.innerHTML=`<select>${options([['','— Válassz tételt —'],...data.master.filter(x=>x.active).map(x=>[x.id,x.category+' · '+x.title])],item.typeId)}</select><input type="number" step="any" min="0" placeholder="Ft" value="${esc(item.cost??0)}"><button type="button">×</button>`;el.querySelector('button').onclick=()=>el.remove();list.appendChild(el)};items.forEach(append);$('additem').onclick=()=>append({typeId:'',cost:0})}
+async function remove(id){const r=data[tab].find(x=>x.id===id);if(!r)return;if(tab==='vehicles'){if(!confirm('Archiválod a járművet? Az adatai megmaradnak.'))return;r.active=false;await persist();render();return}if(!confirm('Törlöd a rekordot? A törlés után csak JSON mentésből állítható vissza.'))return;data[tab]=data[tab].filter(x=>x.id!==id);await persist();render()}
+function bulkFuel(){const missing=vehicleRows('fuel').filter(x=>!x.fuelType);if(!missing.length)return alert('Nincs besorolatlan tankolás.');const types=data.fuelTypes.filter(x=>x.active&&x.system===veh().fuelSystem).map(x=>x.name);const choice=prompt(`${missing.length} besorolatlan tankolás. Az összeset milyen típushoz rendeled? (${types.join(', ')})`);if(!choice)return;if(!types.includes(choice))return alert('Nem megfelelő típus.');if(!confirm(`Mind a(z) ${missing.length} rekordot ${choice} típusra állítod?`))return;missing.forEach(x=>x.fuelType=choice);persist().then(render)}
+function fuelStats(){
+ const arr=vehicleRows('fuel').slice().filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date)||num(a.odometer)-num(b.odometer));
+ let consumed=0,dist=0;const points=[];
+ // Minden rögzített tankolás (az összevont is) a megelőző bejegyzés óraállásához viszonyítva számít.
+ // A részleges tankolásokat nem tekintjük automatikusan telitank-ciklusnak; az eredmény
+ // a rögzített tankolások közötti szakaszokból számított tájékoztató fogyasztás.
+ for(let i=1;i<arr.length;i++){
+  const prev=arr[i-1],r=arr[i],delta=num(r.odometer)-num(prev.odometer),liters=num(r.liters);
+  if(delta<=0||liters<=0)continue;
+  dist+=delta;consumed+=liters;
+  points.push({date:r.date,consumption:100*liters/delta,aggregate:!!r.aggregate});
+ }
+ return {liters:arr.reduce((a,r)=>a+num(r.liters),0),cost:arr.reduce((a,r)=>a+num(r.totalCost),0),consumption:dist?100*consumed/dist:null,dist,points};
+}
+function chartSvg(series,titleText,labels=[]){
+ const width=900,height=315,padL=74,padR=30,padT=22,padB=58;
+ const all=series.flatMap(s=>s.points.map(p=>p[1])).filter(Number.isFinite);
+ if(!all.length)return '<p class="muted">Nincs elegendő érvényes adatpont a diagramhoz.</p>';
+ let lo=Math.min(...all),hi=Math.max(...all);let spread=hi-lo;if(spread===0)spread=Math.max(1,hi*.08);lo=Math.max(0,lo-spread*.2);hi+=spread*.2;
+ const xvals=series.flatMap(s=>s.points.map(p=>p[0]));const xmin=Math.min(...xvals),xmax=Math.max(...xvals);const slots=Math.max(1,labels.length,xmax-xmin+1);
+ const x=v=>padL+(slots===1?.5:(v-xmin+.5)/slots)*(width-padL-padR);
+ const y=v=>height-padB-(v-lo)/(hi-lo)*(height-padT-padB);
+ const colors=['#1f69b4','#df7a20','#248c6a','#a14f9b','#b64755','#607c19'];
+ let svg=`<svg class="chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="${esc(titleText)}">`;
+ for(let i=0;i<=4;i++){const yy=padT+i*(height-padT-padB)/4;svg+=`<line x1="${padL}" y1="${yy}" x2="${width-padR}" y2="${yy}" stroke="#e4eaf1"/><text x="4" y="${yy+4}" font-size="13" fill="#66778a">${money(hi-(hi-lo)*i/4,1)}</text>`}
+ if(labels.length)labels.forEach((label,i)=>{svg+=`<text x="${x(xmin+i)}" y="${height-24}" font-size="13" text-anchor="middle" fill="#66778a">${esc(label)}</text>`});
+ series.forEach((ser,i)=>{const pts=ser.points.slice().sort((a,b)=>a[0]-b[0]);if(pts.length>1)svg+=`<polyline fill="none" stroke="${colors[i%colors.length]}" stroke-width="3" points="${pts.map(p=>x(p[0])+','+y(p[1])).join(' ')}"/>`;pts.forEach(p=>svg+=`<circle cx="${x(p[0])}" cy="${y(p[1])}" r="7" stroke="white" stroke-width="2" fill="${colors[i%colors.length]}"><title>${esc(ser.name)}: ${money(p[1],2)}</title></circle>`)});
+ svg+='</svg><div class="legend">'+series.map((ser,i)=>`<span><i class="dot" style="background:${colors[i%colors.length]}"></i>${esc(ser.name)} (${ser.points.length} adatpont)</span>`).join('')+'</div>';return svg
+}
+
+function ownershipCostMetrics(fuels,serv,exp){
+ const v=data.vehicles.find(x=>x.id===vehicle)||{};
+ const start=v.purchaseDate||'';
+ const end=v.saleDate||todayISO();
+ const eligible=r=>r.date&&(!start||r.date>=start)&&r.date<=end&&(year==='all'||r.date.startsWith(year));
+ const f=fuels.filter(eligible),sv=serv.filter(eligible),ex=exp.filter(eligible);
+ const sum=(rows,key)=>rows.reduce((a,r)=>a+num(r[key]),0);
+ const fuelCost=sum(f,'totalCost'),otherCost=sum(sv,'cost')+sum(ex,'cost');
+ const odos=[...vehicleRows('fuel'),...vehicleRows('services').filter(x=>!x.baseline)].filter(r=>eligible(r)&&r.odometer!==''&&r.odometer!=null&&Number(r.odometer)>0).map(r=>Number(r.odometer));
+ const startOdo=year==='all'&&start&&v.purchaseOdo!==''&&v.purchaseOdo!=null&&Number.isFinite(Number(v.purchaseOdo))?Number(v.purchaseOdo):null;
+ const low=startOdo!==null?startOdo:(odos.length?Math.min(...odos):null);
+ const high=odos.length?Math.max(...odos):null;
+ const distance=low!==null&&high!==null&&high>low?high-low:null;
+ const caveats=[];
+ if(!start)caveats.push('A vásárlás dátuma nincs megadva.');
+ if(year==='all'&&startOdo===null)caveats.push('A vásárláskori kilométeróra-állás hiányzik; a legelső rögzített óraállást használjuk.');
+ if(year!=='all')caveats.push('Éves nézetben a kilométertartomány a kiválasztott év rögzített óraállásaiból származik.');
+ if(distance===null)caveats.push('Nincs elegendő kilométeróra-adat a Ft/km kiszámításához.');
+ if(v.saleDate)caveats.push('Az eladási dátum utáni költségek nem szerepelnek.');
+ const fmt=n=>n===null?'—':money(n,2)+' Ft/km';
+ return `<h3>Saját fenntartási költség kilométerenként</h3><div class="stats"><div class="stat">Üzemanyag / km<b>${fmt(distance===null?null:fuelCost/distance)}</b></div><div class="stat">Teljes költség / km<b>${fmt(distance===null?null:(fuelCost+otherCost)/distance)}</b></div><div class="stat">Számítás alapja<b>${distance===null?'—':km(distance)}</b></div></div><p class="muted">Csak a kiválasztott jármű, a kiválasztott év és a tulajdonlási időszak költségei. A korábbi tulajdonos szerviztételei kimaradnak. A Ft/km becslés: az időszak elszámolt költsége osztva a rendelkezésre álló kilométeróra-tartománnyal. A költségek és a km-adatok időbeli lefedettsége eltérhet.</p>${caveats.length?`<p class="warning">${caveats.map(esc).join(' ')}</p>`:''}`;
+}
+function dataQualityPanel(){
+ const issues=[];const push=(label,detail)=>issues.push({label,detail});
+ const isDate=x=>/^\d{4}-\d{2}-\d{2}$/.test(x||'')&&!Number.isNaN(Date.parse(x+'T12:00:00'));
+ const rows=[...vehicleRows('fuel').map(x=>({...x,_type:'Tankolás'})),...vehicleRows('services').filter(x=>!x.baseline).map(x=>({...x,_type:'Szerviz'})),...vehicleRows('expenses').map(x=>({...x,_type:'Kiadás'}))];
+ for(const r of rows){const label=r._type+' · '+(r.date||'dátum nélkül')+(r.title?' · '+r.title:'');
+  if(!isDate(r.date))push(label,'Hiányzó vagy hibás dátum');
+  if(r._type==='Tankolás'&&(!(Number(r.odometer)>0)||!(Number(r.liters)>0)))push(label,'Hiányzó vagy érvénytelen kilométeróra-/literszám');
+  if(r._type==='Tankolás'&&(!Number.isFinite(Number(r.totalCost))||Number(r.totalCost)<0))push(label,'Hibás üzemanyagköltség');
+  if(r._type!=='Tankolás'&&r.paidByMe!==false&&r.cost!==''&&r.cost!=null&&(!Number.isFinite(Number(r.cost))||Number(r.cost)<0))push(label,'Hibás költség');
+ }
+ const fuels=vehicleRows('fuel').filter(r=>isDate(r.date)&&Number(r.odometer)>0).slice().sort((a,b)=>a.date.localeCompare(b.date));
+ for(let i=1;i<fuels.length;i++){if(Number(fuels[i].odometer)<Number(fuels[i-1].odometer))push('Tankolás · '+fuels[i].date,'Csökkenő kilométeróra-állás az előző tankoláshoz képest');}
+ const v=data.vehicles.find(x=>x.id===vehicle)||{};
+ if(!v.purchaseDate)push('Járműadatlap','Vásárlás dátuma hiányzik a pontos tulajdonlási szűréshez');
+ if(v.purchaseOdo==null||v.purchaseOdo==='')push('Járműadatlap','Vásárláskori km hiányzik a teljes Ft/km számításhoz');
+ return `<h3>Adatminőség-ellenőrzés</h3><p class="muted">A figyelmeztetések csak jelzik a lehetséges problémákat, automatikusan nem módosítanak rekordokat.</p>${issues.length?`<details><summary>⚠ ${issues.length} ellenőrizendő tétel (kattints a részletekért)</summary><div class="scroll"><table><thead><tr><th>Rekord</th><th>Probléma</th></tr></thead><tbody>${issues.map(x=>`<tr><td>${esc(x.label)}</td><td>${esc(x.detail)}</td></tr>`).join('')}</tbody></table></div></details>`:'<p>✓ Nem találtam problémát a vizsgált mezőkben.</p>'}`;
+}
+function detailedCosts(fuels,serv,exp){
+ const monthly={},categories={};
+ const add=(r,kind,amount,cat)=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(r.date||''))return;const m=r.date.slice(0,7);monthly[m]??={month:m,fuel:0,service:0,other:0};monthly[m][kind]+=amount;categories[cat]=(categories[cat]||0)+amount};
+ fuels.forEach(r=>add(r,'fuel',num(r.totalCost),'Üzemanyag'));
+ serv.forEach(r=>add(r,'service',num(r.cost), 'Szerviz · '+(r.category||'Egyéb')));
+ exp.forEach(r=>add(r,'other',num(r.cost),'Egyéb · '+(r.category||'Egyéb')));
+ const ms=Object.values(monthly).sort((a,b)=>a.month.localeCompare(b.month));
+ const cs=Object.entries(categories).sort((a,b)=>b[1]-a[1]);
+ const rows=ms.map(r=>`<tr><td>${esc(r.month)}</td><td>${ft(r.fuel)}</td><td>${ft(r.service)}</td><td>${ft(r.other)}</td><td><strong>${ft(r.fuel+r.service+r.other)}</strong></td></tr>`).join('');
+ const cr=cs.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${ft(v)}</td><td>${ft(v/(cs.reduce((n,x)=>n+x[1],0)||1)*100)}%</td></tr>`).join('');
+ const labels=ms.map(x=>x.month);const series=[['Üzemanyag','fuel'],['Szerviz','service'],['Egyéb','other']].map(([name,key])=>({name,points:ms.map((r,i)=>[i,r[key]])}));
+ return `<h3>Havi költségek (Ft)</h3>${chartSvg(series,'Havi költségek',labels)}<div class="scroll"><table><thead><tr><th>Hónap</th><th>Üzemanyag</th><th>Szerviz</th><th>Egyéb</th><th>Összesen</th></tr></thead><tbody>${rows||'<tr><td colspan="5">Nincs elszámolható költség</td></tr>'}</tbody></table></div><h3>Költségek kategóriánként</h3><div class="scroll"><table><thead><tr><th>Kategória</th><th>Költség</th><th>Részarány</th></tr></thead><tbody>${cr||'<tr><td colspan="3">Nincs elszámolható költség</td></tr>'}</tbody></table></div><p class="muted">A kimutatások a kiválasztott járműre és évre vonatkoznak. A korábbi tulajdonos által fizetett szervizek és a gyári alapértékek nem szerepelnek. A kategóriák a rögzített adatokból származnak.</p>`;
+}
+function renderDashboard(){const tools=$('toolbar');tools.innerHTML=vselector()+` <select id="yr"><option value="all">Minden év</option>${[...new Set([...vehicleRows('fuel'),...vehicleRows('services').filter(x=>!x.baseline&&x.paidByMe!==false),...vehicleRows('expenses').filter(x=>x.paidByMe!==false)].map(x=>x.date?.slice(0,4)).filter(Boolean))].sort().reverse().map(y=>`<option ${year===y?'selected':''}>${y}</option>`).join('')}</select>`;$('vsel').onchange=e=>{vehicle=e.target.value;render()};$('yr').value=year;$('yr').onchange=e=>{year=e.target.value;render()};const inYear=r=>year==='all'||r.date?.startsWith(year);const fuels=vehicleRows('fuel').filter(inYear),serv=vehicleRows('services').filter(x=>!x.baseline&&x.paidByMe!==false&&inYear(x)),exp=vehicleRows('expenses').filter(x=>x.paidByMe!==false&&inYear(x)),sum=a=>a.reduce((n,r)=>n+num(r.cost??r.totalCost),0),fc=sum(fuels),sc=sum(serv),ec=sum(exp),fs=fuelStats(),all=fc+sc+ec;const distances=vehicleRows('fuel').filter(inYear).map(x=>num(x.odometer)).filter(x=>x>0);const distance=distances.length>1?Math.max(...distances)-Math.min(...distances):0;
+const grouped={};for(const f of fuels){if(!f.fuelType)continue;const key=f.date.slice(0,7)+'|'+f.fuelType;grouped[key]??={month:f.date.slice(0,7),type:f.fuelType,liters:0,cost:0};grouped[key].liters+=num(f.liters);grouped[key].cost+=num(f.totalCost)}const months=[...new Set(Object.values(grouped).map(x=>x.month))].sort(),types=data.fuelTypes.map(x=>x.name),priceSeries=types.map(type=>({name:type,points:months.flatMap((m,i)=>{const g=grouped[m+'|'+type];return g?.liters?[[i,g.cost/g.liters]]:[]})})).filter(s=>s.points.length);
+const estimateChart='';const annual={};for(const [name,rows] of [['Üzemanyag',fuels],['Szerviz',serv],['Egyéb',exp]])for(const r of rows){const y=r.date?.slice(0,4);if(!y)continue;annual[y]??={year:y,'Üzemanyag':0,'Szerviz':0,'Egyéb':0};annual[y][name]+=num(r.cost??r.totalCost)}
+$('body').innerHTML=`<div class="stats"><div class="stat">Üzemanyag<b>${ft(fc)}</b></div><div class="stat">Szerviz<b>${ft(sc)}</b></div><div class="stat">Egyéb<b>${ft(ec)}</b></div><div class="stat">Összesen<b>${ft(all)}</b></div><div class="stat">Átlagfogyasztás (rögzített szakaszok)<b>${fs.consumption===null?'—':money(fs.consumption,2)+' L/100 km'}</b></div></div><p class="muted">Csak a saját költségként jelölt szerviz- és egyéb kiadások számítanak bele. A szervizkönyvi események ettől még a karbantartási előzményekben megmaradnak. A Ft/km mutató külön szekcióban, a tulajdonlási adatok figyelembevételével szerepel. Az összevont tankolások is részt vesznek a fogyasztásszámításban: a rögzített liter és az előző tankoláshoz képest megtett kilométer alapján. Részleges tankolás vagy eltérő időbeli lefedettség esetén az érték tájékoztató jellegű.</p><h3>Üzemanyagárak típusonként (havi, literrel súlyozott Ft/L)</h3>${chartSvg(priceSeries,'Üzemanyagárak',months)}<h3>Fogyasztás – minden rögzített tankolás (L/100 km)</h3>${chartSvg([{name:'Fogyasztás',points:fs.points.map((p,i)=>[i,p.consumption])}],'Fogyasztás',fs.points.map(p=>p.date.slice(5)))}${estimateChart}${ownershipCostMetrics(fuels,serv,exp)}${dataQualityPanel()}${detailedCosts(fuels,serv,exp)}<h3>Éves költségösszesítő</h3><div class="scroll"><table><thead><tr><th>Év</th><th>Üzemanyag</th><th>Szerviz</th><th>Egyéb</th><th>Összesen</th></tr></thead><tbody>${Object.values(annual).sort((a,b)=>a.year.localeCompare(b.year)).map(x=>`<tr><td>${x.year}</td><td>${ft(x['Üzemanyag'])}</td><td>${ft(x['Szerviz'])}</td><td>${ft(x['Egyéb'])}</td><td>${ft(x['Üzemanyag']+x['Szerviz']+x['Egyéb'])}</td></tr>`).join('')}</tbody></table></div><p class="warning">Az árdiagram csak a besorolt tankolásokat mutatja. Egyetlen havi adat esetén pont jelenik meg, nem összekötött vonal. A gyári alapértékek és a „nem saját költség” jelölésű szerviz-/kiadásrekordok nem számítanak bele a költségkimutatásokba. A fogyasztásdiagram az összevont tankolásokat is normál tankolási bejegyzésként veszi figyelembe.</p>`}
+function renderHelp(){
+ $('toolbar').innerHTML='<input id="help-search" type="search" placeholder="Keresés a súgóban…" aria-label="Keresés a súgóban" style="max-width:420px;width:100%;padding:11px;border:1px solid #bdcce0;border-radius:9px">';
+ const topics=[
+ ['Első lépések',`<p>A CarExpense Tracker több jármű tankolását, karbantartását, kiadásait, gumigarnitúráit és fontos határidőit kezeli. A fő navigációban válassz funkciót, a járműválasztóval pedig azt az autót, amelynek adatait látni szeretnéd.</p><p><strong>Fontos:</strong> a megnyitott HTML fájl és a böngésző helyi adattárolása nem felhőszinkron. Új eszközön a JSON mentést importálni kell. A Google Drive és az iPhone Fájlok előnézete nem megbízható futtatási környezet.</p>`],
+ ['Áttekintés és kimutatások',`<p>Az Áttekintés a kiválasztott jármű üzemanyag-, szerviz- és egyéb költségeit, fogyasztását és diagramjait mutatja. Az évszűrővel egy adott évre szűkíthetsz. A különböző járművek adatai nem keverednek.</p><p>Csak a <strong>saját költségként</strong> megjelölt szerviz- és egyéb kiadások szerepelnek a költségösszesítésekben. A fogyasztás és a Ft/km becslés pontossága a tankolási és kilométeróra-adatok teljességétől függ.</p>`],
+ ['Tankolások',`<p>Válaszd ki az autót, kattints az <strong>+ Új rekord</strong> gombra, majd add meg a dátumot, kilométeróra-állást, mennyiséget, literárat és üzemanyagtípust. A teljes összeget a program ki tudja számítani; az eltérést jelzi.</p><p>A <strong>Telitank</strong> azt jelzi, hogy tele tankoltál. Az <strong>Összevont tankolás</strong> több tankolás összesített adata, nem egyetlen tankolás; a fogyasztás értelmezésénél ezt figyelembe kell venni. A korábbi rekordok szerkeszthetők.</p>`],
+ ['Szerviz és Szervizfigyelő',`<p>A <strong>Szerviz</strong> menüben rögzítheted a már megtörtént karbantartásokat, költségeket és alkatrészeket. A tételes költségbontás és a saját költség jelölése külön kezelhető.</p><p>A <strong>Szervizfigyelő</strong> a MasterData-ban beállított km- és időintervallumok alapján jelzi a következő esedékességet. A gyári alapérték nem elvégzett szerviz, és nem valós költség. Az esedékesség tájékoztató jellegű: a gyártói szervizelőírás az irányadó.</p>`],
+ ['Egyéb költségek',`<p>Ide kerülhet például parkolás, autópályadíj, biztosítás vagy más járműhöz kapcsolódó kiadás. Adj meg dátumot, kategóriát, megnevezést és összeget. A <strong>Saját költség</strong> jelölés szabályozza, hogy a tétel beleszámít-e a kimutatásokba.</p>`],
+ ['Gumik és gumiciklusok',`<p>A <strong>Beállítások → Gumik</strong> részen nyilvántarthatod a téli és nyári garnitúrákat, méretet, márkát és állapotot. A <strong>Gumiciklusok → Gumicsere</strong> művelet lezárja a korábbi felszerelési ciklust és elindítja az újat, azonos dátummal és km-állással.</p><p>A futásteljesítmény a rögzített felszerelési és leszerelési km-adatokból számítható; a hiányos ciklusoknál nem feltétlenül teljes.</p>`],
+ ['Járművek és adatlap',`<p>A <strong>Beállítások → Járművek</strong> menüben vehetsz fel új autót, szerkesztheted a műszaki és tulajdonlási adatokat, valamint megnyithatod az adatlapot. A kötelező mezőket csillag jelöli.</p><p>A jármű archiválása nem törli a hozzá tartozó előzményeket. Az autók közti váltásnál ellenőrizd a járműválasztót, mielőtt új rekordot mentesz.</p>`],
+ ['Határidők',`<p>A járműadatlapon rögzített műszaki lejárat és biztosítási fordulónap mellett a <strong>Beállítások → Határidők</strong> menüben egyedi eseményeket is felvehetsz. A figyelmeztetési napok megadhatók; az Áttekintés oldalon láthatod a státuszukat.</p><p><strong>Nincs automatikus push értesítés.</strong> A jelzések az alkalmazás megnyitásakor látszanak, az éves fordulónapokat jelenleg kézzel kell frissíteni.</p>`],
+ ['MasterData és járműintervallumok',`<p>A <strong>Beállítások → MasterData</strong> közös szerviztípusokat, ismétlési km- és hónapértékeket, figyelmeztetési küszöböket tartalmaz. A <strong>Járműintervallumok</strong> oldalon ezeket autóhoz külön felülírhatod; üres mezővel a közös érték érvényesül.</p><p>Az intervallumok módosítása nem írja át a korábbi szerviztörténetet.</p>`],
+ ['Üzemanyagtípusok',`<p>A <strong>Beállítások → Üzemanyagtípusok</strong> menüben motorfajtához kapcsolódó üzemanyagokat állíthatsz be. A jármű adatlapján kiválasztott motorhoz kompatibilis alapértelmezett üzemanyagot adj meg.</p>`],
+ ['JSON biztonsági mentés és visszaállítás',`<p>A <strong>Beállítások → Adatkezelés → JSON biztonsági mentés</strong> gombbal exportálhatod az adatállományt. Őrizd meg a fájlt külön helyen, például a Google Drive-ban.</p><p>A <strong>JSON import / visszaállítás</strong> a kiválasztott mentést betölti, de <strong>felülírja az aktuális helyi adatokat</strong>. Import előtt mindig készíts mentést! A <strong>Gyári import betöltése</strong> szintén felülírja a helyi állományt, ezért csak tudatosan használd.</p>`],
+ ['Mobilhasználat, offline működés és tárhely',`<p>A v0.8.1 mobilbarát HTML, de <strong>még nem telepíthető PWA</strong>. A helyi IndexedDB böngészőhöz és webhelyhez kötött; két eszközön nem azonos adatbázis. A böngésző webhelyadatainak törlése adatvesztést okozhat.</p><p>A <strong>Tárhely védelme</strong> gomb a böngésző támogatásától függően tartós tárolást kér, de nem helyettesíti a JSON mentést. iPhone-on a Fájlok és a Drive előnézete korlátozhatja a működést; a következő fejlesztési lépés a HTTPS-en kiszolgált PWA.</p>`],
+ ['Adatminőség és hibakeresés',`<p>Az adatminőség-ellenőrzés hiányzó vagy ellentmondásos dátumokat, kilométeróra-adatokat és tankolási értékeket jelezhet. Nem minden üres mező hiba: ha egy adat nem ismert, ne találj ki értéket.</p><p>Ha a felület a <strong>Betöltés…</strong> állapotban marad, ellenőrizd, hogy normál böngészőben, megfelelő webhelyen fut-e az alkalmazás, és hogy elérhető-e a helyi IndexedDB. Hiba esetén az utolsó JSON mentés a legfontosabb helyreállítási forrás.</p>`]
+ ];
+ const host=$('body');
+ host.innerHTML=`<p class="muted">CarExpense Tracker v0.8.2 · Használati útmutató és funkcióleírás. Nyisd le a témákat, vagy keress kulcsszóra.</p><div id="help-topics">${topics.map(([name,html],i)=>`<details class="help-topic" ${i===0?'open':''}><summary>${esc(name)}</summary><div class="help-content">${html}</div></details>`).join('')}</div><p class="muted" id="help-none" hidden>Nincs találat. Próbálj másik keresőkifejezést.</p>`;
+ $('help-search').oninput=e=>{const q=e.target.value.trim().toLocaleLowerCase('hu');let count=0;host.querySelectorAll('.help-topic').forEach(d=>{const match=!q||d.textContent.toLocaleLowerCase('hu').includes(q);d.hidden=!match;if(match)count++;if(q&&match)d.open=true});$('help-none').hidden=count>0};
+}
+
+function renderSettings(){$('toolbar').innerHTML='';toolButton('JSON biztonsági mentés',backup).classList.add('primary');toolButton('JSON import / visszaállítás',()=>{$('upload').value='';$('upload').click()});toolButton('Gyári import betöltése',async()=>{if(!confirm('Felülírod a helyi adatokat az Excelből előkészített kezdő adatokkal? Előbb készíts mentést!'))return;data=clone(SEED);applyOwnershipDefaults();await persist();vehicle=data.vehicles[0].id;render();safeMsg('✓ A kezdő adatállomány betöltése és helyi mentése sikerült.')});$('body').innerHTML=`<div class="warning">A v0.2 adatai csak ezen a böngészőn tárolódnak. Ne töröld a böngésző webhelyadatait, és rendszeresen exportálj JSON mentést. A fájl megnyitása különböző böngészőkben eltérő adatbázist hozhat létre.</div><h3>Adatállomány</h3><p>Forrás: a 2026-11-08-i javított JSON mentés · rekordok: ${data.fuel.length} tankolás, ${data.services.length} szerviz, ${data.master.length} MasterData, ${data.tyres.length} gumigarnitúra, ${data.cycles.length} gumiciklus.</p><p>Korábbi v0.1 prototípus-adatokat a v0.2 nem írja felül és nem migrálja automatikusan. Azokat külön JSON mentésként őrizd meg. A v0.2 az új, normalizált JSON sémát használja.</p><p class="muted">Google Drive szinkronizáció és PWA telepíthetőség a következő fejlesztési fázisban.</p>`}
+$('upload').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());if(parsed.schemaVersion!==2||!['vehicles','fuel','services','master','tyres','cycles','expenses','fuelTypes'].every(k=>Array.isArray(parsed[k])))throw Error('Nem v0.2 formátumú mentés.');if(!confirm('Az import felülírja a helyi adatokat. Előtte ments JSON biztonsági mentést!'))return;if(!backup())return;data=parsed;applyOwnershipDefaults();await persist();vehicle=data.vehicles[0]?.id;render();safeMsg('✓ JSON visszaállítás sikeres: '+file.name+' · '+data.fuel.length+' tankolás, '+data.services.length+' szervizrekord. A helyi adatbázis mentése befejeződött.')}catch(err){alert('Importhiba: '+err.message)}};
+(async()=>{try{db=await openDb();data=await read();if(!data){data=clone(SEED);applyOwnershipDefaults();await persist()}else if(applyOwnershipDefaults()){await persist()}vehicle=data.vehicles[0]?.id||'';render()}catch(e){$('status').textContent='Adatbázishiba: '+e.message}})();
+
+/* v0.8.1: helyi adatvédelem állapota; a persist() engedélyezése böngészőfüggő. */
+function refreshConnection(){const e=document.getElementById('connectivity');if(e)e.textContent=navigator.onLine?'● Böngésző online':'● Offline – helyi adatok'}
+window.addEventListener('online',refreshConnection);
+window.addEventListener('offline',refreshConnection);
+refreshConnection();
+document.getElementById('protect-storage').addEventListener('click',async()=>{
+ const out=document.getElementById('storage-result');
+ if(!navigator.storage||typeof navigator.storage.persist!=='function'){
+  out.textContent='A böngésző nem támogatja a tartós tárhely kérését. Használj rendszeres JSON-mentést.';return;
+ }
+ try{
+  const granted=await navigator.storage.persist();
+  out.textContent=granted?'✓ Tartós tárhely engedélyezve ezen a böngészőn. JSON-mentés továbbra is szükséges.':'A böngésző nem engedélyezte a tartós tárhelyet. Készíts rendszeres JSON-mentést.';
+ }catch(err){out.textContent='A tárhelyvédelem nem kérhető ebben a környezetben. JSON-mentés ajánlott.'}
+});
+</script><script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(e=>console.warn("Offline cache nem aktiválható",e)));}</script></body></html>
