@@ -1,14 +1,12 @@
-# CarExpense Tracker v1.2.0 BÉTA
+# CarExpense Tracker v1.2.1 BÉTA
 
-## Új: választható előtérbeli automatikus szinkronizáció
-- Alapértelmezés: **kikapcsolva**. Beállítások → Adatkezelés → Automatikus szinkronizáció.
-- Csak a nyitott PWA-ban, érvényes Google-hozzáférési tokennel működik. Bejelentkezés, előtérbe visszatérés és helyi mentés után próbálkozik (helyi módosítás után kb. 20 másodperc).
-- Első szinkronizáció mindkét eszközön továbbra is **kézi**.
-- A korábbi kézi szinkronizáció, Google Drive mentés és JSON export/import megmarad.
-- A token lejárta után a Google-fiókot újra kell csatlakoztatni. iOS nem garantál háttérfuttatást.
-- Az automatikus szinkronizáció nem oldja meg a két eszköz **egyidejű felhőfeltöltésének** versenyhelyzetét. Egyelőre ne módosítsd/szinkronizáld a két eszközt pontosan egyszerre. Ez BÉTA, nem tranzakcionális többeszközös szinkron.
-- Ütközéskor nem ír felül eltérő rekordokat. JSON-mentést rendszeresen készíts.
-- Importálás, felhőmentés visszaállítása és gyári adatok visszaállítása kikapcsolja az automatikus szinkront.
+## Javítások
+- Egységes iOS-megosztási felület a kézi JSON mentésnél, JSON import előtti mentésnél, Drive-visszaállítás előtti mentésnél és gyári adatok visszaállítása előtt.
+- Az adatokat felülíró műveletek csak akkor folytatódnak, ha a felhasználó megerősítette, hogy a biztonsági mentést valóban eltárolta.
+- Új PWA-frissítésjelző sáv és Beállítások / Adatkezelés / Alkalmazásfrissítés ellenőrzése gomb. Nem kell törölni a főképernyő ikont a frissítéshez.
+- A kétirányú Google Drive-szinkronizáció és automatikus béta funkció változatlan.
 
-## Telepítés
-A ZIP tartalmát töltsd fel a GitHub Pages repository gyökerébe. A `sw.js` cache-verziója változott.
+## Figyelmeztetés
+Az iOS megosztási API-ja nem tudja igazolni, hogy a felhasználó valóban mentette-e a fájlt, ezért a program ezt külön megkérdezi. A mentés elhagyása vagy megszakítása esetén nem indul visszaállítás.
+Az iOS telepített PWA frissítésjelzése böngésző- és rendszerfüggő; ha nem jelenik meg, a PWA teljes bezárása és újranyitása segíthet. A főképernyőről való törlés a helyi adatokat is elveszítheti.
+A szinkronizáció továbbra is béta; egyidejű felhőfeltöltés ellen nincs teljes tranzakcionális védelem.
