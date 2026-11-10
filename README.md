@@ -1,11 +1,17 @@
-# CarExpense Tracker v1.3.1 – PWA frissítési javítás
+# CarExpense Tracker v1.4.0 BÉTA
 
-A v1.3.0 szinkronizációs funkciói változatlanok.
+## Változások
+- Automatikus szinkronizáció ütközéskor **tartósan szünetel** ezen az eszközön (localStorage); sikeres kézi szinkronizáció oldja fel.
+- Látható figyelmeztetés az Adatkezelés panelen.
+- Pontosabb helyi változásjelzés: nem állítja, hogy a felhő biztosan naprakész.
+- Súgó frissítve; új szinkronizációs, PWA-frissítési, verziótörténeti és névjegy fejezetek.
+- Korábbi v1.3.1 PWA-frissítési javítás megmaradt.
 
-- Service worker már nem hív skipWaiting-et telepítéskor; a felhasználó aktiválhatja a várakozó frissítést.
-- Frissítés után újratöltés controllerchange esetén és iOS tartalék ellenőrzéssel.
-- Kézi frissítésellenőrzés újratöltéssel akkor is, ha már nincs várakozó worker.
-- Navigáció hálózati frissítése cache:no-store móddal.
-- IndexedDB-t nem töröl és nem módosít.
+## Korlátozás
+A Google Drive pillanatképekhez nincs tranzakcionális szerveroldali zárolás; pontosan egyidejű két feltöltésnél továbbra is lehet versenyhelyzet. Az automatikus mód ezért béta. A külön JSON-mentések továbbra is szükségesek.
 
-A már beragadt 1.2.1 verzióból az új service worker aktiválásához esetleg két megnyitás szükséges. Ne töröld a PWA-t; szükség esetén Safari-ban nyisd meg a GitHub Pages címet, majd térj vissza a kezdőképernyős apphoz.
+## Teszt
+1. JSON-mentés mindkét eszközön.
+2. GitHub Pages frissítés a teljes ZIP-tartalommal; ne telepítsd újra a PWA-t.
+3. Súgó új témák és verzió ellenőrzése.
+4. Ütközéses teszt: kézi alapállapot, két külön módosítás, majd automatikus szinkron. Ellenőrizd a szüneteltetést; utána kézi feloldást.
