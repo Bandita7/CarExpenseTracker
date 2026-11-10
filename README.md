@@ -1,5 +1,5 @@
-CarExpense Tracker v0.8.3 – új, autóközpontú PWA ikon.
+CarExpense Tracker PWA v0.9.0
 
-Feltöltés: a ZIP tartalmát a GitHub repository gyökerébe, a meglévő fájlokat felülírva.
-A korábbi adatok az IndexedDB-ben maradnak; a ZIP nem tartalmaz személyes adatokat.
-A Google Drive automatikus szinkron még nem része ennek a verziónak.
+GitHub Pages: upload all files to repository root, preserving icons/.
+Google Drive: manual timestamped backups in appDataFolder, manual restore with confirmation. No automatic sync.
+Never upload personal JSON backups to the public repository.
