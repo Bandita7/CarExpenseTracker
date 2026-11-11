@@ -29,3 +29,4 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - A JSON csak külön lenyitható technikai részlet; a döntés továbbra is teljes rekordra vonatkozik.
 - A törlés külön figyelmeztetést és egyértelmű választási lehetőséget kap.
 - A meglévő Drive-szinkronizációs protokoll változatlan; a párhuzamos feltöltés még nem tranzakcionális.
+\n## v1.5.3 BÉTA – Data Integrity\n- Kötelező és opcionális adattáblák szerkezeti ellenőrzése.\n- Hiányzó/duplikált rekordazonosítók kiszűrése JSON-visszaállítás és szinkron során.\n- A helyben megjegyzett közös felhőállapot azonosítójának ellenőrzése a Drive-előzményben.\n- Az egyesített állapot ellenőrzése feltöltés előtt.\n- Nem teljes séma-validáció: az összes üzleti mező és hivatkozás még nem ellenőrzött.\n- Az egyidejű Drive-feltöltés továbbra sem atomi; automatikus szinkront egyelőre ne kapcsold be.\n
