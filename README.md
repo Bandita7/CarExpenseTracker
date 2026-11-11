@@ -22,3 +22,10 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - Újrakapcsolódáskor nem kényszeríti ki minden alkalommal a consent képernyőt.
 - Google-fiókválasztás vagy jóváhagyás továbbra is szükséges lehet.
 - A párhuzamos Drive-pillanatképek automatikus egyesítése még nem megoldott.
+
+
+## v1.5.2 BÉTA
+- Ütközéskor rekordtípus, felismerhető rekordnév és mezőnkénti helyi/felhő összehasonlítás jelenik meg.
+- A JSON csak külön lenyitható technikai részlet; a döntés továbbra is teljes rekordra vonatkozik.
+- A törlés külön figyelmeztetést és egyértelmű választási lehetőséget kap.
+- A meglévő Drive-szinkronizációs protokoll változatlan; a párhuzamos feltöltés még nem tranzakcionális.
