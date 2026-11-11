@@ -1,4 +1,4 @@
-# CarExpense Tracker v1.5.0 BÉTA — Sync Safety
+# CarExpense Tracker v1.5.1 BÉTA — Sync Safety
 
 ## Biztonsági változások
 - Szinkronizáció előtt és feltöltés után az összes szinkronpillanatkép szülőkapcsolatának ellenőrzése.
@@ -15,3 +15,10 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 2. Frissítés után kézi szinkron mindkét eszközön egymás után.
 3. Eltérő teszthatáridővel ütközés létrehozása; **felhőváltozat** kiválasztásának tesztelése.
 4. Ellenőrizd, hogy a kiválasztott dátum mindkét eszközön megjelenik.
+
+## v1.5.1 Google OAuth biztonság
+- Megjegyzi a korábbi csatlakozás tényét, nem tárol tartós tokent.
+- Lejárat/401 után leállítja a Drive-hozzáférést és a függő automatikus szinkronidőzítést.
+- Újrakapcsolódáskor nem kényszeríti ki minden alkalommal a consent képernyőt.
+- Google-fiókválasztás vagy jóváhagyás továbbra is szükséges lehet.
+- A párhuzamos Drive-pillanatképek automatikus egyesítése még nem megoldott.
