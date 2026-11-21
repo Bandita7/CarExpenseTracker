@@ -29,4 +29,19 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - A JSON csak külön lenyitható technikai részlet; a döntés továbbra is teljes rekordra vonatkozik.
 - A törlés külön figyelmeztetést és egyértelmű választási lehetőséget kap.
 - A meglévő Drive-szinkronizációs protokoll változatlan; a párhuzamos feltöltés még nem tranzakcionális.
-\n## v1.5.3 BÉTA – Data Integrity\n- Kötelező és opcionális adattáblák szerkezeti ellenőrzése.\n- Hiányzó/duplikált rekordazonosítók kiszűrése JSON-visszaállítás és szinkron során.\n- A helyben megjegyzett közös felhőállapot azonosítójának ellenőrzése a Drive-előzményben.\n- Az egyesített állapot ellenőrzése feltöltés előtt.\n- Nem teljes séma-validáció: az összes üzleti mező és hivatkozás még nem ellenőrzött.\n- Az egyidejű Drive-feltöltés továbbra sem atomi; automatikus szinkront egyelőre ne kapcsold be.\n
+
+## v1.5.3 BÉTA – Data Integrity
+- Kötelező és opcionális adattáblák szerkezeti ellenőrzése.
+- Hiányzó/duplikált rekordazonosítók kiszűrése JSON-visszaállítás és szinkron során.
+- A helyben megjegyzett közös felhőállapot azonosítójának ellenőrzése a Drive-előzményben.
+- Az egyesített állapot ellenőrzése feltöltés előtt.
+- Nem teljes séma-validáció: az összes üzleti mező és hivatkozás még nem ellenőrzött.
+- Az egyidejű Drive-feltöltés továbbra sem atomi; automatikus szinkront egyelőre ne kapcsold be.\n
+## v1.5.4 BÉTA – Szervizszerkesztő hibajavítás
+- A kategóriaváltáskor a teljes Megnevezés mezőblokk cserélődik, a felirat nem sokszorozódik.
+- Kategóriaváltáskor a korábbi kategóriához tartozó megnevezés törlődik, új tétel választandó.
+- A járműlap kapcsolódó legördülőjének ugyanilyen frissítési hibája is javítva.
+- Meglévő szervizrekord kategória/megnevezés átírásakor az egyszerű költségmód régi tételhivatkozása nem marad meg.
+- A szinkronizációs protokoll és az adatmodell nem változott.
+
+- Az Egyéb költségek táblázatban a rögzített kilométeróra-állás immár külön oszlopban látható (üres adatnál —); adatmigrációra nincs szükség.
