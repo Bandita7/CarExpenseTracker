@@ -45,3 +45,16 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - A szinkronizációs protokoll és az adatmodell nem változott.
 
 - Az Egyéb költségek táblázatban a rögzített kilométeróra-állás immár külön oszlopban látható (üres adatnál —); adatmigrációra nincs szükség.
+
+
+## v1.6.0 BÉTA – Data Safety Plus
+- Visszaállítás előtt interaktív, közérthető mentés-előnézet a rekordok számával, blokkoló hibákkal és figyelmeztetésekkel.
+- Járműre mutató idegen kulcsok ellenőrzése; hiányzó/duplikált rekordazonosítók blokkolása; típus-/gumihivatkozásoknál nem blokkoló figyelmeztetés.
+- Tankolási kilométeróra-időrend ellenőrzése (nem blokkoló figyelmeztetés).
+- A tényleges helyi adatcsere, a korábbi állapot helyi megőrzése és a szinkronalap törlése egyetlen IndexedDB-tranzakcióban.
+- Visszaállítás előtt külön JSON-mentést kér, amelyet a felhasználó megerősít.
+- Új „Adatállomány ellenőrzése” és „Helyi helyreállítási pont” gomb az Adatkezelés menüben.
+- A helyreállítás automatikusan kikapcsolja az automatikus szinkronizációt; az első szinkront utána kézzel kell végezni.
+- A meglévő schemaVersion=2 és IndexedDB v1 változatlan maradt, hogy a v1.5.x kompatibilitás megmaradjon.
+- A helyi helyreállítási pont nem helyettesíti a külön mentett JSON-t: azonos böngésző-tárhelyen van, és a következő visszaállítás felülírja.
+- Egyidejű Google Drive-feltöltések továbbra sem atomi műveletek: a kézi, egymás utáni szinkronizáció javasolt.
