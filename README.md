@@ -58,3 +58,17 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - A meglévő schemaVersion=2 és IndexedDB v1 változatlan maradt, hogy a v1.5.x kompatibilitás megmaradjon.
 - A helyi helyreállítási pont nem helyettesíti a külön mentett JSON-t: azonos böngésző-tárhelyen van, és a következő visszaállítás felülírja.
 - Egyidejű Google Drive-feltöltések továbbra sem atomi műveletek: a kézi, egymás utáni szinkronizáció javasolt.
+
+
+## v1.7.0 BÉTA – Sync Safety, kézi felhőág-egyesítés
+- A v1-es szinkronfájlokat változatlanul olvassa. Az új pillanatképek `carexpense-sync-v2` formátumúak, több `parents` azonosítóval. A v1.6 vagy régebbi eszközök **nem tudják** az új v2 fájlokat olvasni: minden eszközt frissíts.
+- A felhőgráf összes csomópontjának szerkezeti, rekord- és szülőellenőrzése (hiányzó szülő, kör, független gyökerek tiltása).
+- Párhuzamos felhőágaknál közös ős alapján, háromutas egyesítéssel dolgozik; eltérő ugyanazon rekordnál az ismert döntési felületet használja. A törlés és módosítás ütközést okoz.
+- Kézi megerősítés után immutábilis, több szülőhöz kapcsolt új felhőpillanatkép készül. A régi fájlokat sosem törli.
+- Felhőelőzmény újraellenőrzése feltöltés előtt/után, helyi szinkronalap tartalmának összevetése a felhőben lévő őssel.
+- Egy IndexedDB-tranzakcióban történik a helyi adat és a sikeres felhőazonosító elmentése; közben megváltozott helyi rekordoknál a művelet leáll.
+- NINCS szerveroldali compare-and-swap/lock: az egyszerre feltöltő eszközök továbbra is új ágakat hozhatnak létre. Automatikus szinkronizációt ne kapcsold be.
+- Független, közös ős nélküli Drive-előzmények esetén nem találgat: megszakítja az egyesítést.
+- Első telepítéskor készíts JSON-mentést minden eszközön; tesztelj manuálisan, különböző tesztrekordokkal.
+
+- Az automatikus szinkron kapcsolója v1.7.0-ban tiltva van; a korábban beállított automatikus szinkron bekapcsolását felülírja.
