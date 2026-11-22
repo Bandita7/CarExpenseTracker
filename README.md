@@ -72,3 +72,11 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - Első telepítéskor készíts JSON-mentést minden eszközön; tesztelj manuálisan, különböző tesztrekordokkal.
 
 - Az automatikus szinkron kapcsolója v1.7.0-ban tiltva van; a korábban beállított automatikus szinkron bekapcsolását felülírja.
+
+
+## v1.7.1 BÉTA – szinkron-kompatibilitási hotfix
+- Korábbi szinkronalapoknál csak a ténylegesen szinkronizált rekordtáblákat hasonlítja a Drive-on szereplő közös ős megfelelő tábláihoz; a metaadatok (`exportedAt` és egyéb nem szinkronizált mezők) eltérése nem ok a leállásra.
+- A rekordadatok, törlések és szerkezeti ellenőrzések változatlanul szigorúak: eltérésnél leállás, nincs automatikus felülírás.
+- Ha egy sikeres szinkron nem hoz létre új felhőfájlt, akkor a helyi `syncBase.snapshot` a tényleges Drive-pillanatképre mutató tartalomként frissül, nem a csak szemantikailag azonos helyi JSON-ra.
+- A v2 szinkronprotokoll, JSON-séma és az automatikus szinkron tiltása változatlan.
+- Az újracsatlakozás és a Drive-integráció élő tesztje szükséges iPhone-on/iPaden.
