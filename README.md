@@ -95,3 +95,9 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - 1400 CSS px alatt tabletméretben két oszlop, 760 CSS px-ig egy oszlop.
 - A dátummező nem csúszhat rá a mellette lévő mezőre; az iPad Safari natív mezőjének min-width/appearance kezelése javítva.
 - A szinkronizációs algoritmus, JSON séma és IndexedDB szerkezet nem változott.
+
+
+## v1.7.4 BÉTA – iPad Safari date input hotfix
+- Határidők dátummező: egységes 48px magasság üresen és kitöltve, kétoszlopos iPad nézetben is.
+- Visszaállítva a natív Safari dátumvezérlő; kizárólag a Határidők űrlap CSS-ét módosítja.
+- A szinkronizáció és az adatmodell nem változott.
