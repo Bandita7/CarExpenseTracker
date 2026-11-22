@@ -80,3 +80,11 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - Ha egy sikeres szinkron nem hoz létre új felhőfájlt, akkor a helyi `syncBase.snapshot` a tényleges Drive-pillanatképre mutató tartalomként frissül, nem a csak szemantikailag azonos helyi JSON-ra.
 - A v2 szinkronprotokoll, JSON-séma és az automatikus szinkron tiltása változatlan.
 - Az újracsatlakozás és a Drive-integráció élő tesztje szükséges iPhone-on/iPaden.
+
+## v1.7.2 BÉTA – Sync Recovery és törlési figyelmeztetés
+- A helyi rekordokat ténylegesen módosító sikeres szinkronok előtt az előző `all` állapot a külön `syncRecovery` kulcson kerül megőrzésre ugyanabban az IndexedDB tranzakcióban. Ez nem írja felül az import/visszaállítás `restoreRecovery` mentőpontját.
+- A Beállítások → Adatkezelés → Szinkron előtti állapot gomb mentés-előnézettel, explicit megerősítéssel és külön JSON-exporttal teszi lehetővé az előző szinkron előtti helyi állapot visszaállítását. A visszaállítás a szinkronalapot törli.
+- Ha ütközésnél a rekord egyik oldalon törölt, külön figyelmeztetés jelenik meg az esetleges következményekről.
+- A szinkronprotokoll továbbra is carexpense-sync-v2; a JSON schemaVersion=2 változatlan.
+- NINCS atomi, szerveroldali Drive CAS/lock; automatikus szinkron továbbra is tiltva.
+- A szinkronmentőpont ugyanabban a böngészőtárhelyben van, minden következő módosító szinkron lecseréli; nem helyettesíti a külön mentett JSON-t.
