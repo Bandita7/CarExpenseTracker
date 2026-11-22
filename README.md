@@ -88,3 +88,10 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - A szinkronprotokoll továbbra is carexpense-sync-v2; a JSON schemaVersion=2 változatlan.
 - NINCS atomi, szerveroldali Drive CAS/lock; automatikus szinkron továbbra is tiltva.
 - A szinkronmentőpont ugyanabban a böngészőtárhelyben van, minden következő módosító szinkron lecseréli; nem helyettesíti a külön mentett JSON-t.
+
+
+## v1.7.3 BÉTA – iPad Határidők űrlap hotfix
+- Csak a Határidők rekord szerkesztő rácsát módosítja.
+- 1400 CSS px alatt tabletméretben két oszlop, 760 CSS px-ig egy oszlop.
+- A dátummező nem csúszhat rá a mellette lévő mezőre; az iPad Safari natív mezőjének min-width/appearance kezelése javítva.
+- A szinkronizációs algoritmus, JSON séma és IndexedDB szerkezet nem változott.
