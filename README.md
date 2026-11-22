@@ -107,3 +107,6 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 A Határidők esedékességi dátummezője egységes 46 px magas, balra igazított kijelzést kapott, üres és kitöltött állapotban egyaránt. A látható dátumot az átlátszó, kattintható natív `<input type="date">` vezérlő frissíti; az értékbeolvasás és a kötelezőmező-ellenőrzés változatlan. A szinkronizációs motor, a séma és a mentések nem változtak.
 
 Valódi iPadOS Safari ellenőrzés szükséges: üres állapot, dátumválasztás, mentés, szerkesztés, álló és fekvő tájolás.
+
+## v1.7.7 – ellenőrzött kiadás
+Korábbi v1.7.6 ZIP hibája: az index.html fejléc és title v1.7.5-öt mutatott, bár a service worker verziószáma v1.7.6 volt. Most minden élő verziójelző v1.7.7. A dátummező v1.7.6-os megjelenítése megmaradt. A Google Drive és az adatséma nem változott.
