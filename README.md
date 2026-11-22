@@ -1,4 +1,21 @@
-# CarExpense Tracker v1.5.1 BÉTA — Sync Safety
+# CarExpense Tracker v1.7.8 BÉTA — Safety & Regression
+
+A futtatható PWA fájljai a gyökérkönyvtárban vannak. A `tests/` és `scripts/` fejlesztői eszközök, nem tartalmaznak felhasználói adatot.
+
+A készülékes ellenőrzési lépések: `TESTPLAN.md`.
+
+**Kiadás előtti kötelező ellenőrzés:** `node scripts/release-check.cjs` és `node --test tests/*.test.cjs`. Node.js 20+ szükséges.
+
+**2026-11: v1.7.8 — Safety & Regression**
+- Kiadási ellenőrzés: HTML `<title>`, fejléc, Névjegy, Súgó, verziótörténet, service worker cache és csomagfájlok egyezése.
+- A jelenlegi JavaScript-függvényeket futtató tesztek: adatellenőrzés, helyi/felhő merge, törlés-módosítás ütközés, elágazó felhőgráf, megszakadt letöltés és sérült gráf.
+- Helyi tranzakció forráskód-szerkezeti ellenőrzése és kézi tesztterv a valódi IndexedDB-hez.
+- A protokoll, a rekordtárolás, a Google-token kezelés és a felhasználói adatok nem változtak.
+- **Korlát:** a tesztek nem igazolják a két valóban egyidejű feltöltés atomi biztonságát; az automatikus szinkron tiltva marad.
+
+## Korábbi kiadások
+
+## v1.5.1 — történeti bejegyzés
 
 ## Biztonsági változások
 - Szinkronizáció előtt és feltöltés után az összes szinkronpillanatkép szülőkapcsolatának ellenőrzése.
