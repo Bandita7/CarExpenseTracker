@@ -101,3 +101,4 @@ A Google Drive fájllista és az új fájl létrehozása nem alkot szerveroldali
 - Határidők dátummező: egységes 48px magasság üresen és kitöltve, kétoszlopos iPad nézetben is.
 - Visszaállítva a natív Safari dátumvezérlő; kizárólag a Határidők űrlap CSS-ét módosítja.
 - A szinkronizáció és az adatmodell nem változott.
+\n\n## v1.7.5 BÉTA – iPad dátummező és verziótörténet\n- A Határidők dátummezőnél eltávolítottuk a korábbi, iPad Safari alatt túlméretező belső pseudo-element szabályokat. A dátummező minden állapotban 46px magasságot kap, maximált mérettel és 100%-os szélességgel.\n- A verziótörténet kiadásainak számozását és sorrendjét javítottuk (v1.6.0, v1.7.0, v1.7.2, v1.7.3).\n- A Súgó és a Beállítások korábbi verzióhivatkozásai frissültek.\n- Nem változott: adatséma, szinkronprotokoll, üzleti logika.\n- Ellenőrizendő valódi iPadOS Safari alatt: üres és kitöltött dátummező, álló/fekvő nézet.\n
