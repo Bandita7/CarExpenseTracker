@@ -86,3 +86,10 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. iPhone és iPad: kézi szinkron egymás után, majd rekordegyezés.
 5. Üres változásokkal ismételt kézi szinkron – ne keletkezzen felesleges új pillanatkép.
 6. Hálózati bontást és versenyhelyzetet éles adatokon ne kényszeríts ki.
+
+
+## v1.8.6 próbák
+1. PC (Chrome/Edge) > Határidők > Új és Szerkesztés: a dátummezőben legyen natív naptár ikon és kattintásra nyíljon a dátumválasztó.
+2. iPhone/iPad > Határidők: a bevált egységes magasságú mező és natív rendszer-dátumválasztó megmarad.
+3. iPhone-on kézi szinkron, majd iPaden kézi szinkron: a rekordok maradjanak meg. Az új, rövid várakozás normális.
+4. GitHub Safety & Release Check legyen zöld; `.github` változatlan.

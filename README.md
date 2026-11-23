@@ -168,9 +168,13 @@ A finom mutatós, hover-képes eszközökön a határidő natív dátummezője i
 A Google Drive-szinkron és a JSON-adatformátum nem változott.
 
 
-## v1.8.5 BÉTA – Reliable Sync IV + dátumválasztó
+## v1.8.6 BÉTA – Reliable Sync IV + dátumválasztó
 - A v1.8.4 asztali Határidők natív date picker CSS-javítását tartalmazza.
 - A sikeres Drive POST után kötelező független GET visszaolvasás; format, szülőazonosítók és rekordok ellenőrzése.
 - Visszaolvasási hiba vagy tartalmi eltérés esetén a helyi adatállomány és a közös szinkronalap változatlan marad. Újabb POST nem indul.
 - Nem szünteti meg a külön eszközök közti atomi feltöltés hiányát. Automatikus szinkron továbbra is tiltva.
 - A `.github/workflows/safety-check.yml` fájlt nem kell módosítani; a tesztmappa új tesztet kapott.
+
+
+## v1.8.6 BÉTA – Reliable Sync V és asztali dátummező
+A PC-s Határidők dátummező a Tankolások és Szerviz natív HTML date mezőjét használja. A speciális, rétegezett dátumkijelzés kizárólag iPhone/iPad eszközön jön létre. A Drive-feltöltés utáni ellenőrzést rövid stabilizációs várakozás és még egy teljes felhőelőzmény-olvasás követi, mielőtt a helyi állapot mentése megtörténne. Ez csökkenti a közel egyidejű feltöltések kockázatát, DE nem teszi atomi műveletté. Az automatikus szinkron kikapcsolva marad.
