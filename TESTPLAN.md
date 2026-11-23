@@ -60,3 +60,13 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 3. iPhone-on egy új teszthatáridő mentése, kézi szinkron, majd iPaden kézi szinkron: a rekord megmarad.
 4. Érvénytelen/lejárt Google-kapcsolat esetén egygombos csatlakozás és szinkron teszt.
 5. A feltöltés közbeni hálózatvesztést csak kontrollált tesztadatokkal és külön JSON-mentés után próbáljuk; ha bizonytalan, újabb POST nélkül ellenőrzi a fájlt.
+
+
+## v1.8.3 ellenőrzés
+
+1. Friss JSON export mindkét eszközön.
+2. A v1.8.3 frissítése után normál kézi szinkron iPhone-on, majd iPaden; mindkettőn nincs különbség.
+3. Egyik eszközön hozz létre tesztadatot, majd egymás után szinkronizálj; a másikon jelenjen meg.
+4. PC-n (ha a Drive nem blokkolt), két külön lapon indított szinkronnál a második, átfedő kérés Web Locks API-t támogató böngészőben „már folyamatban” figyelmeztetést kapjon.
+5. GitHub Actions: Safety & Release Check zöld.
+**Ne tesztelj szándékosan egyidejű, külön eszközös feltöltést éles adatokkal.**

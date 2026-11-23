@@ -152,3 +152,12 @@ A kiadás **nem** oldja meg atomi módon az egyidejű feltöltéseket, ezért az
 - A szinkron előtti JSON-biztonsági mentésről szóló figyelmeztetés emlékeztető; továbbra sem készít automatikus fájlmentést.
 - **Az automatikus szinkron továbbra is letiltott**, mert két eszköz ténylegesen egyidejű írása nem atomi.
 - A mentési séma, Drive-fájlformátum és `.github/workflows/safety-check.yml` változatlan.
+
+
+## v1.8.3 BÉTA – Reliable Sync III
+
+- Ha a böngésző támogatja a Web Locks API-t, ugyanazon webhely és böngészőprofil párhuzamos lapjai/PWA-ablakai közül egyszerre csak egy indíthat kézi szinkront. Ha foglalt, az új kérés figyelmeztetéssel leáll.
+- A feltöltés nélküli, csak helyi szinkron is újraellenőrzi a felhőelőzmény-végpontokat közvetlenül az IndexedDB-mentés előtt. A közben megváltozott felhőnél nem mentünk elavult szinkronalapot.
+- **Korlát:** Web Locks nincs minden környezetben; a zárolás nem működik külön eszközök és külön böngészőprofilok között. A Google Drive továbbra sem biztosít atomi összehasonlítás-plusz-feltöltést. A ténylegesen egyidejű iPhone/iPad feltöltést ezért NEM tekintjük biztonságosnak; automatikus szinkron kikapcsolva marad.
+- Drive protokoll, JSON adatséma, felhasználói rekordok és workflow-fájl **nem változtak**.
+- Új célzott tesztek: az egyablakos zárolás, foglalt zárolás, Web Locks nélküli kompatibilitás és a végső no-upload felhőellenőrzés ellenőrzése.
