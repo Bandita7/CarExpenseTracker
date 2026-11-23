@@ -43,3 +43,12 @@ node --test tests/*.test.cjs
 ```
 
 A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezeket futtatja a `main` ágra küldött commit után. Ez **nem** garantálja, hogy GitHub Pages csak sikeres teszt esetén publikál; a repo Pages/branch protection beállításaitól függ.
+
+
+## v1.8.1 kézi ellenőrzés
+1. Készíts friss JSON mentést iPhone-on és iPaden.
+2. Token lejárata után a Beállítások → Adatkezelés → Google-csatlakozás és szinkronizálás gombra kattints.
+3. Google-kapcsolat esetleges engedélyezése után ellenőrizd a kézi szinkron megerősítését.
+4. Siker esetén ismét kattintva érvényes tokennel sima Szinkronizálás most szerepeljen.
+5. Offline vagy Google-hiba esetén ne legyen feltöltés és ne módosuljanak a helyi rekordok.
+6. Automatikus szinkron maradjon tiltva.

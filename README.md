@@ -134,3 +134,11 @@ Korábbi v1.7.6 ZIP hibája: az index.html fejléc és title v1.7.5-öt mutatott
 A Drive GET olvasások átmeneti hálózati hibánál vagy HTTP 429/500/502/503/504 esetén korlátozottan (legfeljebb összesen három próbálkozással) ismétlődnek, 350/900 ms várakozással. A tokenlejárat és az offline állapot külön hiba marad. **POST feltöltés automatikus ismétlése tilos**, mert a szerver már létrehozhatta a pillanatképet. Ilyenkor az alkalmazás a helyi adatokat megtartja, és következő kézi szinkronban ellenőrizhető a Drive előzmény.
 
 A kiadás **nem** oldja meg atomi módon az egyidejű feltöltéseket, ezért az automatikus szinkron továbbra is le van tiltva. Ez egy konzervatív, első Reliable Sync részkiadás, nem a teljes v1.8-as cél lezárása.
+
+
+## v1.8.1 BÉTA – Egygombos Google-csatlakozás és kézi szinkron
+- Ha egy korábban csatlakoztatott Google-fiók hozzáférési tokenje lejárt, a Szinkronizálás most gomb nem tiltott: Google-csatlakozás és szinkronizálás feliratot mutat.
+- A felhasználói gombnyomásból kér rövid életű tokent; annak sikeres beérkezése és a Drive mentéslista sikeres lekérése után a szokásos megerősítéssel indítja a kézi szinkront.
+- Google hibánál vagy sikertelen listaolvasásnál nem indít szinkront.
+- A már érvényes tokennel a szokásos kézi szinkron működik. Automatikus szinkron továbbra is tiltott.
+- Nem érinti a helyi adatbázist, a rekordokat és a Google Drive-pillanatképek formátumát.
