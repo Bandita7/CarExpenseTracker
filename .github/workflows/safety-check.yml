@@ -1,4 +1,3 @@
-
 name: Safety & Release Check
 on:
   push:
