@@ -178,3 +178,8 @@ A Google Drive-szinkron és a JSON-adatformátum nem változott.
 
 ## v1.8.6 BÉTA – Reliable Sync V és asztali dátummező
 A PC-s Határidők dátummező a Tankolások és Szerviz natív HTML date mezőjét használja. A speciális, rétegezett dátumkijelzés kizárólag iPhone/iPad eszközön jön létre. A Drive-feltöltés utáni ellenőrzést rövid stabilizációs várakozás és még egy teljes felhőelőzmény-olvasás követi, mielőtt a helyi állapot mentése megtörténne. Ez csökkenti a közel egyidejű feltöltések kockázatát, DE nem teszi atomi műveletté. Az automatikus szinkron kikapcsolva marad.
+
+
+## v1.8.7 BÉTA – Reliable Sync VI: gyorsított, ellenőrzött előzményolvasás
+A 70 mp-es kézi szinkron egyik valószínű oka, hogy az előzmények összes fájlját minden szinkronfázis újra letöltötte. Most a műveleten belül az azonos ID-val, módosítási idővel és mérettel listázott, korábban beolvasott JSON ismételt letöltése elmarad. A Drive fájllistáját minden biztonsági ellenőrzéskor frissen kérjük, és a korábban nem látott vagy változott fájlt visszaolvassuk. A frissen feltöltött fájl önálló tartalmi visszaellenőrzése nem marad el. A késleltetett ellenőrzést és a 1,2 mp-es várakozást megtartjuk, mert másik eszköz új felhőágát csak így van esélyünk észlelni. A szinkron időtartama az adatkezelési panelen megjelenik. A tényleges gyorsulás Drive- és eszközfüggő; nincs garantált idő.
+A felhőben létrejövő párhuzamos ágak atomi kezelése továbbra sem garantált. Auto-sync továbbra is tiltott.

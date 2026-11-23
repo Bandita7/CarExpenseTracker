@@ -93,3 +93,13 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 2. iPhone/iPad > Határidők: a bevált egységes magasságú mező és natív rendszer-dátumválasztó megmarad.
 3. iPhone-on kézi szinkron, majd iPaden kézi szinkron: a rekordok maradjanak meg. Az új, rövid várakozás normális.
 4. GitHub Safety & Release Check legyen zöld; `.github` változatlan.
+
+
+## v1.8.7 BÉTA összevont teszt
+- Először készíts külön JSON-mentést.
+- Egyforma v1.8.7 legyen minden eszközön; kézi sync egymás után.
+- Mérj 2 ismételt szinkront adatváltozás nélkül PC-n/iPad-en, majd egy új határidő felvitelekor. Az idők a Drive-panelen is megjelennek.
+- A korábbi 70 mp-hez hasonlítsd a mért időket, de hálózati ingadozást is vegyél figyelembe.
+- Másik készüléken hozott teszthatáridő szinkron után látszódjon; törlés is maradjon törölve.
+- A v1.8.6-os PC-s dátumválasztó és iOS-megjelenítés maradjon jó.
+- Futtasd a GitHub Actions Safety & Release Check-et, `.github` módosítás nem szükséges.

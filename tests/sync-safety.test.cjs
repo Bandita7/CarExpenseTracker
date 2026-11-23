@@ -7,7 +7,7 @@ function slice(start,end){const a=html.indexOf(start);if(a<0)throw Error('Functi
 const source=[
  slice('const DATA_REQUIRED=','// No IndexedDB schema upgrade'),
  slice('const SYNC_KEYS=','async function syncList('),
- slice('async function syncLoadHistory(files){','async function syncUpload('),
+ slice('async function syncLoadHistory(files,mediaCache=null){','async function syncUpload('),
 ].join('\n');
 const context=vm.createContext({structuredClone,Map,Set,URLSearchParams,Date,JSON,Error,Number,String,Array,Object,console});
 vm.runInContext(source,context);
