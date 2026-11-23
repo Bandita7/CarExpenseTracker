@@ -52,3 +52,11 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. Siker esetén ismét kattintva érvényes tokennel sima Szinkronizálás most szerepeljen.
 5. Offline vagy Google-hiba esetén ne legyen feltöltés és ne módosuljanak a helyi rekordok.
 6. Automatikus szinkron maradjon tiltva.
+
+
+## v1.8.2 célzott készülékes próba
+1. Készíts helyi JSON-mentést mindkét eszközön.
+2. Kézi szinkron iPhone-on, majd iPaden; változatlan adatoknál nincs új feltöltés.
+3. iPhone-on egy új teszthatáridő mentése, kézi szinkron, majd iPaden kézi szinkron: a rekord megmarad.
+4. Érvénytelen/lejárt Google-kapcsolat esetén egygombos csatlakozás és szinkron teszt.
+5. A feltöltés közbeni hálózatvesztést csak kontrollált tesztadatokkal és külön JSON-mentés után próbáljuk; ha bizonytalan, újabb POST nélkül ellenőrzi a fájlt.

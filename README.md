@@ -142,3 +142,13 @@ A kiadás **nem** oldja meg atomi módon az egyidejű feltöltéseket, ezért az
 - Google hibánál vagy sikertelen listaolvasásnál nem indít szinkront.
 - A már érvényes tokennel a szokásos kézi szinkron működik. Automatikus szinkron továbbra is tiltott.
 - Nem érinti a helyi adatbázist, a rekordokat és a Google Drive-pillanatképek formátumát.
+
+
+## v1.8.2 BÉTA – Reliable Sync II
+- Bizonytalan eredményű Drive POST feltöltést soha nem ismétel automatikusan.
+- Az egyedi nevű felhőpillanatképet GET-tel visszakeresi, a szülőket és az összes szinkronizált rekordot ellenőrzi.
+- Csak egyetlen, ellenőrzött találatnál használja az új pillanatkép-azonosítót.
+- Hiányzó, hibás vagy többértelmű eredménynél biztonságosan megáll, a helyi állapot marad.
+- A szinkron előtti JSON-biztonsági mentésről szóló figyelmeztetés emlékeztető; továbbra sem készít automatikus fájlmentést.
+- **Az automatikus szinkron továbbra is letiltott**, mert két eszköz ténylegesen egyidejű írása nem atomi.
+- A mentési séma, Drive-fájlformátum és `.github/workflows/safety-check.yml` változatlan.
