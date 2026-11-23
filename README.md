@@ -161,3 +161,16 @@ A kiadás **nem** oldja meg atomi módon az egyidejű feltöltéseket, ezért az
 - **Korlát:** Web Locks nincs minden környezetben; a zárolás nem működik külön eszközök és külön böngészőprofilok között. A Google Drive továbbra sem biztosít atomi összehasonlítás-plusz-feltöltést. A ténylegesen egyidejű iPhone/iPad feltöltést ezért NEM tekintjük biztonságosnak; automatikus szinkron kikapcsolva marad.
 - Drive protokoll, JSON adatséma, felhasználói rekordok és workflow-fájl **nem változtak**.
 - Új célzott tesztek: az egyablakos zárolás, foglalt zárolás, Web Locks nélküli kompatibilitás és a végső no-upload felhőellenőrzés ellenőrzése.
+
+
+## v1.8.4 BÉTA – Határidő dátumválasztó asztali böngészőben
+A finom mutatós, hover-képes eszközökön a határidő natív dátummezője ismét látható, így a naptár ikon és a dátumválasztó az eredeti böngészős módon használható. Az iPhone/iPad érintős megjelenítése változatlan.
+A Google Drive-szinkron és a JSON-adatformátum nem változott.
+
+
+## v1.8.5 BÉTA – Reliable Sync IV + dátumválasztó
+- A v1.8.4 asztali Határidők natív date picker CSS-javítását tartalmazza.
+- A sikeres Drive POST után kötelező független GET visszaolvasás; format, szülőazonosítók és rekordok ellenőrzése.
+- Visszaolvasási hiba vagy tartalmi eltérés esetén a helyi adatállomány és a közös szinkronalap változatlan marad. Újabb POST nem indul.
+- Nem szünteti meg a külön eszközök közti atomi feltöltés hiányát. Automatikus szinkron továbbra is tiltva.
+- A `.github/workflows/safety-check.yml` fájlt nem kell módosítani; a tesztmappa új tesztet kapott.

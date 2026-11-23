@@ -70,3 +70,19 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. PC-n (ha a Drive nem blokkolt), két külön lapon indított szinkronnál a második, átfedő kérés Web Locks API-t támogató böngészőben „már folyamatban” figyelmeztetést kapjon.
 5. GitHub Actions: Safety & Release Check zöld.
 **Ne tesztelj szándékosan egyidejű, külön eszközös feltöltést éles adatokkal.**
+
+
+## v1.8.4 célzott kézi próba
+1. Asztali Chrome/Edge: Határidők > Új rekord > Esedékesség mező. Jelenjen meg a natív naptár ikon, kattintással nyíljon a naptár, dátumválasztás után lehessen menteni.
+2. Asztali meglévő határidő szerkesztése: a dátum legyen módosítható.
+3. iPad/iPhone: üres és kitöltött határidő dátummező továbbra is egységes magasságú és a natív rendszer dátumválasztója nyíljon.
+4. Ellenőrzés: minden más űrlap és kézi szinkron változatlan.
+
+
+## v1.8.5 célzott tesztek
+1. Friss JSON-mentés készítése mindkét készüléken.
+2. Kiadásfrissítés és GitHub Safety & Release Check ellenőrzése.
+3. Windows/asztali böngésző: Határidők → Új rekord → natív naptárválasztó megnyitása és dátum mentése.
+4. iPhone és iPad: kézi szinkron egymás után, majd rekordegyezés.
+5. Üres változásokkal ismételt kézi szinkron – ne keletkezzen felesleges új pillanatkép.
+6. Hálózati bontást és versenyhelyzetet éles adatokon ne kényszeríts ki.
