@@ -127,3 +127,10 @@ Valódi iPadOS Safari ellenőrzés szükséges: üres állapot, dátumválasztá
 
 ## v1.7.7 – ellenőrzött kiadás
 Korábbi v1.7.6 ZIP hibája: az index.html fejléc és title v1.7.5-öt mutatott, bár a service worker verziószáma v1.7.6 volt. Most minden élő verziójelző v1.7.7. A dátummező v1.7.6-os megjelenítése megmaradt. A Google Drive és az adatséma nem változott.
+
+
+## v1.8.0 BÉTA – Reliable Sync I
+
+A Drive GET olvasások átmeneti hálózati hibánál vagy HTTP 429/500/502/503/504 esetén korlátozottan (legfeljebb összesen három próbálkozással) ismétlődnek, 350/900 ms várakozással. A tokenlejárat és az offline állapot külön hiba marad. **POST feltöltés automatikus ismétlése tilos**, mert a szerver már létrehozhatta a pillanatképet. Ilyenkor az alkalmazás a helyi adatokat megtartja, és következő kézi szinkronban ellenőrizhető a Drive előzmény.
+
+A kiadás **nem** oldja meg atomi módon az egyidejű feltöltéseket, ezért az automatikus szinkron továbbra is le van tiltva. Ez egy konzervatív, első Reliable Sync részkiadás, nem a teljes v1.8-as cél lezárása.
