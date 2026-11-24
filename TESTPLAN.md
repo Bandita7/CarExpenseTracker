@@ -105,13 +105,22 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 - Futtasd a GitHub Actions Safety & Release Check-et, `.github` módosítás nem szükséges.
 
 
-## v1.8.9 – Összevont teszt
-1. Külön JSON export mindkét készüléken, v1.8.9 frissítés, GitHub Actions zöld.
+## v1.9.0 – Összevont teszt
+1. Külön JSON export mindkét készüléken, v1.9.0 frissítés, GitHub Actions zöld.
 2. iPad: módosíts egy teszthatáridőt, kézi szinkron; iPhone: utána kézi szinkron. Ellenőrizd az adatokat.
 3. Egy újabb szinkron módosítás nélkül: ellenőrizd az időt és a GET/gyorsítótár értékeket.
 4. Egyetlen készüléken: az üzenet ne jelenítsen meg rendszámot, rekordadatot vagy tokent.
 5. Ne indíts valóban egyidejű feltöltést éles adatokkal; nincs tranzakciószintű zárolás.
 
 
-## v1.8.9 BÉTA – Ellenőrzött, tartós gyorsítótár
+## v1.9.0 BÉTA – Ellenőrzött, tartós gyorsítótár
 1. Első szinkron (hideg cache): várhatóan a korábbihoz hasonló idő. 2. Második, változatlan szinkron: a GET és a média letöltésszám várhatóan jelentősen csökken. 3. iPad módosítás → iPhone szinkron: friss fájl letöltése és helyes merge. 4. Újraindítás után ellenőrizzük a gyorsítótár megmaradását. 5. Hibás/módosult/MD5 nélküli fájl nem használhatja a korábbi gyorsítótárat. Minden teszt előtt készíts külön JSON mentést.
+
+
+## v1.9.0 – célzott próbák
+- Két eszköz eltérő rekordokat módosít, egymás után szinkronizál: mindkét változás megmarad.
+- Két felhőág ütközés nélkül: új közös, több szülős pillanatkép keletkezhet.
+- Ugyanazon rekord két eltérő módosítása, illetve törlés–módosítás: felhasználói döntés kell.
+- Feltöltés közben újabb harmadik ág: biztonsági leállítás; nincs végtelen feltöltési ciklus.
+- Tartós cache sebessége továbbra is ellenőrzendő.
+- Valódi egyidejű tesztet csak tesztadatokkal és mindkét eszközön külön JSON-mentéssel végezz.

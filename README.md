@@ -185,12 +185,16 @@ A 70 mp-es kézi szinkron egyik valószínű oka, hogy az előzmények összes f
 A felhőben létrejövő párhuzamos ágak atomi kezelése továbbra sem garantált. Auto-sync továbbra is tiltott.
 
 
-## v1.8.9 BÉTA – Reliable Sync VII
+## v1.9.0 BÉTA – Reliable Sync VII
 - A felhőállapot aláírása most minden ismert Drive-pillanatkép-azonosítóhoz a `modifiedTime` és `size` metaadatot is hozzárendeli. Így a már meglévő fájl módosítását is észlelheti a szinkron véglegesítése előtt.
 - A szinkron alatt elkülönülő GET-kérésszám, olvasási újrapróbálás, média-letöltés, gyorsítótár-találat és szakaszidők láthatók. Az adatrekordok és a Google OAuth-token nem kerülnek naplózásra.
 - Nem változik az adatséma, az OAuth-folyamat vagy a szinkron pillanatkép formátuma. Az automatikus szinkron kikapcsolva marad.
 - Korlát: két független eszköz tökéletesen egyidejű Drive-feltöltése továbbra sem atomi, a feltöltések új felhőágat hozhatnak létre.
 
 
-## v1.8.9 BÉTA – Ellenőrzött, tartós gyorsítótár
+## v1.9.0 BÉTA – Ellenőrzött, tartós gyorsítótár
 A Google Drive-fájlok minden szinkron előtt újra listázódnak. A már ellenőrzött történeti fájlok tartalma az IndexedDB-ben opcionális gyorsítótárba kerül, és csak azonos Drive ID + módosítási idő + méret + MD5 mellett használható újra. Ha az MD5 hiányzik, új letöltés történik. A hibás vagy tele tárhely nem gátolja az adatok szinkronizálását. A szinkron biztonsági ellenőrzései és a kézi üzemmód megmaradnak. A gyorsítótár nem szerepel a JSON exportban.
+
+
+## v1.9.0 BÉTA – Reliable Sync IX
+Feltöltés után észlelt párhuzamos Drive-felhőágak esetén az alkalmazás egyszer megkísérli az ütközésmentes egyesítést és egy változatlan előzményeket megőrző új, több szülős pillanatképet hoz létre. Azonos rekord eltérő módosításakor / törlés-módosításkor megáll, a helyi adatok változatlanok. Újabb versenyhelyzet esetén nem ismételgeti korlátlanul a feltöltést. A Drive nem támogat itt tranzakciós compare-and-swap-t; teljes egyidejűségi garancia nincs. Auto-sync tiltva.
