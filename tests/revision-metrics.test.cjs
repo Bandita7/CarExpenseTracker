@@ -3,7 +3,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const h=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
 test('A felhő aláírása az összes fájl metaadatát is tartalmazza',()=>{
  const src=h.slice(h.indexOf('async function syncLoadHistory('),h.indexOf('function syncMergeCloudHeads('));
- assert.match(src,/files\.map\(f=>\[f\.id,f\.modifiedTime\?\?null,f\.size\?\?null\]\)/);
+ assert.match(src,/files\.map\(f=>\[f\.id,f\.modifiedTime\?\?null,f\.size\?\?null,f\.md5Checksum\?\?null\]\)/);
  assert.match(src,/JSON\.stringify\(\{heads:heads\.map\(h=>h\.id\),files:revisionSignature\}\)/);
 });
 test('A szinkron preflight és végső vizsgálata a kibővített aláírást veti össze',()=>{

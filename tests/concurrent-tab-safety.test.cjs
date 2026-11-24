@@ -33,6 +33,7 @@ function coreHarness(changed){
   structuredClone,Error,Promise,console,driveBusy:false,syncStage:'teszt',data:clean,vehicle:'',autoSyncTimer:null,syncPending:null,syncDecisions:{},SYNC_KEYS:['vehicles','fuel','services','master','tyres','cycles','expenses','fuelTypes','maintenanceOverrides','deadlines'],
   $:()=>null,driveButtons:()=>{},syncStep:()=>{},syncNotice:m=>messages.push(m),syncList:async()=>[],
   syncLoadHistory:async()=>{historyReads++;return changed&&historyReads===3?{...history,signature:'head-2'}:history},
+  syncVerifiedMediaRead:async()=>new Map(),syncVerifiedMediaWrite:async()=>{},
   syncBaseRead:async()=>same,validateBackup:x=>x,syncCompare:(a,b)=>JSON.stringify(a)===JSON.stringify(b),
   syncSameRecords:(a,b)=>JSON.stringify(a)===JSON.stringify(b),syncRows:(x,k)=>x[k]||[],
   syncMerge:()=>({result:clean,conflicts:[],counts:{local:0,remote:0}}),
