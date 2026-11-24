@@ -226,3 +226,9 @@ Az Adatkezelésben külön aktiválható automatikus felhőelőzmény-ellenőrz�
 - Az alkalmazás tetején tartós értesítés jelenik meg, ha a korábbi sikeres szinkronalaphoz képest a felhőben eltérő rekordállapot van. Párhuzamos ágak, ismeretlen/eltérő szinkronalap és első szinkron esetén külön üzenet.
 - Hiba esetén nem törli a korábbi figyelmeztetést. Sikeres kézi szinkron vagy Google-kijelentkezés törli.
 - Nincs automatikus Drive-feltöltés, engedélykérés, rekordmódosítás vagy új adatmodell. A Google Drive tranzakcionális zárolása továbbra sem biztosított.
+
+
+## v1.9.6 BÉTA – egygombos szinkron a felhőváltozás-jelzésből
+- Új felhőadat / párhuzamos ág: a felső értesítésben **Szinkronizálás most**. A gomb az Adatkezelés oldalra navigál, majd a meglévő, egygombos kézi szinkront indítja (lejárt token esetén a szokásos Google-csatlakozással). A biztonsági JSON-figyelmeztetés, ütközéskezelés és jóváhagyás megmarad.
+- Eltérő helyi alap / első szinkron: **Adatkezelés megnyitása** – nincs közvetlen szinkronindítás.
+- Sem az értesítés, sem a háttérbeli felhőellenőrzés nem indít automatikus feltöltést vagy bejelentkezést. Az automatikus szinkron tiltott.

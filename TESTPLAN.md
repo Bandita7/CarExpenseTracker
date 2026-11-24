@@ -167,3 +167,11 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. A jelzés NEM módosíthatja az iPhone rekordjait; kézi szinkron után jelenjen meg a tesztrekord és tűnjön el a jelzés.
 5. Lejárt token mellett nem nyílhat automatikusan Google engedélykérő. Offline esetben sem módosulhatnak rekordok.
 6. Ellenőrizd, hogy az iPad/iPhone egymás utáni kézi szinkronja továbbra is működik.
+
+
+## v1.9.6 kézi ellenőrzés
+1. Mindkét eszközön készíts JSON-mentést, v1.9.6 telepítés és Actions zöld.
+2. Egyik készüléken új tesztrekord + kézi szinkron. Másik készüléken a felhőellenőrzés jelzése után a banner Szinkronizálás most gombjára kattints. Ellenőrizd, hogy az Adatkezelésre visz, majd a szokásos JSON-figyelmeztetés / Google-csatlakozás után szinkronizál.
+3. Sikeres szinkron után a banner eltűnik, a rekord átkerült.
+4. Ellenőrizd, hogy az Adatkezelés saját Szinkronizálás most gombja tovább működik; lejárt Google-token esetén sem indul automatikus OAuth-folyamat a háttérből.
+5. Ha csak figyelmeztetés / első szinkron állapot látszik, a felső gomb kizárólag az Adatkezelést nyithatja meg.
