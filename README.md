@@ -202,3 +202,10 @@ Feltöltés után észlelt párhuzamos Drive-felhőágak esetén az alkalmazás 
 
 ## v1.9.1 BÉTA – Közös ősök biztonságos kezelése
 A több egymással nem összehasonlítható közös ős nem blokkol minden esetet. Azonos szinkronrekordoknál az egyik bázis egyenértékű. Eltérő rekordsorozatoknál a közös gyökér konzervatív összevetési alap; az eltérő közös-ős rekordoknál a végpontok eltérését kötelező felhasználói konfliktusként kérjük feloldani. A többi független módosítás háromutas egyesítéssel kezelhető. Több mint két aktuális felhővégpont ilyen konfliktusánál biztonsági leállás. A Google Drive korábbi pillanatképei megmaradnak.
+
+
+## v1.9.2 BÉTA – Reliable Sync stabilizáció
+- A választható, helyi IndexedDB pillanatkép-cache váratlan olvasási hibája esetén a szinkron továbbra is végrehajtható friss felhőellenőrzéssel. A UI zárolása minden esetben felszabadul.
+- Új, futtatható hiba-/ütközés-/helyreállítási regressziós tesztek, amelyek a tényleges függvényeket futtatják szimulált Drive- és IndexedDB-hibákkal.
+- Szerveroldali atomi CAS hiányában a két eszköz szándékosan egyidejű feltöltésének biztonsága továbbra sem garantált. Automatikus szinkron változatlanul tiltva.
+- A Drive-fájlformátum, a helyi adatmodell és a `.github/workflows/safety-check.yml` változatlan.

@@ -132,3 +132,12 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 3. Először csak az egyik eszközön kézi szinkron, felhőágak megjelenésekor a feloldás ellenőrzése.
 4. Csak siker után második eszköz szinkronja. Ellenőrizni mindkét tesztrekordot.
 5. Egyidejű szinkron továbbra se induljon, és auto-sync letiltva maradjon.
+
+
+## v1.9.2 – stabilizációs kézi próba
+1. Külön JSON biztonsági mentés iPaden és iPhone-on, v1.9.2 telepítése mindkét eszközre.
+2. Módosítás nélküli szinkron az első eszközön, teljes befejezés után a másodikon. Ellenőrizd a gyorsítótár miatti sebességet.
+3. Egyik eszközön új tesztrekord, másikon eltérő tesztrekord; a két szinkron egymás után. Mindkét rekord legyen mindkét eszközön.
+4. Megszakított Drive-kapcsolatot csak tesztadatokkal próbálj, ne a tényleges feltöltés pillanatában. Hiba után a szinkrongomb újra használható legyen; helyi rekord ne tűnjön el.
+5. Ugyanazon tesztrekord két változata, illetve törlés–módosítás ütközés: ne történjen csendes felülírás; csak érthető felhasználói választás.
+6. A GitHub Actions zöld; automatikus szinkron marad kikapcsolva.
