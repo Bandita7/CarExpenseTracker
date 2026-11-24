@@ -220,3 +220,9 @@ A több egymással nem összehasonlítható közös ős nem blokkol minden esete
 
 ## v1.9.4 BÉTA – Előtérbeli, csak olvasó felhőellenőrzés
 Az Adatkezelésben külön aktiválható automatikus felhőelőzmény-ellenőrzés, ha az alkalmazás láthatóvá válik. Legfeljebb ötpercenként próbálkozik, aktív token és internet kell hozzá. Nem indít feltöltést, helyi rekordcserét vagy automatikus Google-engedélyezést. Az automatikus kétirányú szinkron továbbra is tiltott.
+
+## v1.9.5 BÉTA – Felhőváltozás-jelzés
+- Opt-in előtéri csak olvasó Drive-előzmény-ellenőrzés továbbra is minimum ötpercenként.
+- Az alkalmazás tetején tartós értesítés jelenik meg, ha a korábbi sikeres szinkronalaphoz képest a felhőben eltérő rekordállapot van. Párhuzamos ágak, ismeretlen/eltérő szinkronalap és első szinkron esetén külön üzenet.
+- Hiba esetén nem törli a korábbi figyelmeztetést. Sikeres kézi szinkron vagy Google-kijelentkezés törli.
+- Nincs automatikus Drive-feltöltés, engedélykérés, rekordmódosítás vagy új adatmodell. A Google Drive tranzakcionális zárolása továbbra sem biztosított.

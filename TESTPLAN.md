@@ -159,3 +159,11 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. Ismételd meg öt percen belül: ne fusson újra.
 5. Google-token nélkül vagy offline ne jelenjen meg OAuth ablak, és ne induljon felhőművelet.
 6. Kikapcsolva ne induljon automatikus vizsgálat, a kézi szinkron változatlan maradjon.
+
+## v1.9.5 – Eszközös teszt
+1. JSON-mentés mindkét eszközön, majd frissítés. `.github` mappa változatlan.
+2. Kapcsold be a csak olvasó előtéri felhőfigyelést mindkét eszközön, érvényes Google-kapcsolattal.
+3. iPaden hozz létre egy tesztrekordot és kézzel szinkronizáld. iPhone-on öt perc elteltével vagy újbóli előtérbe hozáskor ellenőrizd az alkalmazás tetején az új felhőváltozás-jelzést.
+4. A jelzés NEM módosíthatja az iPhone rekordjait; kézi szinkron után jelenjen meg a tesztrekord és tűnjön el a jelzés.
+5. Lejárt token mellett nem nyílhat automatikusan Google engedélykérő. Offline esetben sem módosulhatnak rekordok.
+6. Ellenőrizd, hogy az iPad/iPhone egymás utáni kézi szinkronja továbbra is működik.
