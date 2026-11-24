@@ -175,3 +175,12 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 3. Sikeres szinkron után a banner eltűnik, a rekord átkerült.
 4. Ellenőrizd, hogy az Adatkezelés saját Szinkronizálás most gombja tovább működik; lejárt Google-token esetén sem indul automatikus OAuth-folyamat a háttérből.
 5. Ha csak figyelmeztetés / első szinkron állapot látszik, a felső gomb kizárólag az Adatkezelést nyithatja meg.
+
+
+## v1.9.7 BÉTA – kézi teszt
+1. JSON-mentés mindkét eszközön. GitHub Actions legyen zöld.
+2. Beállítások → Adatkezelés → Felhőelőzmény ellenőrzése (csak olvasás). Látható a helyi és felhőállapot-áttekintés.
+3. Helyi tesztrekord létrehozása után újabb csak olvasó ellenőrzés: pozitív módosított adatkategóriaszám, feltöltés nélkül.
+4. Kézi szinkron iPad, utána iPhone; adatok megmaradnak.
+5. Sikeres kézi szinkron után ismételt csak olvasó ellenőrzés: 0 helyi módosított kategória.
+6. Diagnosztika másolása: nincs benne rendszám, járműadat, Drive ID vagy token.

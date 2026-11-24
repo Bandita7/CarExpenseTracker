@@ -232,3 +232,7 @@ Az Adatkezelésben külön aktiválható automatikus felhőelőzmény-ellenőrz�
 - Új felhőadat / párhuzamos ág: a felső értesítésben **Szinkronizálás most**. A gomb az Adatkezelés oldalra navigál, majd a meglévő, egygombos kézi szinkront indítja (lejárt token esetén a szokásos Google-csatlakozással). A biztonsági JSON-figyelmeztetés, ütközéskezelés és jóváhagyás megmarad.
 - Eltérő helyi alap / első szinkron: **Adatkezelés megnyitása** – nincs közvetlen szinkronindítás.
 - Sem az értesítés, sem a háttérbeli felhőellenőrzés nem indít automatikus feltöltést vagy bejelentkezést. Az automatikus szinkron tiltott.
+
+
+## v1.9.7 BÉTA – Smart Sync állapotáttekintés
+A csak olvasó felhőellenőrzés után külön megjelenik a helyi, utolsó szinkron óta módosult adatkategóriák száma, a távoli felhőállapot és a felhőágak száma. A másolható diagnosztika csak ezeket az összesítő értékeket tartalmazza, nem tartalmaz járműadatokat vagy rekordazonosítókat. A funkció nem indít automatikus szinkront, OAuth-ot vagy feltöltést.
