@@ -124,3 +124,11 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 - Feltöltés közben újabb harmadik ág: biztonsági leállítás; nincs végtelen feltöltési ciklus.
 - Tartós cache sebessége továbbra is ellenőrzendő.
 - Valódi egyidejű tesztet csak tesztadatokkal és mindkét eszközön külön JSON-mentéssel végezz.
+
+
+## v1.9.1 kézi tesztek
+1. iPaden és iPhone-on külön JSON-export ellenőrzése.
+2. Javított verzió feltelepítése mindkét eszközre.
+3. Először csak az egyik eszközön kézi szinkron, felhőágak megjelenésekor a feloldás ellenőrzése.
+4. Csak siker után második eszköz szinkronja. Ellenőrizni mindkét tesztrekordot.
+5. Egyidejű szinkron továbbra se induljon, és auto-sync letiltva maradjon.

@@ -198,3 +198,7 @@ A Google Drive-fájlok minden szinkron előtt újra listázódnak. A már ellen�
 
 ## v1.9.0 BÉTA – Reliable Sync IX
 Feltöltés után észlelt párhuzamos Drive-felhőágak esetén az alkalmazás egyszer megkísérli az ütközésmentes egyesítést és egy változatlan előzményeket megőrző új, több szülős pillanatképet hoz létre. Azonos rekord eltérő módosításakor / törlés-módosításkor megáll, a helyi adatok változatlanok. Újabb versenyhelyzet esetén nem ismételgeti korlátlanul a feltöltést. A Drive nem támogat itt tranzakciós compare-and-swap-t; teljes egyidejűségi garancia nincs. Auto-sync tiltva.
+
+
+## v1.9.1 BÉTA – Közös ősök biztonságos kezelése
+A több egymással nem összehasonlítható közös ős nem blokkol minden esetet. Azonos szinkronrekordoknál az egyik bázis egyenértékű. Eltérő rekordsorozatoknál a közös gyökér konzervatív összevetési alap; az eltérő közös-ős rekordoknál a végpontok eltérését kötelező felhasználói konfliktusként kérjük feloldani. A többi független módosítás háromutas egyesítéssel kezelhető. Több mint két aktuális felhővégpont ilyen konfliktusánál biztonsági leállás. A Google Drive korábbi pillanatképei megmaradnak.
