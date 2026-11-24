@@ -150,3 +150,12 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. Diagnosztika másolása: az eredmény tartalmazza az időt és az ágak számát, de ne tartalmazzon rendszámot, autónevet, Google azonosítót vagy tokenadatot.
 5. Egy normál kézi szinkron mindkét eszközön, majd ismételt gyors szinkron.
 6. Két külön jármű eltérő rekordjait egymás utáni szinkronok egyesítsék. A szándékos párhuzamos feltöltést éles adatokkal ne teszteld.
+
+
+## v1.9.4 célzott teszt
+1. A szinkron sikeres kézi ellenőrzése után kapcsold be a külön 'Felhőellenőrzés automatikusan' opciót.
+2. Válts másik alkalmazásra, majd térj vissza. Érvényes Google-token és online állapot mellett ellenőrizd a csak olvasó eredményt.
+3. A vizsgálat NEM hozhat létre Drive-pillanatképet és NEM változtathatja a helyi járműrekordokat.
+4. Ismételd meg öt percen belül: ne fusson újra.
+5. Google-token nélkül vagy offline ne jelenjen meg OAuth ablak, és ne induljon felhőművelet.
+6. Kikapcsolva ne induljon automatikus vizsgálat, a kézi szinkron változatlan maradjon.

@@ -216,3 +216,7 @@ A több egymással nem összehasonlítható közös ős nem blokkol minden esete
 - Eredmény a Beállítások → Adatkezelés oldalon jelenik meg; a művelet nem végez Drive POST-ot és nem írja át a helyi rekordokat.
 - Diagnosztikai összefoglaló másolása: csak szinkronidők, kérésstatisztikák és állapot, személyes autóadatok nélkül.
 - A kézi egyesítés, az MD5-ellenőrzött tartós gyorsítótár és az automatikus szinkron tiltása változatlan.
+
+
+## v1.9.4 BÉTA – Előtérbeli, csak olvasó felhőellenőrzés
+Az Adatkezelésben külön aktiválható automatikus felhőelőzmény-ellenőrzés, ha az alkalmazás láthatóvá válik. Legfeljebb ötpercenként próbálkozik, aktív token és internet kell hozzá. Nem indít feltöltést, helyi rekordcserét vagy automatikus Google-engedélyezést. Az automatikus kétirányú szinkron továbbra is tiltott.
