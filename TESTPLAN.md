@@ -103,3 +103,11 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 - Másik készüléken hozott teszthatáridő szinkron után látszódjon; törlés is maradjon törölve.
 - A v1.8.6-os PC-s dátumválasztó és iOS-megjelenítés maradjon jó.
 - Futtasd a GitHub Actions Safety & Release Check-et, `.github` módosítás nem szükséges.
+
+
+## v1.8.8 – Összevont teszt
+1. Külön JSON export mindkét készüléken, v1.8.8 frissítés, GitHub Actions zöld.
+2. iPad: módosíts egy teszthatáridőt, kézi szinkron; iPhone: utána kézi szinkron. Ellenőrizd az adatokat.
+3. Egy újabb szinkron módosítás nélkül: ellenőrizd az időt és a GET/gyorsítótár értékeket.
+4. Egyetlen készüléken: az üzenet ne jelenítsen meg rendszámot, rekordadatot vagy tokent.
+5. Ne indíts valóban egyidejű feltöltést éles adatokkal; nincs tranzakciószintű zárolás.

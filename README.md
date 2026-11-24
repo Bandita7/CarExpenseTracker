@@ -183,3 +183,10 @@ A PC-s Határidők dátummező a Tankolások és Szerviz natív HTML date mezőj
 ## v1.8.7 BÉTA – Reliable Sync VI: gyorsított, ellenőrzött előzményolvasás
 A 70 mp-es kézi szinkron egyik valószínű oka, hogy az előzmények összes fájlját minden szinkronfázis újra letöltötte. Most a műveleten belül az azonos ID-val, módosítási idővel és mérettel listázott, korábban beolvasott JSON ismételt letöltése elmarad. A Drive fájllistáját minden biztonsági ellenőrzéskor frissen kérjük, és a korábban nem látott vagy változott fájlt visszaolvassuk. A frissen feltöltött fájl önálló tartalmi visszaellenőrzése nem marad el. A késleltetett ellenőrzést és a 1,2 mp-es várakozást megtartjuk, mert másik eszköz új felhőágát csak így van esélyünk észlelni. A szinkron időtartama az adatkezelési panelen megjelenik. A tényleges gyorsulás Drive- és eszközfüggő; nincs garantált idő.
 A felhőben létrejövő párhuzamos ágak atomi kezelése továbbra sem garantált. Auto-sync továbbra is tiltott.
+
+
+## v1.8.8 BÉTA – Reliable Sync VII
+- A felhőállapot aláírása most minden ismert Drive-pillanatkép-azonosítóhoz a `modifiedTime` és `size` metaadatot is hozzárendeli. Így a már meglévő fájl módosítását is észlelheti a szinkron véglegesítése előtt.
+- A szinkron alatt elkülönülő GET-kérésszám, olvasási újrapróbálás, média-letöltés, gyorsítótár-találat és szakaszidők láthatók. Az adatrekordok és a Google OAuth-token nem kerülnek naplózásra.
+- Nem változik az adatséma, az OAuth-folyamat vagy a szinkron pillanatkép formátuma. Az automatikus szinkron kikapcsolva marad.
+- Korlát: két független eszköz tökéletesen egyidejű Drive-feltöltése továbbra sem atomi, a feltöltések új felhőágat hozhatnak létre.

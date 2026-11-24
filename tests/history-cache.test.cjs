@@ -12,3 +12,13 @@ test('Új felhőágat újra letölt és észlel',async()=>{const h=harness({a:pa
 test('Azonos fájl-azonosító eltérő módosítási idővel újra letöltendő',async()=>{const h=harness({a:payload()});const c=new Map();await h.load([meta('a')],c);await h.load([meta('a','2026-11-23T19:00:00Z')],c);assert.equal(h.reads(),2)});
 test('Hiányzó módosítási idő vagy méret esetén nincsen gyorsítótárazás',async()=>{const h=harness({a:payload()});const c=new Map();const m=meta('a');delete m.size;await h.load([m],c);await h.load([m],c);assert.equal(h.reads(),2)});
 test('Felhőfájl törlése esetén az előzményhiány biztonságosan megállítja a szinkront',async()=>{const h=harness({a:payload(),b:payload(['a'],'b')});const c=new Map();await h.load([meta('a'),meta('b')],c);await assert.rejects(h.load([meta('b')],c),/Hiányos felhőelőzmény/)});
+test('Felhő-revízió aláírása megváltozik, ha egy létező fájl módosítási ideje vagy mérete változik',async()=>{
+ const h=harness({a:payload(),b:payload(['a'],'b')});const c=new Map();
+ const first=await h.load([meta('a'),meta('b')],c);
+ const changed=await h.load([meta('a','2026-11-23T20:00:00Z'),meta('b')],c);
+ assert.notEqual(first.signature,changed.signature);
+ const unchanged=await h.load([meta('a','2026-11-23T20:00:00Z'),meta('b')],c);
+ assert.equal(changed.signature,unchanged.signature);
+ const resized=await h.load([meta('a','2026-11-23T20:00:00Z','555'),meta('b')],c);
+ assert.notEqual(unchanged.signature,resized.signature);
+});
