@@ -209,3 +209,10 @@ A több egymással nem összehasonlítható közös ős nem blokkol minden esete
 - Új, futtatható hiba-/ütközés-/helyreállítási regressziós tesztek, amelyek a tényleges függvényeket futtatják szimulált Drive- és IndexedDB-hibákkal.
 - Szerveroldali atomi CAS hiányában a két eszköz szándékosan egyidejű feltöltésének biztonsága továbbra sem garantált. Automatikus szinkron változatlanul tiltva.
 - A Drive-fájlformátum, a helyi adatmodell és a `.github/workflows/safety-check.yml` változatlan.
+
+
+## v1.9.3 BÉTA – Felhőelőzmény ellenőrzése és biztonságos diagnosztika
+- Új csak olvasó felhőellenőrzés: teljes DAG-validáció, felhőágak száma, helyi közös szinkronalap ellenőrzése.
+- Eredmény a Beállítások → Adatkezelés oldalon jelenik meg; a művelet nem végez Drive POST-ot és nem írja át a helyi rekordokat.
+- Diagnosztikai összefoglaló másolása: csak szinkronidők, kérésstatisztikák és állapot, személyes autóadatok nélkül.
+- A kézi egyesítés, az MD5-ellenőrzött tartós gyorsítótár és az automatikus szinkron tiltása változatlan.

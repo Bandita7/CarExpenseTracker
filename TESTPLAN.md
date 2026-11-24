@@ -141,3 +141,12 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. Megszakított Drive-kapcsolatot csak tesztadatokkal próbálj, ne a tényleges feltöltés pillanatában. Hiba után a szinkrongomb újra használható legyen; helyi rekord ne tűnjön el.
 5. Ugyanazon tesztrekord két változata, illetve törlés–módosítás ütközés: ne történjen csendes felülírás; csak érthető felhasználói választás.
 6. A GitHub Actions zöld; automatikus szinkron marad kikapcsolva.
+
+
+## v1.9.3 – Kibővített kézi teszt
+1. JSON-mentés iPaden és iPhone-on, új verzió ellenőrzése.
+2. Google-csatlakozás, majd a Felhőelőzmény ellenőrzése (csak olvasás) gomb: a pillanatképszám, az ágak száma és a helyi alap állapota megjelenik.
+3. Ellenőrizd, hogy a felhőellenőrzés NEM készít új felhőpillanatképet és nem módosítja a helyi rekordokat.
+4. Diagnosztika másolása: az eredmény tartalmazza az időt és az ágak számát, de ne tartalmazzon rendszámot, autónevet, Google azonosítót vagy tokenadatot.
+5. Egy normál kézi szinkron mindkét eszközön, majd ismételt gyors szinkron.
+6. Két külön jármű eltérő rekordjait egymás utáni szinkronok egyesítsék. A szándékos párhuzamos feltöltést éles adatokkal ne teszteld.

@@ -1,0 +1,10 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),test=require('node:test'),assert=require('node:assert/strict');
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+const section=html.split('async function syncReadOnlyHealth(){')[1].split('async function syncDiagnostic(){')[0];
+test('Read-only health UI has a dedicated active control',()=>{assert.match(html,/id="sync-health"/);assert.match(html,/id="sync-health-result"/);assert.match(html,/health\.onclick=syncReadOnlyHealth/)});
+test('Health uses verified graph loader and fresh listing',()=>{assert.match(section,/await syncList\(\)/);assert.match(section,/await syncLoadHistory\(files,cached\)/);assert.match(section,/history\.heads\.length/)});
+test('Health does not upload or replace any local records',()=>{for(const bad of ['syncUpload(', 'syncCommitLocal(', 'syncMerge(', 'driveSave(', 'driveRestore('])assert.ok(!section.includes(bad),bad)});
+test('Health runs under busy guard and always releases UI',()=>{assert.match(section,/if\(driveBusy\)return/);assert.match(section,/finally\{driveBusy=false;driveButtons\(\)\}/)});
+test('Reports avoid token, record and file IDs',()=>{const copy=html.split('function syncSafeReportLine(')[1].split('async function syncReadOnlyHealth(){')[0];assert.ok(!copy.includes('driveToken'));assert.match(html,/lastSafeSyncReport=syncSafeReportLine/);assert.match(html,/id="sync-copy-report"/)});
+test('Automatic background synchronization remains unavailable',()=>{assert.match(html,/function autoSyncEnabled\(\)\{return false\}/)});
