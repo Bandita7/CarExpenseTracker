@@ -184,3 +184,14 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. Kézi szinkron iPad, utána iPhone; adatok megmaradnak.
 5. Sikeres kézi szinkron után ismételt csak olvasó ellenőrzés: 0 helyi módosított kategória.
 6. Diagnosztika másolása: nincs benne rendszám, járműadat, Drive ID vagy token.
+
+
+## v1.9.8 célzott ellenőrzés
+
+1. Készíts friss, külön megőrzött JSON-mentést mindkét eszközön.
+2. GitHub Actions: Safety & Release Check zöld.
+3. Adatkezelés → Helyi állapotellenőrzés (csak olvasás): helyi adatállomány szerkezete, hibák/figyelmeztetések száma és szinkronalap látható.
+4. Kapcsolat nélküli módban is lehessen futtatni, és ne induljon Drive-kérés.
+5. Új rekord mentése után az ellenőrzés ismét lefut; a rekord nem változik, nem tűnik el.
+6. iPad majd iPhone kézi szinkron, ellenőrzés és diagnosztika a korábbi módon.
+7. Éles adatokon ne kezdeményezz egyszerre feltöltést több eszközről.

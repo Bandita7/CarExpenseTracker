@@ -236,3 +236,10 @@ Az Adatkezelésben külön aktiválható automatikus felhőelőzmény-ellenőrz�
 
 ## v1.9.7 BÉTA – Smart Sync állapotáttekintés
 A csak olvasó felhőellenőrzés után külön megjelenik a helyi, utolsó szinkron óta módosult adatkategóriák száma, a távoli felhőállapot és a felhőágak száma. A másolható diagnosztika csak ezeket az összesítő értékeket tartalmazza, nem tartalmaz járműadatokat vagy rekordazonosítókat. A funkció nem indít automatikus szinkront, OAuth-ot vagy feltöltést.
+
+
+## v1.9.8 BÉTA – V2.0 előtti helyi ellenőrzés
+
+Az Adatkezelés oldal új **Helyi állapotellenőrzés (csak olvasás)** gombja frissen olvassa az IndexedDB-ben elmentett adatállományt. A korábbi ellenőrző szerkezeti hibáit/figyelmeztetéseit darabszámként mutatja, ellenőrzi a szinkronalap adatszerkezetét, és ha elérhető, megjeleníti a böngésző teljes webhelyhez tartozó becsült tárhely-kihasználtságát. Nem módosít adatot, nem indít Drive-kérést vagy szinkront, és nem helyettesíti a külön JSON-mentést.
+
+A szinkronprotokoll, az automatikus szinkron tiltása és a tartós gyorsítótár változatlan.
