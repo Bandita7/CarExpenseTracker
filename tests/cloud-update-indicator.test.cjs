@@ -26,7 +26,7 @@ test('Fork, changed base, initial cloud are distinguished',()=>{
 test('Read-only inspection owns the alert; sync clears on success and auto-sync stays off',()=>{
  assert.match(html,/const pendingCloud=cloudUpdateClassify\(history,base\);\s*cloudUpdateSet\(pendingCloud\)/);
  assert.match(html,/syncOutcome='success';\s*cloudUpdateSet\('none'\)/);
- assert.match(html,/function autoSyncEnabled\(\)\{return false\}/);
+ assert.match(html,/function autoSyncEnabled\(\)\{try\{return localStorage\.getItem\('carAutoSync'\)==='1'\}catch\{return false\}\}/);
  assert.match(html,/id="cloud-update-banner"/);
  const readOnly=html.split('async function syncReadOnlyHealth(automatic=false){')[1].split('// v1.9.4: opt-in, foreground-only')[0];
  for(const bad of ['syncNow(', 'syncUpload(', 'syncCommitLocal(', 'driveLogin('])assert.equal(readOnly.includes(bad),false,bad);

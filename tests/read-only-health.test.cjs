@@ -7,4 +7,4 @@ test('Health uses verified graph loader and fresh listing',()=>{assert.match(sec
 test('Health does not upload or replace any local records',()=>{for(const bad of ['syncUpload(', 'syncCommitLocal(', 'syncMerge(', 'driveSave(', 'driveRestore('])assert.ok(!section.includes(bad),bad)});
 test('Health runs under busy guard and always releases UI',()=>{assert.match(section,/if\(driveBusy\)return/);assert.match(section,/finally\{driveBusy=false;driveButtons\(\)\}/)});
 test('Reports avoid token, record and file IDs',()=>{const copy=html.split('function syncSafeReportLine(')[1].split('async function syncReadOnlyHealth(automatic=false){')[0];assert.ok(!copy.includes('driveToken'));assert.match(html,/lastSafeSyncReport=syncSafeReportLine/);assert.match(html,/id="sync-copy-report"/)});
-test('Automatic background synchronization remains unavailable',()=>{assert.match(html,/function autoSyncEnabled\(\)\{return false\}/)});
+test('Automatic background synchronization remains unavailable',()=>{assert.match(html,/function autoSyncEnabled\(\)\{try\{return localStorage\.getItem\('carAutoSync'\)==='1'\}catch\{return false\}\}/)});

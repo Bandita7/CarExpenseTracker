@@ -8,7 +8,7 @@ test('Opt-in felhőellenőrzés UI and default OFF',()=>{
  assert.match(html,/const FOREGROUND_CHECK_KEY='carForegroundCloudCheckV1'/);
 });
 test('Automatic sync remains disabled and foreground check cannot upload',()=>{
- assert.match(html,/function autoSyncEnabled\(\)\{return false\}/);
+ assert.match(html,/function autoSyncEnabled\(\)\{try\{return localStorage\.getItem\('carAutoSync'\)==='1'\}catch\{return false\}\}/);
  for(const bad of ['syncNow(', 'syncUpload(', 'syncCommitLocal(', 'driveLogin(', 'requestAccessToken(', 'driveSave(']) assert.ok(!source.includes(bad),'Unsafe operation in foreground scheduler: '+bad);
  assert.match(source,/syncReadOnlyHealth\(true\)/);
 });

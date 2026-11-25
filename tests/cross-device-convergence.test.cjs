@@ -46,5 +46,5 @@ test('új funkció kizárólag feltöltés utáni felhőág-eltérésnél aktiv�
  assert.match(main,/syncConvergeUploadedFork\(newId,after,mediaCache,local\)/);
  assert.match(main,/newId=join\.id;result=join\.result/);
  assert.match(main,/syncCommitLocal\(result,newId,local,/);
- assert.match(html,/function autoSyncEnabled\(\)\{return false\}/);
+ assert.match(html,/function autoSyncEnabled\(\)\{try\{return localStorage\.getItem\('carAutoSync'\)==='1'\}catch\{return false\}\}/);
 });

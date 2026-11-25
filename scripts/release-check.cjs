@@ -21,7 +21,7 @@ const checks=[
  ['manifest',!!manifest.name && !!manifest.icons?.length],
  ['ikon 192',fs.existsSync(path.join(root,'icons/icon-192.png'))],
  ['ikon 512',fs.existsSync(path.join(root,'icons/icon-512.png'))],
- ['automatikus szinkron tiltott',html.includes('function autoSyncEnabled(){return false}')],
+ ['automatikus szinkron csak külön engedéllyel',html.includes("function autoSyncEnabled(){try{return localStorage.getItem('carAutoSync')==='1'}catch{return false}}")&&html.includes("auto.onchange=async()=>")],
 ];
 const releaseSection=html.split('const RELEASE_NOTES=[',2)[1]?.split('];',1)[0]||'';
 const releases=[...releaseSection.matchAll(/\['(v\d+(?:\.\d+)*(?: BÉTA| RC\d+| STABLE)?)','/g)].map(m=>m[1]);

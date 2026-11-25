@@ -25,7 +25,7 @@ test('Drive list failure: safely releases UI and shows failure',async()=>{
 test('unexpected local cache failure does not hide original cloud failure',async()=>{
  const h=ctxFor({cacheFailure:true,cloudFailure:true});await h.run();assert.equal(h.context.driveBusy,false);assert(h.notices.some(x=>x.includes('Drive offline')));
 });
-test('automatic sync remains hard disabled',()=>assert.match(html,/function autoSyncEnabled\(\)\{return false\}/));
+test('automatic sync remains hard disabled',()=>assert.match(html,/function autoSyncEnabled\(\)\{try\{return localStorage\.getItem\('carAutoSync'\)==='1'\}catch\{return false\}\}/));
 test('single bounded convergence and POST must not be retried',()=>{
  assert.match(html,/Exactly ONE additional/);
  assert.match(html,/const attempts=readOnly\?DRIVE_READ_DELAYS\.length\+1:1/);

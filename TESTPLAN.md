@@ -236,3 +236,7 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 4. Készíts külön JSON-mentést minden használt eszközön.
 5. Kézi Drive-szinkronizáció iPad -> iPhone, majd vissza, egymást követően; ellenőrizd, hogy egy tesztrekord megmarad.
 6. Az automatikus feltöltés maradjon kikapcsolva.
+
+
+## v2.1.0 BÉTA – KÍSÉRLETI automatikus szinkron
+A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szinkron. Az Adatkezelésben eszközönként, Google-kapcsolat és előzetes sikeres kézi szinkron után, külön figyelmeztetés jóváhagyásával lehet bekapcsolni. Előtérbe kerüléskor kb. 3 mp, helyi mentés után kb. 20 mp késleltetés; csak online és érvényes token mellett. Automatikus újrabejelentkezést nem próbál. Konfliktus, több felhőág, hiba esetén felfüggesztés és kézi ellenőrzés. A Drive NEM ad atomi többkészülékes zárolást: ne engedélyezd egyszerre két készüléken éles adatokkal! Előbb készíts ellenőrizhető külön JSON-exportokat.
