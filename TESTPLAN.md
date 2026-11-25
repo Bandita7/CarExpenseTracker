@@ -1,3 +1,17 @@
+# v2.1 STABLE – végső telepítés utáni ellenőrzés
+
+1. GitHub Actions: Safety & Release Check zöld, verziócímke minden felületen v2.1 STABLE.
+2. Windows PC: JSON-export valódi fájlletöltése; mentés tartalma ellenőrizhető.
+3. iPhone és iPad: JSON-export és külön helyi mentések.
+4. iPad → iPhone, majd iPhone → iPad módosításátvétel, automatikus szinkron csak engedélyezett készüléken.
+5. Offline szerkesztés: feltöltetlen változás helyben megmarad, státusz figyelmeztet.
+6. Lejárt Google-token és konfliktus esetén nincs téves sikerjelzés.
+7. GitHub Pages PWA frissítés és offline olvasás; PC-s határidő-dátumválasztó.
+
+Automatikus, pontosan egyszerre indított feltöltéseket éles adatokkal nem ajánlott tesztelni.
+
+---
+
 # v2.1.3 – célzott tesztek
 
 1. Két eszköz JSON-mentése, azonos kiinduló állapot.

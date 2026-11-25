@@ -1,3 +1,13 @@
+# CarExpense Tracker v2.1 STABLE
+
+**Stabil kiadás – 2026-11-25.** A felhasználó által sikeresen tesztelt v2.1 RC2 változat kiadási jelölése. A kétirányú automatikus szinkron eszközönként külön engedélyezhető, a megbízható kézi szinkron megmarad. A PC-s JSON-export működését az RC2-ben javítottuk és ellenőriztük. Az IndexedDB-adatmodell és a szinkronmotor változatlan.
+
+**Fontos korlát:** a Google Drive nem biztosít atomi zárolást a külön eszközök pontosan egyidejű feltöltésére; ütközésnél szükség lehet kézi beavatkozásra. Külön JSON-mentések továbbra is javasoltak.
+
+**GitHub:** `.github` változatlan; a `scripts/`, `tests/`, `index.html`, `sw.js`, README és TESTPLAN frissítendő.
+
+---
+
 # CarExpense Tracker v2.1 RC1 – Auto Sync Scheduling Safety
 
 A 2.1.2 változatra épülő frissítés: ha a helyi mentéskor vagy egy előtérbe váltáskor éppen Drive-művelet fut, az automatikus szinkronigényt a rendszer később újraütemezi. A 12 másodperces minimális indítási intervallumban keletkezett kéréseket sem dobja el. Hiba, lejárt token, offline állapot vagy kézi feloldást igénylő ütközés esetén nincs automatikus végtelen újrapróbálás. A Drive-adatmodell és a konfliktusfeloldás változatlan.

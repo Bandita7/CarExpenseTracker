@@ -3,9 +3,9 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),fs=requir
 const root=path.join(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
-test('RC2 has fresh PWA cache and preserves previous release',()=>{
- assert.match(sw,/carexpense-v2\.1\.0-rc2/);
- assert.match(html,/const RELEASE_NOTES=\[\s*\['v2\.1 RC2'/);
+test('v2.1 STABLE has fresh PWA cache and preserves previous release',()=>{
+ assert.match(sw,/carexpense-v2\.1\.0-stable/);
+ assert.match(html,/const RELEASE_NOTES=\[\s*\['v2\.1 STABLE'/);
  assert.match(html,/\['v2\.1\.3 BÉTA'/);
 });
 test('Auto sync requires explicit opt in and conflict pause safeguards',()=>{
