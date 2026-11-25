@@ -238,5 +238,14 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 6. Az automatikus feltöltés maradjon kikapcsolva.
 
 
-## v2.1.0 BÉTA – KÍSÉRLETI automatikus szinkron
+## v2.1.1 BÉTA – KÍSÉRLETI automatikus szinkron
 A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szinkron. Az Adatkezelésben eszközönként, Google-kapcsolat és előzetes sikeres kézi szinkron után, külön figyelmeztetés jóváhagyásával lehet bekapcsolni. Előtérbe kerüléskor kb. 3 mp, helyi mentés után kb. 20 mp késleltetés; csak online és érvényes token mellett. Automatikus újrabejelentkezést nem próbál. Konfliktus, több felhőág, hiba esetén felfüggesztés és kézi ellenőrzés. A Drive NEM ad atomi többkészülékes zárolást: ne engedélyezd egyszerre két készüléken éles adatokkal! Előbb készíts ellenőrizhető külön JSON-exportokat.
+
+
+## v2.1.1 – Szinkronizáció eredményének megjelenítése
+1. iPaden módosíts egy határidőt; az automatikus szinkron után a felső állapotban legalább 1 feltöltött rekordot kell látnod.
+2. iPhone-on előtérbe lépve a szinkron után legalább 1 letöltött rekord jelenjen meg.
+3. Módosítás nélküli új szinkron: 0 / 0.
+4. Helyi rekord törlésének átvételét és külön rekordok módosítását is ellenőrizd.
+5. Navigálj másik menüpontra, majd indítsd újra a PWA-t: a legutóbbi sikeres szinkronjelzés maradjon látható.
+6. Google-token lejárta vagy hiba esetén nem szabad hamis új sikert kijelezni.

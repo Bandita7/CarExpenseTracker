@@ -1,4 +1,4 @@
-# CarExpense Tracker v2.1.0 BÉTA – stabil kiadás
+# CarExpense Tracker v2.1.1 BÉTA – stabil kiadás
 
 **Stabil kiadás (2026-11-25).** A sikeresen tesztelt v2.0 STABLE-ből készült. A járműadatok sémája és a szinkronalgoritmus változatlan.
 
@@ -274,5 +274,9 @@ A szinkronprotokoll, az automatikus szinkron tiltása és a tartós gyorsítót�
 Az Adatkezelésben új, kizárólag helyi olvasási művelet: mentett IndexedDB szerkezeti ellenőrzése, JSON körút (serializálás és visszaolvasás), helyi szinkronalap szerkezete, PWA service worker és becsült tárhelyhasználat. Másolható technikai jelentés, rekordértékek és azonosítók nélkül. Nem készít tényleges biztonsági mentést és nem ellenőrzi a Drive aktuális állapotát. A szinkronizációs motor és adatséma változatlan.
 
 
-## v2.1.0 BÉTA – KÍSÉRLETI automatikus szinkron
+## v2.1.1 BÉTA – KÍSÉRLETI automatikus szinkron
 A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szinkron. Az Adatkezelésben eszközönként, Google-kapcsolat és előzetes sikeres kézi szinkron után, külön figyelmeztetés jóváhagyásával lehet bekapcsolni. Előtérbe kerüléskor kb. 3 mp, helyi mentés után kb. 20 mp késleltetés; csak online és érvényes token mellett. Automatikus újrabejelentkezést nem próbál. Konfliktus, több felhőág, hiba esetén felfüggesztés és kézi ellenőrzés. A Drive NEM ad atomi többkészülékes zárolást: ne engedélyezd egyszerre két készüléken éles adatokkal! Előbb készíts ellenőrizhető külön JSON-exportokat.
+
+
+## v2.1.1 – Szinkronizáció eredményének megjelenítése
+Minden sikeres automatikus és kézi szinkron után a felső státuszban megjelenik a felhőbe és a felhőből átvett rekordváltozások száma, időtartam, időpont. A számítás a szinkron előtti és végleges rekordállapotból történik; új, szerkesztett és törölt rekord egyaránt számít. Az eredmény későbbi lapváltáskor és újraindításkor is látható. A push értesítés továbbra sem része a szerver nélküli kiadásnak.
