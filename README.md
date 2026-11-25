@@ -1,3 +1,28 @@
+# CarExpense Tracker v2.0 RC1 – Release Candidate
+
+**Első kiadásjelölt (2026-11-25).** A v1.9.9-re épül, a járműadatok sémáján és a szinkronalgoritmuson nem változtat. Nem végleges STABLE kiadás.
+
+## RC1 célok
+
+- Teljes automatizált regressziós tesztkészlet és kiadáskonzisztencia-ellenőrzés.
+- A JSON-export valódi mentésének kézi megerősítése, import/visszaállítás előtti védelem, helyi ellenőrzések és PWA-frissítés védelme.
+- iPhone + iPad + asztali böngésző manuális tesztje a TESTPLAN.md szerint.
+- A Google Drive-os kézi szinkron és az ellenőrzött IndexedDB-gyorsítótár megtartása.
+
+## Kiadáskorlátok
+
+- Az automatikus, jóváhagyás nélküli feltöltés **tiltott**.
+- A több eszközről pontosan egyszerre induló Drive-feltöltés nem tranzakcionális; éles adatokkal ne teszteld.
+- A Google OAuth új engedélyezést kérhet. A felhőfigyelés olvasási művelet, nem szinkronizáció.
+- A helyi/Drive állapotellenőrzések nem bizonyítják, hogy egy külön JSON-mentés ténylegesen el van tárolva.
+- A közös eszközös manuális tesztek sikeréig a v2.0 STABLE nem adható ki.
+
+## GitHub feltöltés
+
+Töltsd fel a csomag tartalmát, kivéve a változatlan `.github/` könyvtárat. A `scripts/` és `tests/` könyvtárat viszont frissítsd. A meglévő Safety & Release Check workflow változatlan.
+
+---
+
 # CarExpense Tracker v1.7.8 BÉTA — Safety & Regression
 
 A futtatható PWA fájljai a gyökérkönyvtárban vannak. A `tests/` és `scripts/` fejlesztői eszközök, nem tartalmaznak felhasználói adatot.

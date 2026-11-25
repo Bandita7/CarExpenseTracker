@@ -1,3 +1,27 @@
+# v2.0 RC1 – kiadásjelölt tesztmátrix
+
+A teljes, eredeti TESTPLAN a dokumentum végén megmaradt. **Éles használat előtt legyen külön ellenőrzött JSON-mentés mindkét iOS-eszközön.**
+
+| Terület | Eszköz | Elvárt eredmény |
+|---|---|---|
+| Verzió és PWA | PC/iPhone/iPad | v2.0 RC1 cím, fejléc, Névjegy, Súgó, verziótörténet, frissülő service worker |
+| Indítás offline | iPhone/iPad | Korábban betöltött PWA indul és a helyi rekordok látszanak |
+| Alapadatok | PC | Több jármű váltható, és az adott jármű tankolása, szervize, határidői, gumik és költségei látszanak |
+| Dátumválasztók | PC/iPhone/iPad | Határidő, tankolás és szerviz dátummezői működnek; PC-n látszik a naptár ikon |
+| Mentés | iPhone/iPad | JSON-export mentésének ellenőrzése; a fájl megvan, visszaolvasható |
+| Import (csak tesztadat) | elkülönített böngészőprofil | előnézet, figyelmeztetés és megerősítés; rekordok nem tűnnek el |
+| Lokális állapotellenőrzés | iPhone/iPad | hibák száma látható, rekordok nem változnak, offline is fut |
+| Felhőelőzmény-ellenőrzés | iPhone/iPad | csak olvasás, új pillanatkép nem jön létre |
+| Manuális szinkron | iPad → iPhone | változtatás mindkét eszközön megjelenik, adatok és gyorsítótár megmaradnak |
+| Eltérő helyi módosítások | iPad és iPhone | két külön tesztrekord egymás utáni szinkronnal egyesül |
+| Ütközési eset | csak elkülönített tesztadatok | eltérő azonos rekordnál nincs csendes felülírás |
+| Felhőváltozás banner | iPhone/iPad | csak olvasó figyelés és kézzel indítható szinkron működik |
+| Kiadás-ellenőrzés | GitHub Actions | Safety & Release Check zöld |
+
+**Nem tesztelendő éles adatokon:** párhuzamos, pontosan egyidejű feltöltés; hibás JSON felülíró importja; webhelyadatok törlése. Az RC1 csak a készülékes ellenőrzések után válhat STABLE kiadássá.
+
+---
+
 # CarExpense Tracker v1.7.8 – kézi tesztterv
 
 A tesztek az új funkciók helyett a meglévő adatbiztonsági műveleteket ellenőrzik. Nem kell minden tesztet ugyanazon a napon elvégezni.
