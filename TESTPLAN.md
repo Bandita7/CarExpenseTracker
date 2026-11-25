@@ -276,3 +276,11 @@ A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szi
 6. Lejárt Google-token: nincs felugró bejelentkezés, kézi újracsatlakozás után szinkron.
 7. Ütközés: automatikus próba megáll, helyi adatok megmaradnak.
 8. PWA offline újranyitás, PC dátummező, JSON export/import ellenőrzése.
+
+
+## v2.1 RC2 – PC-s export visszatesztelés
+1. PC Chrome/Edge: Beállítások → Adatkezelés → JSON biztonsági mentés; a Letöltések közt jelenjen meg a `CarExpense_backup_...json`.
+2. Nyisd meg és ellenőrizd, hogy JSON, és tartalmazza az elvárt rekordokat.
+3. Ne jelenjen meg a „nem történt visszaállítás” hibaüzenet.
+4. iPhone/iPad: JSON-export továbbra is működik.
+5. A JSON import/visszaállításnál a kötelező biztonsági mentés és megerősítés megmarad. Ne importálj éles adatok fölé tesztelés céljából.

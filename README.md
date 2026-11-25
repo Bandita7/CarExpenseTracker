@@ -299,3 +299,7 @@ A felső státuszsor külön jelzi a pillanatnyi offline helyzetet, a lejárt va
 
 ## v2.1 RC1 – kiadásjelölt
 Az RC1 a v2.1.3 BÉTA tesztelt funkcionalitására épül: opcionális automatikus kétirányú szinkron, tartós gyorsítótár, hibajelzés, helyreállítás, ütemezési védelem. A motor és az adatséma változatlan. A külön eszközök közel egyidejű Google Drive-feltöltése továbbra sem tranzakcióbiztos, ezért az automatikus szinkron kísérleti és készülékenként külön kapcsolható.
+
+
+## v2.1 RC2 – asztali JSON-export javítás
+Windows/asztali böngészőn a JSON mentés közvetlen letöltéssel indul; a mobilos megosztás megmarad. Az export státusza nem keveredik a visszaállítással. Visszaállítás előtt továbbra is kötelező külön mentés és a mentés felhasználói megerősítése. A szinkronmotor és az adatséma változatlan.

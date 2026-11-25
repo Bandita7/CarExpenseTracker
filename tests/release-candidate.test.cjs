@@ -5,10 +5,10 @@ const fs=require('node:fs');
 const path=require('node:path');
 const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
 const sw=fs.readFileSync(path.join(__dirname,'../sw.js'),'utf8');
-test('RC1 release label is consistent in PWA',()=>{
- assert.match(html,/<title>CarExpense Tracker v2\.1 RC1<\/title>/);
- assert.match(html,/id="about-version">v2\.1 RC1/);
- assert.match(sw,/carexpense-v2\.1\.0-rc1/);
+test('RC2 release label is consistent in PWA',()=>{
+ assert.match(html,/<title>CarExpense Tracker v2\.1 RC2<\/title>/);
+ assert.match(html,/id="about-version">v2\.1 RC2/);
+ assert.match(sw,/carexpense-v2\.1\.0-rc2/);
 });
 test('Release history retains the previous beta',()=>{
  const notes=html.match(/const RELEASE_NOTES=\[([\s\S]*?)\];/)[1];
