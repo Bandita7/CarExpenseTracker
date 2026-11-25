@@ -310,3 +310,11 @@ Teszt: 3/5/10 váltás, diagram és adatpontszám ellenőrzése; újratöltés u
 3. MasterData és járműintervallum szabályt ellenőrizni, változatlanok.
 4. Gördülő átlag 10 szakaszhoz kevesebb adatnál figyelmeztet.
 5. Sötét mód, iPhone/iPad és kétirányú automatikus szinkron regresszió.
+
+
+## v2.4.0 célzott tesztek
+- PC: Áttekintés grafikonpontok fölé mutatva jelenjen meg dátum, adatsor és pontos érték; sötét módban is.
+- iOS: adatpontot megérintve értékbuborék jelenik meg; más területre érintve eltűnik.
+- Tankolás/Szerviz/Egyéb költség: dátumszűrés; szerviznél kategóriaszűrés; keresés és szűrők törlése.
+- Járművek: archiváláskor a rekordok megmaradnak, archiváltakat külön láthatóvá téve vissza lehessen aktiválni.
+- Készülékek: automatikus Drive-szinkron és JSON-mentés regresszió.

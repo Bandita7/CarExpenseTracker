@@ -321,3 +321,7 @@ Az Áttekintés fogyasztásdiagramján választható a 3 / 5 / 10 tankolási sza
 
 ## v2.3.0 BÉTA – Karbantartási áttekintés
 A Szervizfigyelő már meglévő MasterData, járműspecifikus intervallum és szervizelőzmény alapján számolja az esedékességet. Új: állapotjelzés az Áttekintésen, állapotszűrő a Szervizfigyelőben, valamint hiányzó szerviz-alapadatok és kevés tankolási szakasz egyértelmű jelzése. Nincs adatmodell- vagy Drive-protokoll változás.
+
+
+## v2.4.0 BÉTA – Rekordszűrés, járműarchívum, grafikon tooltip
+A keresés mellett dátumtartomány- és kategóriaszűrés; archivált járművek megjelenítése és visszaaktiválása. Áttekintés SVG diagramokon pontos érték egérrel, érintéssel, fókuszban. Az adatséma és a Drive-szinkronprotokoll változatlan.
