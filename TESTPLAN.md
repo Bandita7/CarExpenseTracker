@@ -1,6 +1,6 @@
-# v2.1 STABLE – végső telepítés utáni ellenőrzés
+# v2.2.0 BÉTA – végső telepítés utáni ellenőrzés
 
-1. GitHub Actions: Safety & Release Check zöld, verziócímke minden felületen v2.1 STABLE.
+1. GitHub Actions: Safety & Release Check zöld, verziócímke minden felületen v2.2.0 BÉTA.
 2. Windows PC: JSON-export valódi fájlletöltése; mentés tartalma ellenőrizhető.
 3. iPhone és iPad: JSON-export és külön helyi mentések.
 4. iPad → iPhone, majd iPhone → iPad módosításátvétel, automatikus szinkron csak engedélyezett készüléken.
@@ -298,3 +298,7 @@ A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szi
 3. Ne jelenjen meg a „nem történt visszaállítás” hibaüzenet.
 4. iPhone/iPad: JSON-export továbbra is működik.
 5. A JSON import/visszaállításnál a kötelező biztonsági mentés és megerősítés megmarad. Ne importálj éles adatok fölé tesztelés céljából.
+
+
+## v2.2.0 BÉTA – Gördülő átlag és megjelenés
+Teszt: 3/5/10 váltás, diagram és adatpontszám ellenőrzése; újratöltés után preferencia megőrzése; két külön eszköz eltérő témája; Windows és iOS sötét mód; offline megnyitás; PC-s határidő dátumválasztó; export/import és automatikus szinkron regresszió; régi 2.1 JSON kompatibilitása.

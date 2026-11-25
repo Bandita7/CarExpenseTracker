@@ -1,4 +1,4 @@
-# CarExpense Tracker v2.1 STABLE
+# CarExpense Tracker v2.2.0 BÉTA
 
 **Stabil kiadás – 2026-11-25.** A felhasználó által sikeresen tesztelt v2.1 RC2 változat kiadási jelölése. A kétirányú automatikus szinkron eszközönként külön engedélyezhető, a megbízható kézi szinkron megmarad. A PC-s JSON-export működését az RC2-ben javítottuk és ellenőriztük. Az IndexedDB-adatmodell és a szinkronmotor változatlan.
 
@@ -313,3 +313,7 @@ Az RC1 a v2.1.3 BÉTA tesztelt funkcionalitására épül: opcionális automatik
 
 ## v2.1 RC2 – asztali JSON-export javítás
 Windows/asztali böngészőn a JSON mentés közvetlen letöltéssel indul; a mobilos megosztás megmarad. Az export státusza nem keveredik a visszaállítással. Visszaállítás előtt továbbra is kötelező külön mentés és a mentés felhasználói megerősítése. A szinkronmotor és az adatséma változatlan.
+
+
+## v2.2.0 BÉTA – Gördülő átlag és megjelenés
+Az Áttekintés fogyasztásdiagramján választható a 3 / 5 / 10 tankolási szakaszos gördülő átlag. A számítás az utolsó N értékelhető szakasz teljes literéből és távolságából történik, nem az egyes százkilométeres értékek számtani átlagából. A felület fejlécében Világos / Sötét / Rendszer szerint mód választható. A beállítások kizárólag helyi localStorage kulcsok, nem részei az IndexedDB járműadatainak és a Drive-szinkronnak.
