@@ -1,10 +1,10 @@
-# v2.0 RC1 – kiadásjelölt tesztmátrix
+# v2.0 STABLE – kiadásjelölt tesztmátrix
 
 A teljes, eredeti TESTPLAN a dokumentum végén megmaradt. **Éles használat előtt legyen külön ellenőrzött JSON-mentés mindkét iOS-eszközön.**
 
 | Terület | Eszköz | Elvárt eredmény |
 |---|---|---|
-| Verzió és PWA | PC/iPhone/iPad | v2.0 RC1 cím, fejléc, Névjegy, Súgó, verziótörténet, frissülő service worker |
+| Verzió és PWA | PC/iPhone/iPad | v2.0 STABLE cím, fejléc, Névjegy, Súgó, verziótörténet, frissülő service worker |
 | Indítás offline | iPhone/iPad | Korábban betöltött PWA indul és a helyi rekordok látszanak |
 | Alapadatok | PC | Több jármű váltható, és az adott jármű tankolása, szervize, határidői, gumik és költségei látszanak |
 | Dátumválasztók | PC/iPhone/iPad | Határidő, tankolás és szerviz dátummezői működnek; PC-n látszik a naptár ikon |
@@ -227,3 +227,12 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 3. JSON biztonsági mentés továbbra is külön, kézi művelet.
 4. iPhone/iPad: kézi szinkron egymás után; az automatikus szinkron nem kapcsolható be.
 5. Gyári és meglévő állományban az ellenőrzés semmit nem ír át.
+
+
+## v2.0 STABLE – kiadás utáni füstteszt
+1. Telepítés után ellenőrizd a v2.0 STABLE feliratot, a GitHub Actions zöld eredményét és a frissített service worker működését.
+2. Offline nyisd meg az alkalmazást; ellenőrizd a meglévő járműadatokat.
+3. Nyisd meg és használd a Határidők natív naptárválasztóját PC-n, az iPhone/iPad megjelenést is ellenőrizd.
+4. Készíts külön JSON-mentést minden használt eszközön.
+5. Kézi Drive-szinkronizáció iPad -> iPhone, majd vissza, egymást követően; ellenőrizd, hogy egy tesztrekord megmarad.
+6. Az automatikus feltöltés maradjon kikapcsolva.

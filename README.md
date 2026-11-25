@@ -1,8 +1,8 @@
-# CarExpense Tracker v2.0 RC1 – Release Candidate
+# CarExpense Tracker v2.0 STABLE – stabil kiadás
 
-**Első kiadásjelölt (2026-11-25).** A v1.9.9-re épül, a járműadatok sémáján és a szinkronalgoritmuson nem változtat. Nem végleges STABLE kiadás.
+**Stabil kiadás (2026-11-25).** A sikeresen tesztelt v2.0 STABLE-ből készült. A járműadatok sémája és a szinkronalgoritmus változatlan.
 
-## RC1 célok
+## Stabil kiadás tartalma
 
 - Teljes automatizált regressziós tesztkészlet és kiadáskonzisztencia-ellenőrzés.
 - A JSON-export valódi mentésének kézi megerősítése, import/visszaállítás előtti védelem, helyi ellenőrzések és PWA-frissítés védelme.
@@ -15,7 +15,7 @@
 - A több eszközről pontosan egyszerre induló Drive-feltöltés nem tranzakcionális; éles adatokkal ne teszteld.
 - A Google OAuth új engedélyezést kérhet. A felhőfigyelés olvasási művelet, nem szinkronizáció.
 - A helyi/Drive állapotellenőrzések nem bizonyítják, hogy egy külön JSON-mentés ténylegesen el van tárolva.
-- A közös eszközös manuális tesztek sikeréig a v2.0 STABLE nem adható ki.
+- Az RC1 készülékes tesztjei sikeresek voltak; a további használat során is ajánlott a rendszeres JSON-export.
 
 ## GitHub feltöltés
 
