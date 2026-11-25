@@ -1,6 +1,6 @@
-# v2.2.0 BÉTA – végső telepítés utáni ellenőrzés
+# v2.3.0 BÉTA – végső telepítés utáni ellenőrzés
 
-1. GitHub Actions: Safety & Release Check zöld, verziócímke minden felületen v2.2.0 BÉTA.
+1. GitHub Actions: Safety & Release Check zöld, verziócímke minden felületen v2.3.0 BÉTA.
 2. Windows PC: JSON-export valódi fájlletöltése; mentés tartalma ellenőrizhető.
 3. iPhone és iPad: JSON-export és külön helyi mentések.
 4. iPad → iPhone, majd iPhone → iPad módosításátvétel, automatikus szinkron csak engedélyezett készüléken.
@@ -300,5 +300,13 @@ A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szi
 5. A JSON import/visszaállításnál a kötelező biztonsági mentés és megerősítés megmarad. Ne importálj éles adatok fölé tesztelés céljából.
 
 
-## v2.2.0 BÉTA – Gördülő átlag és megjelenés
+## v2.3.0 BÉTA – Gördülő átlag és megjelenés
 Teszt: 3/5/10 váltás, diagram és adatpontszám ellenőrzése; újratöltés után preferencia megőrzése; két külön eszköz eltérő témája; Windows és iOS sötét mód; offline megnyitás; PC-s határidő dátumválasztó; export/import és automatikus szinkron regresszió; régi 2.1 JSON kompatibilitása.
+
+
+## v2.3.0 célzott teszt
+1. Áttekintés: közelgő/lejárt szervizek összesítése és Szervizfigyelő megnyitása.
+2. Szervizfigyelő: Lejárt/Hamarosan/Rendben/Nincs alapadat szűrés. Két autó között váltva csak az adott autó szabályai érvényesek.
+3. MasterData és járműintervallum szabályt ellenőrizni, változatlanok.
+4. Gördülő átlag 10 szakaszhoz kevesebb adatnál figyelmeztet.
+5. Sötét mód, iPhone/iPad és kétirányú automatikus szinkron regresszió.
