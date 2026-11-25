@@ -1,3 +1,11 @@
+# v2.1.3 – célzott tesztek
+
+1. Két eszköz JSON-mentése, azonos kiinduló állapot.
+2. Az egyik készüléken rövid időn belül több helyi tesztrekord mentése: az utolsó módosítás se maradjon feltöltetlen.
+3. Mentés szinkronizáció közben: az aktuális szinkron vége után induljon egy új ellenőrzés, amennyiben a Google-kapcsolat érvényes.
+4. Hiba vagy konfliktus esetén automatikus szüneteltetés, nincs ismétlődő feltöltés.
+5. iPad/iPhone oda-vissza szinkron és státusz ellenőrzése.
+
 # v2.0 STABLE – kiadásjelölt tesztmátrix
 
 A teljes, eredeti TESTPLAN a dokumentum végén megmaradt. **Éles használat előtt legyen külön ellenőrzött JSON-mentés mindkét iOS-eszközön.**

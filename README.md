@@ -1,3 +1,14 @@
+# CarExpense Tracker v2.1.3 BÉTA – Auto Sync Scheduling Safety
+
+A 2.1.2 változatra épülő frissítés: ha a helyi mentéskor vagy egy előtérbe váltáskor éppen Drive-művelet fut, az automatikus szinkronigényt a rendszer később újraütemezi. A 12 másodperces minimális indítási intervallumban keletkezett kéréseket sem dobja el. Hiba, lejárt token, offline állapot vagy kézi feloldást igénylő ütközés esetén nincs automatikus végtelen újrapróbálás. A Drive-adatmodell és a konfliktusfeloldás változatlan.
+
+A pontosan egyidejű, több eszközről történő feltöltés továbbra sem tranzakcióbiztos. Automatikus mód csak kísérleti jelleggel, mentés mellett, nem egyidejű módosításokkal ajánlott.
+
+## GitHub
+A `.github` mappát nem kell frissíteni. A teljes csomag többi fájlját, a `tests/` mappát is töltsd fel.
+
+---
+
 # CarExpense Tracker v2.1.1 BÉTA – stabil kiadás
 
 **Stabil kiadás (2026-11-25).** A sikeresen tesztelt v2.0 STABLE-ből készült. A járműadatok sémája és a szinkronalgoritmus változatlan.
