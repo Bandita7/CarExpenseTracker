@@ -243,3 +243,7 @@ A csak olvasó felhőellenőrzés után külön megjelenik a helyi, utolsó szin
 Az Adatkezelés oldal új **Helyi állapotellenőrzés (csak olvasás)** gombja frissen olvassa az IndexedDB-ben elmentett adatállományt. A korábbi ellenőrző szerkezeti hibáit/figyelmeztetéseit darabszámként mutatja, ellenőrzi a szinkronalap adatszerkezetét, és ha elérhető, megjeleníti a böngésző teljes webhelyhez tartozó becsült tárhely-kihasználtságát. Nem módosít adatot, nem indít Drive-kérést vagy szinkront, és nem helyettesíti a külön JSON-mentést.
 
 A szinkronprotokoll, az automatikus szinkron tiltása és a tartós gyorsítótár változatlan.
+
+
+## v1.9.9 BÉTA – v2.0 előkészítő ellenőrzőjelentés
+Az Adatkezelésben új, kizárólag helyi olvasási művelet: mentett IndexedDB szerkezeti ellenőrzése, JSON körút (serializálás és visszaolvasás), helyi szinkronalap szerkezete, PWA service worker és becsült tárhelyhasználat. Másolható technikai jelentés, rekordértékek és azonosítók nélkül. Nem készít tényleges biztonsági mentést és nem ellenőrzi a Drive aktuális állapotát. A szinkronizációs motor és adatséma változatlan.

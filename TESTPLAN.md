@@ -195,3 +195,11 @@ A repo `.github/workflows/safety-check.yml` fájlja GitHub Actions-ben ugyanezek
 5. Új rekord mentése után az ellenőrzés ismét lefut; a rekord nem változik, nem tűnik el.
 6. iPad majd iPhone kézi szinkron, ellenőrzés és diagnosztika a korábbi módon.
 7. Éles adatokon ne kezdeményezz egyszerre feltöltést több eszközről.
+
+
+## v1.9.9 kiadási próbák
+1. Beállítások → Adatkezelés → v2.0 előkészítő ellenőrzés: megjelenik az összesített jelentés, személyes rekordadatok nélkül.
+2. Ellenőrzőjelentés másolása: a vágólapra ugyanaz a szöveg kerül; hiba esetén a felület tájékoztat.
+3. JSON biztonsági mentés továbbra is külön, kézi művelet.
+4. iPhone/iPad: kézi szinkron egymás után; az automatikus szinkron nem kapcsolható be.
+5. Gyári és meglévő állományban az ellenőrzés semmit nem ír át.
