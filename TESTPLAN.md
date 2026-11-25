@@ -265,3 +265,14 @@ A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szi
 3. Sikertelen automatikus szinkron: a hiba maradjon látható; az előző siker ne tűnjön az aktuális művelet eredményének.
 4. Sikeres kézi feloldás után: hiba törlődik; a sikeres rekord-darabszámok megmaradnak.
 5. iPad/iPhone közötti szokásos kétirányú teszt.
+
+
+## v2.1 RC1 – készülékes tesztmátrix
+1. Külön JSON-mentés iPhone-ról és iPadről, ellenőrzött exportfájlokkal.
+2. Verziócímke v2.1 RC1; GitHub Actions teljesen zöld.
+3. Kétirányú automatikus szinkron külön, egymás utáni tesztmódosításokkal.
+4. Gyorsan egymás után létrehozott módosítások mind megjelennek a másik eszközön.
+5. Offline szerkesztés, hálózat visszakapcsolása, státuszüzenetek.
+6. Lejárt Google-token: nincs felugró bejelentkezés, kézi újracsatlakozás után szinkron.
+7. Ütközés: automatikus próba megáll, helyi adatok megmaradnak.
+8. PWA offline újranyitás, PC dátummező, JSON export/import ellenőrzése.

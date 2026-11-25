@@ -1,4 +1,4 @@
-# CarExpense Tracker v2.1.3 BÉTA – Auto Sync Scheduling Safety
+# CarExpense Tracker v2.1 RC1 – Auto Sync Scheduling Safety
 
 A 2.1.2 változatra épülő frissítés: ha a helyi mentéskor vagy egy előtérbe váltáskor éppen Drive-művelet fut, az automatikus szinkronigényt a rendszer később újraütemezi. A 12 másodperces minimális indítási intervallumban keletkezett kéréseket sem dobja el. Hiba, lejárt token, offline állapot vagy kézi feloldást igénylő ütközés esetén nincs automatikus végtelen újrapróbálás. A Drive-adatmodell és a konfliktusfeloldás változatlan.
 
@@ -295,3 +295,7 @@ Minden sikeres automatikus és kézi szinkron után a felső státuszban megjele
 
 ## v2.1.2 BÉTA – Auto Sync hibatűrés és visszajelzés
 A felső státuszsor külön jelzi a pillanatnyi offline helyzetet, a lejárt vagy hiányzó Google-hozzáférést és a sikertelen automatikus szinkront. A sikertelen művelet figyelmeztetése újraindítás után is megmarad; sikeres szinkron törli. Az utolsó sikeres szinkron külön látható, de nem bizonyítja a jelenlegi felhőegyezést. A kézi szinkron és a Drive-adatmodell változatlan.
+
+
+## v2.1 RC1 – kiadásjelölt
+Az RC1 a v2.1.3 BÉTA tesztelt funkcionalitására épül: opcionális automatikus kétirányú szinkron, tartós gyorsítótár, hibajelzés, helyreállítás, ütemezési védelem. A motor és az adatséma változatlan. A külön eszközök közel egyidejű Google Drive-feltöltése továbbra sem tranzakcióbiztos, ezért az automatikus szinkron kísérleti és készülékenként külön kapcsolható.

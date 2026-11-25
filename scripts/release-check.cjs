@@ -26,7 +26,7 @@ const checks=[
 const releaseSection=html.split('const RELEASE_NOTES=[',2)[1]?.split('];',1)[0]||'';
 const releases=[...releaseSection.matchAll(/\['(v\d+(?:\.\d+)*(?: BÉTA| RC\d+| STABLE)?)','/g)].map(m=>m[1]);
 checks.push(['verziótörténet duplikációmentes',new Set(releases).size===releases.length]);
-const nums=releases.map(x=>{const a=x.match(/^v(\d+)\.(\d+)(?:\.(\d+))?/);return [Number(a[1]),Number(a[2]),Number(a[3]||0),x.includes('STABLE')?2:x.includes('RC')?1:0]});
+const nums=releases.map(x=>{const a=x.match(/^v(\d+)\.(\d+)(?:\.(\d+))?/);return [Number(a[1]),Number(a[2]),(a[3]?Number(a[3]):(x.includes('RC')?9999:(x.includes('STABLE')?10000:0))),x.includes('STABLE')?2:x.includes('RC')?1:0]});
 const desc=nums.every((a,i)=>i===0||a.find((v,j)=>v!==nums[i-1][j])===undefined||a[ a.findIndex((v,j)=>v!==nums[i-1][j]) ]<=nums[i-1][a.findIndex((v,j)=>v!==nums[i-1][j])]);
 checks.push(['verziótörténet csökkenő sorrend',desc]);
 checks.push(['korábbi verziók szerepelnek',releases.includes('v1.7.7 BÉTA')&&releases.includes('v1.6.0 BÉTA')]);
