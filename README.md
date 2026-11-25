@@ -280,3 +280,7 @@ A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szi
 
 ## v2.1.1 – Szinkronizáció eredményének megjelenítése
 Minden sikeres automatikus és kézi szinkron után a felső státuszban megjelenik a felhőbe és a felhőből átvett rekordváltozások száma, időtartam, időpont. A számítás a szinkron előtti és végleges rekordállapotból történik; új, szerkesztett és törölt rekord egyaránt számít. Az eredmény későbbi lapváltáskor és újraindításkor is látható. A push értesítés továbbra sem része a szerver nélküli kiadásnak.
+
+
+## v2.1.2 BÉTA – Auto Sync hibatűrés és visszajelzés
+A felső státuszsor külön jelzi a pillanatnyi offline helyzetet, a lejárt vagy hiányzó Google-hozzáférést és a sikertelen automatikus szinkront. A sikertelen művelet figyelmeztetése újraindítás után is megmarad; sikeres szinkron törli. Az utolsó sikeres szinkron külön látható, de nem bizonyítja a jelenlegi felhőegyezést. A kézi szinkron és a Drive-adatmodell változatlan.

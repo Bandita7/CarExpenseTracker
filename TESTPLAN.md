@@ -249,3 +249,11 @@ A v2.0 STABLE kiadástól külön tesztverzió. Alapértelmezett mód: kézi szi
 4. Helyi rekord törlésének átvételét és külön rekordok módosítását is ellenőrizd.
 5. Navigálj másik menüpontra, majd indítsd újra a PWA-t: a legutóbbi sikeres szinkronjelzés maradjon látható.
 6. Google-token lejárta vagy hiba esetén nem szabad hamis új sikert kijelezni.
+
+
+## v2.1.2 célzott teszt
+1. Offline mentés automatikus móddal: jelenjen meg a feltöltésre váró változás; a helyi rekord maradjon meg.
+2. Lejárt Google-hozzáférés: látható újracsatlakozási figyelmeztetés, automatikus OAuth-ablak nélkül.
+3. Sikertelen automatikus szinkron: a hiba maradjon látható; az előző siker ne tűnjön az aktuális művelet eredményének.
+4. Sikeres kézi feloldás után: hiba törlődik; a sikeres rekord-darabszámok megmaradnak.
+5. iPad/iPhone közötti szokásos kétirányú teszt.

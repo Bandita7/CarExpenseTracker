@@ -16,7 +16,7 @@ test('No token refresh, first-sync or cloud fork merge silently on automatic pat
  assert.match(html,/if\(automatic\)throw Error\('Közben egy másik készülék új felhőágat/);
  assert.match(html,/if\(automatic\)autoSyncApplying=true/);
  assert.match(html,/if\(automatic\)autoSyncApplying=false/);
- assert.match(html,/if\(automatic\)setAutoSyncPaused\(true\)/);
+ assert.match(html,/if\(automatic\)\{setAutoSyncPaused\(true\);syncAttentionSet\(/);
 });
 test('Experimental autosync is not silently enabled by the stable version',()=>{
  assert.match(html,/id="sync-auto"/);
