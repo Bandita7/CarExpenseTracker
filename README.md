@@ -338,5 +338,10 @@ A keresés mellett dátumtartomány- és kategóriaszűrés; archivált járműv
 A meglévő DOT mező értelmezése és egy garnitúra rekordjához opcionálisan csatolt, dátumozott négy pozíciós profilmélység-előzmény. Régi rekordokhoz nem kell alapérték, sémaverzió nem változik. Az azonos garnitúrát különböző eszközökön egyidejűleg módosítva a meglévő rekordütközés-védelem lép életbe. A mérések nem helyettesítik a gumik szakszerű állapotfelmérését.
 
 
-## v2.7.0 BÉTA – PDF autóelőélet
+## v2.8.0 BÉTA – PDF autóelőélet
 A főmenü új **PDF autóelőélet** oldalán járművenként nyomtatható előnézet készül a szerviz-, tankolási, egyéb költség-, gumigarnitúra- és gumiciklus-bejegyzésekből. A rendszám, VIN, költségek és megjegyzések alapértelmezetten nincsenek benne a megosztható változatban. A **PDF mentése / nyomtatás** a böngésző natív nyomtatási párbeszédablakát indítja: válaszd a PDF-mentést. A kimenet a készüléken készül, offline is működik. Nem igényel külső PDF könyvtárat, Drive engedélyt vagy új adatmodell mezőt.
+
+
+## v2.8.0 – Mobil PDF és járműfotó
+A jármű adatlapon és a riportban egy JPEG formátumra alakított, legfeljebb 95 KB méretű kép menthető. A kép a járműrekord része: a JSON exportba, Drive-szinkronba és annak pillanatkép-előzményeibe is bekerül. A nagyobb tartalmi méret miatt szinkron lassulás lehetséges. Másik eszközön csak frissített v2.8 klienssel szerkeszd.
+A PDF offline, böngészőoldali Canvas→JPEG→PDF eljárással készül; iOS-en a megosztási felületből válaszd a Mentés a Fájlokba lehetőséget, Windows alatt a letöltés működik. A PDF nyomtatható és többoldalas; a szöveg képként kerül a PDF-be (nem kijelölhető).

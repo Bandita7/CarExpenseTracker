@@ -333,10 +333,16 @@ Teszt: 3/5/10 váltás, diagram és adatpontszám ellenőrzése; újratöltés u
 A meglévő DOT mező értelmezése és egy garnitúra rekordjához opcionálisan csatolt, dátumozott négy pozíciós profilmélység-előzmény. Régi rekordokhoz nem kell alapérték, sémaverzió nem változik. Az azonos garnitúrát különböző eszközökön egyidejűleg módosítva a meglévő rekordütközés-védelem lép életbe. A mérések nem helyettesítik a gumik szakszerű állapotfelmérését.
 
 
-## v2.7.0 BÉTA – PDF autóelőélet célzott tesztek
+## v2.8.0 BÉTA – PDF autóelőélet célzott tesztek
 1. Nyisd meg a PDF autóelőélet menüpontot, váltogasd az autókat. Ellenőrizd a saját rekordok szerinti listát.
 2. Alapbeállításként csak a szerviz- és gumielőzmények jelenjenek meg; rendszám/VIN és költségek legyenek rejtve.
 3. Kapcsold be a tankolásokat és a költségeket; az előnézet frissüljön, a rekordok ne módosuljanak.
 4. Windows Firefox/Chrome: PDF mentése / nyomtatás → Mentés PDF-ként. Ellenőrizd az ékezeteket, oldaltörést és hosszú táblákat.
 5. iPhone/iPad: natív nyomtatás → megosztás / PDF mentés; nem minden mobilos rendszer ugyanazt a menüt mutatja.
 6. Offline: az előnézet és nyomtatás továbbra is működjön; export után JSON-mentés és kétirányú szinkron változatlan.
+
+
+## v2.8.0 – Mobil PDF és járműfotó
+A jármű adatlapon és a riportban egy JPEG formátumra alakított, legfeljebb 95 KB méretű kép menthető. A kép a járműrekord része: a JSON exportba, Drive-szinkronba és annak pillanatkép-előzményeibe is bekerül. A nagyobb tartalmi méret miatt szinkron lassulás lehetséges. Másik eszközön csak frissített v2.8 klienssel szerkeszd.
+A PDF offline, böngészőoldali Canvas→JPEG→PDF eljárással készül; iOS-en a megosztási felületből válaszd a Mentés a Fájlokba lehetőséget, Windows alatt a letöltés működik. A PDF nyomtatható és többoldalas; a szöveg képként kerül a PDF-be (nem kijelölhető).
+Teszt: (1) régi JSON import változatlan, (2) JPEG/PNG kép csere és törlés, (3) képfeltöltés utáni szinkron iPhone/iPad között, (4) többoldalas PDF mentés PC/iPhone/iPad, (5) hosszú gumi-nevek tördelése, (6) azonos rekordú képütközés biztonságos megállítása.
