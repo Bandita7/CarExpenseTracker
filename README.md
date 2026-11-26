@@ -349,3 +349,7 @@ A PDF offline, böngészőoldali Canvas→JPEG→PDF eljárással készül; iOS-
 
 ## v2.9.0 BÉTA – PDF és UI finomítások
 A PDF készítője az oldaltörések előtt összeszámolja a szakaszcím, oszlopfejléc és táblázatsorok várható magasságát. Egy teljesen elférő táblázatot nem bont oldalakra, hosszabb táblázatnál pedig az oszlopfejlécet megismétli. A szakaszcím az első rekordokkal együtt marad. A felület a billentyűzetfókuszt, vezérlőméretet, státuszok tördelését, PDF-beállításokat és sötét módot egységesíti. Nincs adatmodell- vagy szinkronprotokoll-módosítás.
+
+
+## v2.10.0 BÉTA – Mobile Navigation & Appearance
+Mobil menü bal/jobb oldal választással; hamburgergomb a választott oldalon. Megjelenés a Beállítások részen, helyi színséma és sűrűség. iOS natív dátummezők szélességvédelme. Szinkron és adatséma változatlan.

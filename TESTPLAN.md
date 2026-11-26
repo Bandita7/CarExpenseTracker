@@ -350,3 +350,11 @@ Teszt: (1) régi JSON import változatlan, (2) JPEG/PNG kép csere és törlés,
 
 ## v2.9.0 BÉTA – PDF és UI finomítások
 Teszt: exportáld ugyanazt a többoldalas KIA-riportot. Az 1. oldalon ne maradjon magában a Tankolások cím, a Gumiciklusok szakasz ne folytatódjon néhány sorral egy szinte üres 3. oldalon. Ellenőrizd a teljes rekordmennyiséget, az ismétlődő táblázatfejléceket, a PDF iOS megosztást, PC letöltést, világos/sötét módot és a felületi fókuszt.
+
+
+## v2.10.0 tesztterv
+- iPhone: bal és jobb hamburgergomb/oldalsó menü együtt vált; megnyit, bezár, menüpont kiválasztás.
+- Beállítások → Megjelenés: színséma, menü oldal, sűrűség; újranyitás után mentett érték.
+- iPhone: járműadatlap minden dátummezője a kártyában marad.
+- iPad és PC: korábbi navigáció, date picker működik.
+- Automatikus szinkron, PDF-export, JSON-export regresszió.
