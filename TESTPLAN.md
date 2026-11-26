@@ -327,3 +327,7 @@ Teszt: 3/5/10 váltás, diagram és adatpontszám ellenőrzése; újratöltés u
 4. Hiányzó óraállásnál a Ft/km mező kötőjel és figyelmeztetés.
 5. Legalább 12 naptári hónapnál jelenik meg a gördülő költséggörbe.
 6. Sötét mód, mobil grafikonok, automatikus szinkron és JSON-export változatlan.
+
+
+## v2.6.0 BÉTA – Gumiprofilmérés és DOT
+A meglévő DOT mező értelmezése és egy garnitúra rekordjához opcionálisan csatolt, dátumozott négy pozíciós profilmélység-előzmény. Régi rekordokhoz nem kell alapérték, sémaverzió nem változik. Az azonos garnitúrát különböző eszközökön egyidejűleg módosítva a meglévő rekordütközés-védelem lép életbe. A mérések nem helyettesítik a gumik szakszerű állapotfelmérését.

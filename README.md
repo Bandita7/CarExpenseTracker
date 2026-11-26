@@ -1,4 +1,4 @@
-# CarExpense Tracker v2.5.0 BÉTA
+# CarExpense Tracker v2.6.0 BÉTA
 
 **Stabil kiadás – 2026-11-25.** A felhasználó által sikeresen tesztelt v2.1 RC2 változat kiadási jelölése. A kétirányú automatikus szinkron eszközönként külön engedélyezhető, a megbízható kézi szinkron megmarad. A PC-s JSON-export működését az RC2-ben javítottuk és ellenőriztük. Az IndexedDB-adatmodell és a szinkronmotor változatlan.
 
@@ -327,8 +327,12 @@ A Szervizfigyelő már meglévő MasterData, járműspecifikus intervallum és s
 A keresés mellett dátumtartomány- és kategóriaszűrés; archivált járművek megjelenítése és visszaaktiválása. Áttekintés SVG diagramokon pontos érték egérrel, érintéssel, fókuszban. Az adatséma és a Drive-szinkronprotokoll változatlan.
 
 
-## v2.5.0 BÉTA – Költségösszehasonlítás és 12 havi trend
+## v2.6.0 BÉTA – Költségösszehasonlítás és 12 havi trend
 - Az Áttekintésen minden jármű (archivált is) összesített költsége és Ft/km mutatója megjelenik a kiválasztott évben vagy összes évre.
 - A hiányos kilométeróra-adatokból nem készül megtévesztő Ft/km mutató.
 - A kiválasztott járműnél havi és 12 havi gördülő költséggrafikon látható. A teljes 12 havi ablak előtt nincs görbe.
 - Az adatmodell, a Drive-szinkron, az automatikus szinkron ütemezése és a .github/workflows/safety-check.yml változatlan.
+
+
+## v2.6.0 BÉTA – Gumiprofilmérés és DOT
+A meglévő DOT mező értelmezése és egy garnitúra rekordjához opcionálisan csatolt, dátumozott négy pozíciós profilmélység-előzmény. Régi rekordokhoz nem kell alapérték, sémaverzió nem változik. Az azonos garnitúrát különböző eszközökön egyidejűleg módosítva a meglévő rekordütközés-védelem lép életbe. A mérések nem helyettesítik a gumik szakszerű állapotfelmérését.
