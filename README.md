@@ -336,3 +336,7 @@ A keresés mellett dátumtartomány- és kategóriaszűrés; archivált járműv
 
 ## v2.6.0 BÉTA – Gumiprofilmérés és DOT
 A meglévő DOT mező értelmezése és egy garnitúra rekordjához opcionálisan csatolt, dátumozott négy pozíciós profilmélység-előzmény. Régi rekordokhoz nem kell alapérték, sémaverzió nem változik. Az azonos garnitúrát különböző eszközökön egyidejűleg módosítva a meglévő rekordütközés-védelem lép életbe. A mérések nem helyettesítik a gumik szakszerű állapotfelmérését.
+
+
+## v2.7.0 BÉTA – PDF autóelőélet
+A főmenü új **PDF autóelőélet** oldalán járművenként nyomtatható előnézet készül a szerviz-, tankolási, egyéb költség-, gumigarnitúra- és gumiciklus-bejegyzésekből. A rendszám, VIN, költségek és megjegyzések alapértelmezetten nincsenek benne a megosztható változatban. A **PDF mentése / nyomtatás** a böngésző natív nyomtatási párbeszédablakát indítja: válaszd a PDF-mentést. A kimenet a készüléken készül, offline is működik. Nem igényel külső PDF könyvtárat, Drive engedélyt vagy új adatmodell mezőt.
