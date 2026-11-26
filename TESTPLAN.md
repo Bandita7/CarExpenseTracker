@@ -358,3 +358,7 @@ Teszt: exportáld ugyanazt a többoldalas KIA-riportot. Az 1. oldalon ne maradjo
 - iPhone: járműadatlap minden dátummezője a kártyában marad.
 - iPad és PC: korábbi navigáció, date picker működik.
 - Automatikus szinkron, PDF-export, JSON-export regresszió.
+
+
+## v2.10.1 BÉTA – Mobil hotfix
+Készíts JSON-mentést. iPhone/iPad: jármű minden dátummezője maradjon a kereten belül, a rendszer dátumválasztója nyíljon és mentéskor maradjon meg a választott dátum. A bal oldali beállításnál bal szélről jobbra húzás nyisson, jobbra-balra zárjon. A jobb oldalinál fordítottan. Függőleges görgetés, táblázatok vízszintes mozgatása ne nyissa a menüt. Menügomb, Esc, overlay továbbra is működik. PC-n a dátumválasztó és menü változatlan. Auto sync és PDF gyors próba.

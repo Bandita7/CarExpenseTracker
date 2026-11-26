@@ -351,5 +351,9 @@ A PDF offline, böngészőoldali Canvas→JPEG→PDF eljárással készül; iOS-
 A PDF készítője az oldaltörések előtt összeszámolja a szakaszcím, oszlopfejléc és táblázatsorok várható magasságát. Egy teljesen elférő táblázatot nem bont oldalakra, hosszabb táblázatnál pedig az oszlopfejlécet megismétli. A szakaszcím az első rekordokkal együtt marad. A felület a billentyűzetfókuszt, vezérlőméretet, státuszok tördelését, PDF-beállításokat és sötét módot egységesíti. Nincs adatmodell- vagy szinkronprotokoll-módosítás.
 
 
-## v2.10.0 BÉTA – Mobile Navigation & Appearance
+## v2.10.1 BÉTA – Mobile Navigation & Appearance
 Mobil menü bal/jobb oldal választással; hamburgergomb a választott oldalon. Megjelenés a Beállítások részen, helyi színséma és sűrűség. iOS natív dátummezők szélességvédelme. Szinkron és adatséma változatlan.
+
+
+## v2.10.1 BÉTA – Mobil hotfix
+A Járművek űrlapon az iOS dátummező kereten belüli kijelzést és natív dátumválasztót kap. A mobilmenü a kiválasztott képernyőszél felől behúzható és visszasöpörhető; a hamburgergomb és a menüoldal választása változatlanul működik. Az adatséma és a szinkronmotor változatlan.
