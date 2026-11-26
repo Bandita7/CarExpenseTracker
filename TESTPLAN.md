@@ -346,3 +346,7 @@ A meglévő DOT mező értelmezése és egy garnitúra rekordjához opcionálisa
 A jármű adatlapon és a riportban egy JPEG formátumra alakított, legfeljebb 95 KB méretű kép menthető. A kép a járműrekord része: a JSON exportba, Drive-szinkronba és annak pillanatkép-előzményeibe is bekerül. A nagyobb tartalmi méret miatt szinkron lassulás lehetséges. Másik eszközön csak frissített v2.8 klienssel szerkeszd.
 A PDF offline, böngészőoldali Canvas→JPEG→PDF eljárással készül; iOS-en a megosztási felületből válaszd a Mentés a Fájlokba lehetőséget, Windows alatt a letöltés működik. A PDF nyomtatható és többoldalas; a szöveg képként kerül a PDF-be (nem kijelölhető).
 Teszt: (1) régi JSON import változatlan, (2) JPEG/PNG kép csere és törlés, (3) képfeltöltés utáni szinkron iPhone/iPad között, (4) többoldalas PDF mentés PC/iPhone/iPad, (5) hosszú gumi-nevek tördelése, (6) azonos rekordú képütközés biztonságos megállítása.
+
+
+## v2.9.0 BÉTA – PDF és UI finomítások
+Teszt: exportáld ugyanazt a többoldalas KIA-riportot. Az 1. oldalon ne maradjon magában a Tankolások cím, a Gumiciklusok szakasz ne folytatódjon néhány sorral egy szinte üres 3. oldalon. Ellenőrizd a teljes rekordmennyiséget, az ismétlődő táblázatfejléceket, a PDF iOS megosztást, PC letöltést, világos/sötét módot és a felületi fókuszt.

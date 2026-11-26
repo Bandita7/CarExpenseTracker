@@ -345,3 +345,7 @@ A főmenü új **PDF autóelőélet** oldalán járművenként nyomtatható elő
 ## v2.8.0 – Mobil PDF és járműfotó
 A jármű adatlapon és a riportban egy JPEG formátumra alakított, legfeljebb 95 KB méretű kép menthető. A kép a járműrekord része: a JSON exportba, Drive-szinkronba és annak pillanatkép-előzményeibe is bekerül. A nagyobb tartalmi méret miatt szinkron lassulás lehetséges. Másik eszközön csak frissített v2.8 klienssel szerkeszd.
 A PDF offline, böngészőoldali Canvas→JPEG→PDF eljárással készül; iOS-en a megosztási felületből válaszd a Mentés a Fájlokba lehetőséget, Windows alatt a letöltés működik. A PDF nyomtatható és többoldalas; a szöveg képként kerül a PDF-be (nem kijelölhető).
+
+
+## v2.9.0 BÉTA – PDF és UI finomítások
+A PDF készítője az oldaltörések előtt összeszámolja a szakaszcím, oszlopfejléc és táblázatsorok várható magasságát. Egy teljesen elférő táblázatot nem bont oldalakra, hosszabb táblázatnál pedig az oszlopfejlécet megismétli. A szakaszcím az első rekordokkal együtt marad. A felület a billentyűzetfókuszt, vezérlőméretet, státuszok tördelését, PDF-beállításokat és sötét módot egységesíti. Nincs adatmodell- vagy szinkronprotokoll-módosítás.

@@ -6,9 +6,9 @@ const path=require('node:path');
 const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
 const sw=fs.readFileSync(path.join(__dirname,'../sw.js'),'utf8');
 test('STABLE release label is consistent in PWA',()=>{
- assert.match(html,/<title>CarExpense Tracker v2\.8\.0 BÉTA<\/title>/);
- assert.match(html,/id="about-version">v2\.8\.0 BÉTA/);
- assert.match(sw,/carexpense-v2\.8\.0/);
+ assert.match(html,/<title>CarExpense Tracker v2\.9\.0 BÉTA<\/title>/);
+ assert.match(html,/id="about-version">v2\.9\.0 BÉTA/);
+ assert.match(sw,/carexpense-v2\.9\.0/);
 });
 test('Release history retains the previous beta',()=>{
  const notes=html.match(/const RELEASE_NOTES=\[([\s\S]*?)\];/)[1];
