@@ -1,0 +1,11 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const html=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
+const source=html.split('/* v2.5: read-only analytics;')[1]?.split('function renderDashboard(){')[0];
+assert.ok(source,'Analitikai függvények hiányoznak');
+const context={Number,Map,String,RegExp,Math,esc:String,ft:n=>String(n),km:n=>String(n),money:n=>String(n)};
+vm.createContext(context);vm.runInContext('/* v2.5: read-only analytics;'+source,context);
+const dataset={vehicles:[{id:'a',name:'Autó A',active:true,purchaseDate:'2026-01-01',purchaseOdo:1000},{id:'b',name:'Autó B',active:false}],fuel:[{vehicleId:'a',date:'2026-02-01',odometer:2000,totalCost:12000},{vehicleId:'a',date:'2026-03-01',odometer:3000,totalCost:18000}],services:[{vehicleId:'a',date:'2026-03-05',odometer:3000,cost:2000,paidByMe:false},{vehicleId:'a',date:'2026-03-09',cost:3000,baseline:true},{vehicleId:'a',date:'2026-03-11',cost:5000,paidByMe:true}],expenses:[{vehicleId:'a',date:'2026-03-13',cost:8000,paidByMe:true},{vehicleId:'b',date:'2026-03-02',cost:1000,paidByMe:true}]};
+test('Külön járművek, archivált is, tulajdonosi szűréssel',()=>{const x=context.analyticsVehicleComparison(dataset,'2026');assert.equal(x.length,2);assert.equal(x[0].total,43000);assert.equal(x[1].total,1000);assert.equal(x[0].costPerKm,43);assert.equal(x[1].costPerKm,null)});
+test('Évszűrés és input sértetlenül marad',()=>{const before=JSON.stringify(dataset);const x=context.analyticsVehicleComparison(dataset,'2025');assert.equal(x[0].total,0);assert.equal(JSON.stringify(dataset),before)});
+test('12 havi, 0 hónapokat is megtartó trend és hiányzó adatok',()=>{const m=context.analyticsMonthTotals([{date:'2025-01-01',totalCost:100},{date:'2026-01-10',totalCost:200}],[],[]);const x=context.analyticsRolling12(m);assert.equal(x.length,13);assert.equal(x[0].complete,false);assert.equal(x[11].complete,true);assert.equal(x[11].rolling,100);assert.equal(x[12].rolling,200)});
+test('Összehasonlító és gördülő diagram bekötve',()=>{assert.match(html,/analyticsComparisonHtml\(data,year\)/);assert.match(html,/analyticsRollingHtml\(fuels,serv,exp,year\)/)});

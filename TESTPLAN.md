@@ -318,3 +318,12 @@ Teszt: 3/5/10 váltás, diagram és adatpontszám ellenőrzése; újratöltés u
 - Tankolás/Szerviz/Egyéb költség: dátumszűrés; szerviznél kategóriaszűrés; keresés és szűrők törlése.
 - Járművek: archiváláskor a rekordok megmaradnak, archiváltakat külön láthatóvá téve vissza lehessen aktiválni.
 - Készülékek: automatikus Drive-szinkron és JSON-mentés regresszió.
+
+
+## v2.5.0 regressziós tesztterv
+1. Több autó esetén összehasonlító táblázat az Áttekintésen; aktív és archivált autó megjelenik.
+2. Saját költségnek nem jelölt és gyári alapérték szervizek nem számítanak bele.
+3. Az évválasztó a táblázatot és a trendet is szűri.
+4. Hiányzó óraállásnál a Ft/km mező kötőjel és figyelmeztetés.
+5. Legalább 12 naptári hónapnál jelenik meg a gördülő költséggörbe.
+6. Sötét mód, mobil grafikonok, automatikus szinkron és JSON-export változatlan.
