@@ -1,3 +1,28 @@
+# CarExpense Tracker v3.0 RC1 – készülékes végső tesztmátrix
+
+**Az RC1 nem bizonyítja a minden körülményre kiterjedő, atomi többeszközös szinkront.** A következő teszteket csak külön JSON-mentések után végezd.
+
+| Terület | Eszköz / lépés | Elvárt eredmény |
+|---|---|---|
+| Telepítés | GitHub Actions, PC, iPhone, iPad | v3.0 RC1; Safety & Release Check zöld; megfelelő PWA-frissülés |
+| Járművek | PC, iPhone, iPad | Járműkép, archivált járművek, dátumválasztók, mentés, adatlap, bal/jobb menü |
+| Megjelenés | iPhone, iPad | Sötét/világos/rendszer; normál/kompakt; négy betűméret; beállítások megtartása |
+| Adatlista | iPhone, iPad | Tankolás, szerviz, kiadás, gumik, határidők és szűrők jól láthatók |
+| Fogyasztás | PC, iOS | 3/5/10 gördülő átlag, kis adathalmaznál hiányjelzés, interaktív grafikon |
+| Karbantartás | PC, iOS | Km + idő alapú figyelmeztetés és szűrők |
+| PDF | PC, iPhone, iPad | Hosszú riport többoldalas tördelése, fotó és oszlopfejlécek, mentés sikeres |
+| JSON export | PC, iPhone, iPad | Mentett fájl valóban létezik, jó adatséma és várt rekordok |
+| JSON import | Elkülönített tesztprofil | Preview, kötelező mentés, jóváhagyás, próbarekord-visszaállítás |
+| Offline | iPhone/iPad | Helyi adatok olvashatók, módosítás után feltöltetlen állapot jelzett |
+| Automatikus szinkron | iPad, majd iPhone | Egymás után végzett módosítások oda-vissza átmennek, hibánál nincs téves zöld |
+| Ütközés | Csak külön próbaadatok | Konfliktus nem eredményez csendes felülírást, helyreállítási pont megmarad |
+| Google-hozzáférés | iPhone/iPad | Lejárt tokennél egyértelmű állapot és kézi újracsatlakozás |
+| Tárhely | PC/iOS | Helyi állapotellenőrzés + előkészítő jelentés; pillanatképek számának figyelése |
+
+**Kiadási döntés:** v3.0 STABLE csak akkor készül, ha ezek a készülékes próbák is megfelelőek, és nincs nyitott adatvesztést okozó hiba. Az ismert többeszközös versenyhelyzet továbbra is dokumentált korlátozás marad.
+
+---
+
 # v2.3.0 BÉTA – végső telepítés utáni ellenőrzés
 
 1. GitHub Actions: Safety & Release Check zöld, verziócímke minden felületen v2.3.0 BÉTA.

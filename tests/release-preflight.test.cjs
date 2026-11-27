@@ -2,7 +2,7 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const src=fs.readFileSync(path.join(__dirname,'../index.html'),'utf8');
 test('előellenőrzés és jelentésmásolás elérhető',()=>{
- assert.match(src,/toolButton\('v2\.0 előkészítő ellenőrzés',releasePreflightCheck\)/);
+ assert.match(src,/toolButton\('kiadás előtti ellenőrzés',releasePreflightCheck\)/);
  assert.match(src,/toolButton\('Ellenőrzőjelentés másolása',releasePreflightCopy\)/);
  assert.match(src,/id="release-preflight-result"/);
 });

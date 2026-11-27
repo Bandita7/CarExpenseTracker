@@ -1,3 +1,21 @@
+# CarExpense Tracker v3.0 RC1 – Release Candidate
+
+**Kiadásjelölt, nem stabil kiadás.** A v2.10.2 BÉTA funkcióira épülő, változatlan szinkronmotorú és változatlan `schemaVersion: 2` adatmodellű kiadás. A verziójelzések, PWA cache-azonosító, tesztcsomag és kiadás előtti dokumentáció frissült.
+
+### Biztonsági szabályok
+
+- Minden érintett eszközön friss, ellenőrzött, külön JSON-mentés szükséges tesztelés előtt.
+- A visszaállítást csak elkülönített böngészőprofilban és próbaadatokkal szabad tesztelni.
+- A több készüléken pontosan egyidejűleg induló Drive-feltöltés nem garantáltan tranzakcióbiztos. Valós adatokkal ilyen stressztesztet ne végezz.
+- Google OAuth tokenlejáratnál kézi újracsatlakozás lehet szükséges.
+- A képek opcionális `photoDataUrl` mezőben maradnak; a képek és a gumimérések mentésének, exportjának és visszaolvasásának külön készülékes ellenőrzése szükséges.
+
+### GitHub Actions
+
+A `.github/workflows/safety-check.yml` **változatlan**, nem kell külön feltölteni. Frissítsd a `scripts/`, `tests/`, `index.html`, `sw.js`, README és TESTPLAN fájlokat.
+
+---
+
 CarExpense Tracker v2.10.2 BÉTA – Display Refinement
 
 # CarExpense Tracker v2.6.0 BÉTA

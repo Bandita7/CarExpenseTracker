@@ -4,8 +4,8 @@ const root=path.join(__dirname,'..');
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const sw=fs.readFileSync(path.join(root,'sw.js'),'utf8');
 test('v2.1 STABLE has fresh PWA cache and preserves previous release',()=>{
- assert.match(sw,/carexpense-v2\.10\.2/);
- assert.match(html,/const RELEASE_NOTES=\[\s*\['v2\.10\.2 BÉTA'/);
+ assert.match(sw,/carexpense-v3\.0\.0-rc1/);
+ assert.match(html,/const RELEASE_NOTES=\[\s*\['v3\.0 RC1'/);
  assert.match(html,/\['v2\.1\.3 BÉTA'/);
 });
 test('Auto sync requires explicit opt in and conflict pause safeguards',()=>{
