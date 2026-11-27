@@ -362,3 +362,11 @@ Teszt: exportáld ugyanazt a többoldalas KIA-riportot. Az 1. oldalon ne maradjo
 
 ## v2.10.1 BÉTA – Mobil hotfix
 Készíts JSON-mentést. iPhone/iPad: jármű minden dátummezője maradjon a kereten belül, a rendszer dátumválasztója nyíljon és mentéskor maradjon meg a választott dátum. A bal oldali beállításnál bal szélről jobbra húzás nyisson, jobbra-balra zárjon. A jobb oldalinál fordítottan. Függőleges görgetés, táblázatok vízszintes mozgatása ne nyissa a menüt. Menügomb, Esc, overlay továbbra is működik. PC-n a dátumválasztó és menü változatlan. Auto sync és PDF gyors próba.
+
+
+## v2.10.2 BÉTA – Megjelenítés finomítása
+- Normál / Kompakt: látványosan eltérő táblázatsorok, kártyák, margók és térközök.
+- Betűméret: Kicsi / Normál / Nagy / Extra nagy (készülékenként tárolt).
+- A szinkron, az adatmodell és a PDF-export változatlan.
+
+Ellenőrzés: telefonon legalább 5 tankolási rekord mellett Normál vs Kompakt összehasonlítás; külön-külön 4 betűméret; nagy betűméretnél vízszintes táblázatgörgetés; érintési célpontok; sötét és világos téma; navigáció és iOS dátumválasztó; újraindítás után megmaradó helyi beállítás; szinkron és JSON-export.

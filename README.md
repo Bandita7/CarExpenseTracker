@@ -1,3 +1,5 @@
+CarExpense Tracker v2.10.2 BÉTA – Display Refinement
+
 # CarExpense Tracker v2.6.0 BÉTA
 
 **Stabil kiadás – 2026-11-25.** A felhasználó által sikeresen tesztelt v2.1 RC2 változat kiadási jelölése. A kétirányú automatikus szinkron eszközönként külön engedélyezhető, a megbízható kézi szinkron megmarad. A PC-s JSON-export működését az RC2-ben javítottuk és ellenőriztük. Az IndexedDB-adatmodell és a szinkronmotor változatlan.
@@ -357,3 +359,9 @@ Mobil menü bal/jobb oldal választással; hamburgergomb a választott oldalon. 
 
 ## v2.10.1 BÉTA – Mobil hotfix
 A Járművek űrlapon az iOS dátummező kereten belüli kijelzést és natív dátumválasztót kap. A mobilmenü a kiválasztott képernyőszél felől behúzható és visszasöpörhető; a hamburgergomb és a menüoldal választása változatlanul működik. Az adatséma és a szinkronmotor változatlan.
+
+
+## v2.10.2 BÉTA – Megjelenítés finomítása
+- Normál / Kompakt: látványosan eltérő táblázatsorok, kártyák, margók és térközök.
+- Betűméret: Kicsi / Normál / Nagy / Extra nagy (készülékenként tárolt).
+- A szinkron, az adatmodell és a PDF-export változatlan.
